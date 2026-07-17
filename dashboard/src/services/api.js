@@ -321,5 +321,13 @@ function getMockData(endpoint, options) {
     ];
   }
 
+  if (endpoint === "/api/v1/models/registry") {
+    return [
+      { model_name: "Linear Regression", version: "1.0.0", rmse: 1.24, mape: 0.008, r2_score: 0.88, created_at: new Date().toISOString(), status: "TRAINED" },
+      { model_name: "Prophet (Seasonal)", version: "1.1.2", rmse: 0.98, mape: 0.006, r2_score: 0.92, created_at: new Date().toISOString(), status: "TRAINED" },
+      { model_name: "LSTM Neural Net", version: "2.0.4", rmse: 0.52, mape: 0.003, r2_score: 0.97, created_at: new Date().toISOString(), status: "DEPLOYED" }
+    ];
+  }
+
   return {};
 }

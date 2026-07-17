@@ -100,9 +100,10 @@ export default function App() {
   const loadModelRegistry = async () => {
     try {
       const data = await api.getModelRegistry();
-      setModelRegistry(data);
+      setModelRegistry(Array.isArray(data) ? data : []);
     } catch (e) {
       console.error("Failed to load model registry: ", e);
+      setModelRegistry([]);
     }
   };
 

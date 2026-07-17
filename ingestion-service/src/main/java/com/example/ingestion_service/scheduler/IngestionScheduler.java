@@ -55,11 +55,17 @@ public class IngestionScheduler {
             // Fetch and publish market prices via Kafka (fallback to direct raw storage if broker offline)
             List<MarketData> prices = marketApiService.fetchMarketData(tickers);
             for (MarketData price : prices) {
+                boolean sent = false;
                 try {
-                    kafkaProducerService.sendMarketPrice(price);
-                    processedPricesCount++;
+                    sent = kafkaProducerService.sendMarketPrice(price);
                 } catch (Exception e) {
-                    log.warn("Kafka is offline. Running direct raw storage fallback for: {}", price.getTicker());
+                    log.warn("Kafka Producer failed: {}", e.getMessage());
+                }
+
+                if (sent) {
+                    processedPricesCount++;
+                } else {
+                    log.warn("Kafka is offline/failed. Running direct raw storage fallback for: {}", price.getTicker());
                     if (rawStorageService.saveMarketPrice(price)) {
                         processedPricesCount++;
                     }
@@ -70,11 +76,17 @@ public class IngestionScheduler {
             // Fetch and publish news sentiment via Kafka
             List<NewsSentimentData> news = marketApiService.fetchNewsSentiment(tickers);
             for (NewsSentimentData item : news) {
+                boolean sent = false;
                 try {
-                    kafkaProducerService.sendNewsSentiment(item);
-                    processedNewsCount++;
+                    sent = kafkaProducerService.sendNewsSentiment(item);
                 } catch (Exception e) {
-                    log.warn("Kafka is offline. Running direct raw storage fallback for news: {}", item.getTicker());
+                    log.warn("Kafka Producer failed: {}", e.getMessage());
+                }
+
+                if (sent) {
+                    processedNewsCount++;
+                } else {
+                    log.warn("Kafka is offline/failed. Running direct raw storage fallback for news: {}", item.getTicker());
                     if (rawStorageService.saveNewsSentiment(item)) {
                         processedNewsCount++;
                     }
