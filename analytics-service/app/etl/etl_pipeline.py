@@ -111,7 +111,7 @@ def parse_iso_timestamp(timestamp_val) -> datetime:
         iso_str = timestamp_val
         if "." in iso_str:
             base, fraction = iso_str.split(".", 1)
-            fraction = fraction[:6] # keep max 6 microsecond digits
+            fraction = fraction[:6].ljust(6, '0') # keep exactly 6 microsecond digits
             iso_str = f"{base}.{fraction}"
         return datetime.fromisoformat(iso_str)
     else:
