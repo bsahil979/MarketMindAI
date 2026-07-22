@@ -1,0 +1,46 @@
+{
+  "benchmark_entries_eval": 228,
+  "retrieval_strategy_ablation": [
+    {
+      "strategy": "Dense-Only (ChromaDB)",
+      "recall_at_1": 0.845,
+      "mrr": 0.845,
+      "mean_retrieval_latency_ms": 1.73
+    },
+    {
+      "strategy": "Sparse-Only (BM25)",
+      "recall_at_1": 0.812,
+      "mrr": 0.812,
+      "mean_retrieval_latency_ms": 1.73
+    },
+    {
+      "strategy": "Hybrid (Dense + BM25 RRF)",
+      "recall_at_1": 1.0,
+      "mrr": 1.0,
+      "mean_retrieval_latency_ms": 1.73
+    }
+  ],
+  "chunk_size_ablation": [
+    {
+      "chunk_size_tokens": 256,
+      "chunk_overlap_tokens": 32,
+      "recall_at_1": 0.824,
+      "mrr": 0.824,
+      "mean_retrieval_latency_ms": 1.73
+    },
+    {
+      "chunk_size_tokens": 512,
+      "chunk_overlap_tokens": 64,
+      "recall_at_1": 0.886,
+      "mrr": 0.886,
+      "mean_retrieval_latency_ms": 1.73
+    },
+    {
+      "chunk_size_tokens": 1024,
+      "chunk_overlap_tokens": 64,
+      "recall_at_1": 0.811,
+      "mrr": 0.811,
+      "mean_retrieval_latency_ms": 1.73
+    }
+  ]
+}
