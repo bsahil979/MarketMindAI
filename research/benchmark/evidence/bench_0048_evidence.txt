@@ -1,4 +1,5 @@
 QA ID: bench_0048
-Question: Report the FY2024 recorded revenue figure for BRK-B's BNSF Railroad segment.
+Question: Report the FY2024 recorded segment performance for AMZN's Total Quarterly Revenue.
+Page: 18
 Evidence:
-| BNSF Railroad | 23400 | 24100 |
+| Total Quarterly Revenue | 17622 | 9322 |

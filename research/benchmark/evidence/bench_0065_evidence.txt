@@ -1,4 +1,5 @@
 QA ID: bench_0065
-Question: What management trend is reported regarding BRK-B's financial performance?
+Question: What was BRK-B's Consumer & Other revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-Insurance float increased to $169 Billion with strong underwriting income across Geico and reinsurance.
+| Consumer & Other | 12086 | 8886 | 18.9% |

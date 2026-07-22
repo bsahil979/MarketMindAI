@@ -1,4 +1,5 @@
 QA ID: bench_0193
-Question: Report the FY2024 recorded revenue figure for TSLA's Services & Other segment.
+Question: How did MSFT's Net Income revenue change from 2023 to 2024?
+Page: 18
 Evidence:
-| Services & Other | 8319 | 6091 |
+| Net Income | 6200 | 5110 |

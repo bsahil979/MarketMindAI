@@ -1,4 +1,5 @@
 QA ID: bench_0157
-Question: Calculate the year-over-year percentage change for NFLX's Total Revenue performance.
+Question: What primary risk factors are disclosed for META in Item 1A?
+Page: 32
 Evidence:
-| Total Revenue | 33720 | 31615 |
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

@@ -1,0 +1,5 @@
+QA ID: bench_0238
+Question: Report the FY2024 recorded segment performance for NVDA's Total Net Sales.
+Page: 32
+Evidence:
+| Total Net Sales | 22896 | 41996 | 27.1% |

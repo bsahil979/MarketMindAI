@@ -1,4 +1,5 @@
 QA ID: bench_0135
-Question: What primary risk factors are highlighted for MSFT in Item 1A?
+Question: What was JPM's Net Income revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.
+| Net Income | 6545 | 3455 |

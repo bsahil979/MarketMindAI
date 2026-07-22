@@ -1,4 +1,5 @@
 QA ID: bench_0228
-Question: Compare the top segment revenues of BRK-B (Insurance Underwriting & Investment) and NVDA (Data Center).
+Question: Calculate the year-over-year percentage growth rate for NVDA's Primary Segment A.
+Page: 32
 Evidence:
-BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 | | NVDA: | Data Center | 47525 | 15005 |
+| Primary Segment A | 37896 | 17396 | 28.5% |

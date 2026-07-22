@@ -1,4 +1,5 @@
 QA ID: bench_0146
-Question: What was NFLX's LATAM revenue in 2024 according to the filing?
+Question: Report the FY2024 recorded segment performance for META's Enterprise Segment B.
+Page: 32
 Evidence:
-| LATAM | 4450 | 4070 |
+| Enterprise Segment B | 26251 | 11051 | 34.2% |

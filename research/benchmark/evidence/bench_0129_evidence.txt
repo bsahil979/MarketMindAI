@@ -1,4 +1,5 @@
 QA ID: bench_0129
-Question: How did MSFT's More Personal Computing revenue change from 2023 to 2024?
+Question: What primary risk factors are disclosed for JPM in Item 1A?
+Page: 32
 Evidence:
-| More Personal Computing | 56700 | 54734 |
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

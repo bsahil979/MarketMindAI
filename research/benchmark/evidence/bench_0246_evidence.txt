@@ -1,0 +1,5 @@
+QA ID: bench_0246
+Question: Calculate the year-over-year percentage growth rate for NVDA's Total Quarterly Revenue.
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 13396 | 20096 |

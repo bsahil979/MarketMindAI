@@ -1,4 +1,5 @@
 QA ID: bench_0022
-Question: Identify key operational or macroeconomic challenges facing AAPL.
+Question: Calculate the year-over-year percentage growth rate for AAPL's Total Quarterly Revenue.
+Page: 18
 Evidence:
-Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.
+| Total Quarterly Revenue | 6298 | 12998 |

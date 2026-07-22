@@ -1,0 +1,5 @@
+QA ID: bench_0232
+Question: Calculate the year-over-year percentage growth rate for NVDA's Enterprise Segment B.
+Page: 32
+Evidence:
+| Enterprise Segment B | 25896 | 15696 | 34.2% |

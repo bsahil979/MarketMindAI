@@ -1,4 +1,5 @@
 QA ID: bench_0034
-Question: How did AMZN's AWS Cloud revenue change from 2023 to 2024?
+Question: Report the FY2024 recorded segment performance for AMZN's Enterprise Segment B.
+Page: 32
 Evidence:
-| AWS Cloud | 90757 | 80096 |
+| Enterprise Segment B | 16122 | 15922 | 34.2% |

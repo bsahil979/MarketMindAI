@@ -1,4 +1,5 @@
 QA ID: bench_0122
-Question: Calculate the year-over-year percentage change for MSFT's Intelligent Cloud (Azure) performance.
+Question: Report the FY2024 recorded segment performance for JPM's Consumer & Other.
+Page: 32
 Evidence:
-| Intelligent Cloud (Azure) | 105362 | 87907 |
+| Consumer & Other | 4945 | 7745 | 18.9% |

@@ -1,4 +1,5 @@
 QA ID: bench_0187
-Question: Calculate the year-over-year percentage change for TSLA's Automotive Sales performance.
+Question: What was MSFT's Total Quarterly Revenue revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-| Automotive Sales | 82419 | 71462 |
+| Total Quarterly Revenue | 6100 | 10800 |

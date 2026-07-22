@@ -1,4 +1,5 @@
 QA ID: bench_0083
-Question: Identify key operational or macroeconomic challenges facing GOOGL.
+Question: What cash flow figures are reported for BRK-B?
+Page: 18
 Evidence:
-Antitrust litigation, search advertising market evolution, and generative AI query latency costs.
+Cash and Cash Equivalents ended the quarter at $29086 Million.

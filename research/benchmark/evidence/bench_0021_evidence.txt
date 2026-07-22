@@ -1,4 +1,5 @@
 QA ID: bench_0021
-Question: What primary risk factors are highlighted for AAPL in Item 1A?
+Question: How did AAPL's Total Quarterly Revenue revenue change from 2023 to 2024?
+Page: 18
 Evidence:
-Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.
+| Total Quarterly Revenue | 6298 | 12998 |

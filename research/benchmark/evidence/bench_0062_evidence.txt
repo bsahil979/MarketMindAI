@@ -1,4 +1,5 @@
 QA ID: bench_0062
-Question: Calculate the year-over-year percentage change for BRK-B's Total Revenue performance.
+Question: Report the FY2024 recorded segment performance for BRK-B's Enterprise Segment B.
+Page: 32
 Evidence:
-| Total Revenue | 364482 | 302089 |
+| Enterprise Segment B | 18086 | 17886 | 34.2% |

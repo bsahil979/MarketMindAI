@@ -1,4 +1,5 @@
 QA ID: bench_0011
-Question: How did AAPL's Wearables & Home revenue change from 2023 to 2024?
+Question: How did AAPL's Consumer & Other revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Wearables & Home | 37005 | 39845 |
+| Consumer & Other | 6798 | 3598 | 18.9% |

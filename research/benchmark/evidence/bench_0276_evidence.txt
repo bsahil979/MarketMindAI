@@ -1,0 +1,5 @@
+QA ID: bench_0276
+Question: Report the FY2024 recorded segment performance for TSLA's Net Income.
+Page: 18
+Evidence:
+| Net Income | 3254 | 1164 |

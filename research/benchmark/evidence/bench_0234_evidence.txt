@@ -1,0 +1,5 @@
+QA ID: bench_0234
+Question: Report the FY2024 recorded segment performance for NVDA's Consumer & Other.
+Page: 32
+Evidence:
+| Consumer & Other | 14896 | 2696 | 18.9% |

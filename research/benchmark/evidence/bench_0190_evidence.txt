@@ -1,4 +1,5 @@
 QA ID: bench_0190
-Question: How did TSLA's Energy Generation & Storage revenue change from 2023 to 2024?
+Question: Calculate the year-over-year percentage growth rate for MSFT's Total Quarterly Revenue.
+Page: 18
 Evidence:
-| Energy Generation & Storage | 6035 | 3909 |
+| Total Quarterly Revenue | 6100 | 10800 |

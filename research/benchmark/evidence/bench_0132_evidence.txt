@@ -1,4 +1,5 @@
 QA ID: bench_0132
-Question: Report the FY2024 recorded revenue figure for MSFT's Total Revenue segment.
+Question: Report the FY2024 recorded segment performance for JPM's Total Quarterly Revenue.
+Page: 18
 Evidence:
-| Total Revenue | 245121 | 211915 |
+| Total Quarterly Revenue | 10445 | 11145 |

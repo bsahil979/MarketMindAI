@@ -1,4 +1,5 @@
 QA ID: bench_0074
-Question: What was GOOGL's Google Cloud revenue in 2024 according to the filing?
+Question: What cash flow figures are reported for BRK-B?
+Page: 32
 Evidence:
-| Google Cloud | 33088 | 26280 |
+Operating Cash Flow: $12586 Million. Free Cash Flow: $6886 Million.

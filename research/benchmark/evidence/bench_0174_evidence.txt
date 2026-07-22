@@ -1,4 +1,5 @@
 QA ID: bench_0174
-Question: Report the FY2024 recorded revenue figure for NVDA's Automotive segment.
+Question: Report the FY2024 recorded segment performance for MSFT's Enterprise Segment B.
+Page: 32
 Evidence:
-| Automotive | 1091 | 903 |
+| Enterprise Segment B | 22600 | 12400 | 34.2% |

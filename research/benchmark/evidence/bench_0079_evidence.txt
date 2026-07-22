@@ -1,4 +1,5 @@
 QA ID: bench_0079
-Question: Report the FY2024 recorded revenue figure for GOOGL's Total Revenues segment.
+Question: What was BRK-B's Net Income revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-| Total Revenues | 307394 | 282836 |
+| Net Income | 1686 | 596 |

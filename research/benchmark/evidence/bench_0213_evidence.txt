@@ -1,4 +1,5 @@
 QA ID: bench_0213
-Question: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and JPM (Consumer & Community Banking).
+Question: What primary risk factors are disclosed for NFLX in Item 1A?
+Page: 32
 Evidence:
-NFLX: | UCAN (US & Canada) | 14860 | 14080 | | JPM: | Consumer & Community Banking | 70123 | 55120 |
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

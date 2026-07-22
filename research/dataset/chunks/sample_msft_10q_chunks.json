@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_msft_10q_chunk_0000",
+    "document_id": "sample_msft_10q",
+    "ticker": "MSFT",
+    "company": "MSFT Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "MSFT Corp. - Form 10-Q Quarterly Report (Q3 2024)\nTicker: MSFT | Quarter: Q3 2024 | Page: 18\nItem 2. Management's Discussion and Analysis\nQuarterly net revenue for Q3 2024 was $6100 Million, up 11% compared to Q3 2023.\n| Quarter | Q3 2024 ($M) | Q3 2023 ($M) |\n| --- | --- | --- |\n| Total Quarterly Revenue | 6100 | 10800 |\n| Net Income | 6200 | 5110 |\nCash and Cash Equivalents ended the quarter at $33600 Million.",
+    "token_count": 142
+  }
+]

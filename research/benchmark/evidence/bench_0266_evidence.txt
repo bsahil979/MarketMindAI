@@ -1,0 +1,5 @@
+QA ID: bench_0266
+Question: Report the FY2024 recorded segment performance for TSLA's Total Net Sales.
+Page: 32
+Evidence:
+| Total Net Sales | 60654 | 49754 | 27.1% |

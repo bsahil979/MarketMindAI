@@ -1,0 +1,5 @@
+QA ID: bench_0270
+Question: What cash flow figures are reported for TSLA?
+Page: 32
+Evidence:
+Operating Cash Flow: $8154 Million. Free Cash Flow: $2454 Million.

@@ -1,4 +1,5 @@
 QA ID: bench_0107
-Question: Calculate the year-over-year percentage change for META's Family of Apps (Ad Revenue) performance.
+Question: What was GOOGL's Net Income revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-| Family of Apps (Ad Revenue) | 131948 | 113642 |
+| Net Income | 3082 | 4992 |

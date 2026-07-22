@@ -1,4 +1,5 @@
 QA ID: bench_0200
-Question: What primary risk factors are highlighted for TSLA in Item 1A?
+Question: Calculate the year-over-year percentage growth rate for NFLX's Primary Segment A.
+Page: 32
 Evidence:
-Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.
+| Primary Segment A | 14947 | 9447 | 28.5% |

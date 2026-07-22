@@ -1,4 +1,5 @@
 QA ID: bench_0012
-Question: Calculate the year-over-year percentage change for AAPL's Wearables & Home performance.
+Question: Calculate the year-over-year percentage growth rate for AAPL's Consumer & Other.
+Page: 32
 Evidence:
-| Wearables & Home | 37005 | 39845 |
+| Consumer & Other | 6798 | 3598 | 18.9% |

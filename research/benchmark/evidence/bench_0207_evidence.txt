@@ -1,4 +1,5 @@
 QA ID: bench_0207
-Question: Compare the top segment revenues of AAPL (iPhone) and META (Family of Apps (Ad Revenue)).
+Question: How did NFLX's Consumer & Other revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-AAPL: | iPhone | 201183 | 200583 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |
+| Consumer & Other | 11947 | 11747 | 18.9% |

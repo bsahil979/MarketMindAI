@@ -1,4 +1,5 @@
 QA ID: bench_0047
-Question: What was BRK-B's BNSF Railroad revenue in 2024 according to the filing?
+Question: What was AMZN's Total Quarterly Revenue revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-| BNSF Railroad | 23400 | 24100 |
+| Total Quarterly Revenue | 17622 | 9322 |

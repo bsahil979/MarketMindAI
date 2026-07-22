@@ -1,4 +1,5 @@
 QA ID: bench_0091
-Question: How did JPM's Corporate & Investment Bank revenue change from 2023 to 2024?
+Question: How did GOOGL's Enterprise Segment B revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Corporate & Investment Bank | 48700 | 46100 |
+| Enterprise Segment B | 27482 | 7282 | 34.2% |

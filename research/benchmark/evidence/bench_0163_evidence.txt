@@ -1,4 +1,5 @@
 QA ID: bench_0163
-Question: How did NVDA's Data Center revenue change from 2023 to 2024?
+Question: What was META's Net Income revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-| Data Center | 47525 | 15005 |
+| Net Income | 851 | 3761 |

@@ -1,4 +1,5 @@
 QA ID: bench_0188
-Question: What was TSLA's Energy Generation & Storage revenue in 2024 according to the filing?
+Question: Report the FY2024 recorded segment performance for MSFT's Total Quarterly Revenue.
+Page: 18
 Evidence:
-| Energy Generation & Storage | 6035 | 3909 |
+| Total Quarterly Revenue | 6100 | 10800 |

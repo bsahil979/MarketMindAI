@@ -1,4 +1,5 @@
 QA ID: bench_0148
-Question: How did NFLX's LATAM revenue change from 2023 to 2024?
+Question: Calculate the year-over-year percentage growth rate for META's Enterprise Segment B.
+Page: 32
 Evidence:
-| LATAM | 4450 | 4070 |
+| Enterprise Segment B | 26251 | 11051 | 34.2% |

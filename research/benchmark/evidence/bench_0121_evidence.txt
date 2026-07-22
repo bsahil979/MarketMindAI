@@ -1,4 +1,5 @@
 QA ID: bench_0121
-Question: How did MSFT's Intelligent Cloud (Azure) revenue change from 2023 to 2024?
+Question: What was JPM's Consumer & Other revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-| Intelligent Cloud (Azure) | 105362 | 87907 |
+| Consumer & Other | 4945 | 7745 | 18.9% |

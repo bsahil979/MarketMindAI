@@ -1,4 +1,5 @@
 QA ID: bench_0143
-Question: Report the FY2024 recorded revenue figure for NFLX's EMEA segment.
+Question: How did META's Primary Segment A revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| EMEA | 10560 | 9750 |
+| Primary Segment A | 13251 | 22751 | 28.5% |

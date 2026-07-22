@@ -1,4 +1,5 @@
 QA ID: bench_0103
-Question: What management trend is reported regarding JPM's financial performance?
+Question: What was GOOGL's Total Quarterly Revenue revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-Net interest income rose significantly supported by interest rate environments and First Republic integration.
+| Total Quarterly Revenue | 18982 | 9682 |

@@ -1,4 +1,5 @@
 QA ID: bench_0045
-Question: How did BRK-B's Insurance Underwriting & Investment revenue change from 2023 to 2024?
+Question: What primary risk factors are disclosed for AMZN in Item 1A?
+Page: 32
 Evidence:
-| Insurance Underwriting & Investment | 95200 | 82400 |
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

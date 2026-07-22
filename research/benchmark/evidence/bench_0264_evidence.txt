@@ -1,0 +1,5 @@
+QA ID: bench_0264
+Question: Calculate the year-over-year percentage growth rate for TSLA's Consumer & Other.
+Page: 32
+Evidence:
+| Consumer & Other | 7654 | 10454 | 18.9% |

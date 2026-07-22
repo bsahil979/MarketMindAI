@@ -1,4 +1,5 @@
 QA ID: bench_0145
-Question: Calculate the year-over-year percentage change for NFLX's EMEA performance.
+Question: What was META's Enterprise Segment B revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-| EMEA | 10560 | 9750 |
+| Enterprise Segment B | 26251 | 11051 | 34.2% |

@@ -1,0 +1,5 @@
+QA ID: bench_0265
+Question: What was TSLA's Total Net Sales revenue in 2024 according to the filing?
+Page: 32
+Evidence:
+| Total Net Sales | 60654 | 49754 | 27.1% |

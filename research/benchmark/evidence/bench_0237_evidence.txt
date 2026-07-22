@@ -1,0 +1,5 @@
+QA ID: bench_0237
+Question: What was NVDA's Total Net Sales revenue in 2024 according to the filing?
+Page: 32
+Evidence:
+| Total Net Sales | 22896 | 41996 | 27.1% |

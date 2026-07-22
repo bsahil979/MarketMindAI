@@ -1,0 +1,5 @@
+QA ID: bench_0230
+Question: Report the FY2024 recorded segment performance for NVDA's Enterprise Segment B.
+Page: 32
+Evidence:
+| Enterprise Segment B | 25896 | 15696 | 34.2% |

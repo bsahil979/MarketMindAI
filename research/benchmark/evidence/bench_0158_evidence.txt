@@ -1,4 +1,5 @@
 QA ID: bench_0158
-Question: What primary risk factors are highlighted for NFLX in Item 1A?
+Question: What cash flow figures are reported for META?
+Page: 32
 Evidence:
-Subscriber churn, content production cost inflation, and international gaming investments.
+Operating Cash Flow: $5751 Million. Free Cash Flow: $10051 Million.

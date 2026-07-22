@@ -1,4 +1,5 @@
 QA ID: bench_0186
-Question: How did TSLA's Automotive Sales revenue change from 2023 to 2024?
+Question: What cash flow figures are reported for MSFT?
+Page: 32
 Evidence:
-| Automotive Sales | 82419 | 71462 |
+Operating Cash Flow: $17100 Million. Free Cash Flow: $11400 Million.

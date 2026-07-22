@@ -1,0 +1,5 @@
+QA ID: bench_0247
+Question: What was NVDA's Net Income revenue in 2024 according to the filing?
+Page: 18
+Evidence:
+| Net Income | 1496 | 3406 |

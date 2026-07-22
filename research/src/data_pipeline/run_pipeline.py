@@ -50,9 +50,9 @@ def run_phase1_pipeline(
         for ext in ["*.html", "*.htm", "*.txt", "*.md"]:
             raw_files.extend(list(raw_dir.rglob(ext)))
 
-    if len(raw_files) < 5:
-        print("[Phase 1] Ingesting 10-company corporate filing corpus...")
-        raw_files = downloader.generate_sample_corpus()
+    if len(raw_files) < 50:
+        print("[Phase 1] Ingesting 50-company corporate filing corpus (10-K, 10-Q, Earnings Call Transcripts)...")
+        raw_files = downloader.generate_sample_corpus(tickers=tickers)
 
     print(f"[Phase 1] Processing {len(raw_files)} raw filing document(s)...")
 

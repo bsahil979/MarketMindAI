@@ -1,4 +1,5 @@
 QA ID: bench_0139
-Question: Report the FY2024 recorded revenue figure for NFLX's UCAN (US & Canada) segment.
+Question: What cash flow figures are reported for JPM?
+Page: 18
 Evidence:
-| UCAN (US & Canada) | 14860 | 14080 |
+Cash and Cash Equivalents ended the quarter at $21945 Million.

@@ -1,4 +1,5 @@
 QA ID: bench_0183
-Question: What management trend is reported regarding NVDA's financial performance?
+Question: How did MSFT's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-Data Center revenue surged 217% driven by generative AI enterprise adoption and Hopper GPU demand.
+| Total Net Sales | 69600 | 58700 | 27.1% |

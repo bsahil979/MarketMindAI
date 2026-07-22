@@ -1,4 +1,5 @@
 QA ID: bench_0115
-Question: Calculate the year-over-year percentage change for META's Total Revenue performance.
+Question: How did JPM's Primary Segment A revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Total Revenue | 134902 | 116601 |
+| Primary Segment A | 22945 | 27445 | 28.5% |

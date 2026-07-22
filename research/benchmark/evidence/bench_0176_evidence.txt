@@ -1,4 +1,5 @@
 QA ID: bench_0176
-Question: Calculate the year-over-year percentage change for NVDA's Automotive performance.
+Question: Calculate the year-over-year percentage growth rate for MSFT's Enterprise Segment B.
+Page: 32
 Evidence:
-| Automotive | 1091 | 903 |
+| Enterprise Segment B | 22600 | 12400 | 34.2% |

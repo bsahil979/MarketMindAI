@@ -1,4 +1,5 @@
 QA ID: bench_0120
-Question: Report the FY2024 recorded revenue figure for MSFT's Intelligent Cloud (Azure) segment.
+Question: Calculate the year-over-year percentage growth rate for JPM's Enterprise Segment B.
+Page: 32
 Evidence:
-| Intelligent Cloud (Azure) | 105362 | 87907 |
+| Enterprise Segment B | 15945 | 20745 | 34.2% |

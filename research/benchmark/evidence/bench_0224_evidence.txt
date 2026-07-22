@@ -1,4 +1,7 @@
 QA ID: bench_0224
-Question: Compare the top segment revenues of MSFT (Intelligent Cloud (Azure)) and META (Family of Apps (Ad Revenue)).
+Question: What key executive commentary was shared during NFLX's earnings call?
+Page: 4
 Evidence:
-MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |
+:
+CEO Statement: "We delivered exceptional financial performance across our core segments in FY 2024. Our strategic investments in AI infrastructure and enterprise cloud solutions continue to accelerate customer adoption."
+CFO Guidance: "For FY 2025,

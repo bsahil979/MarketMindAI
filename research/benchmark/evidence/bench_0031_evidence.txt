@@ -1,4 +1,5 @@
 QA ID: bench_0031
-Question: Calculate the year-over-year percentage change for AMZN's International Retail performance.
+Question: How did AMZN's Primary Segment A revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| International Retail | 131200 | 118016 |
+| Primary Segment A | 18122 | 37622 | 28.5% |

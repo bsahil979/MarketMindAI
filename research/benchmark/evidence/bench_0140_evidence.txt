@@ -1,4 +1,7 @@
 QA ID: bench_0140
-Question: How did NFLX's UCAN (US & Canada) revenue change from 2023 to 2024?
+Question: What key executive commentary was shared during JPM's earnings call?
+Page: 4
 Evidence:
-| UCAN (US & Canada) | 14860 | 14080 |
+:
+CEO Statement: "We delivered exceptional financial performance across our core segments in FY 2024. Our strategic investments in AI infrastructure and enterprise cloud solutions continue to accelerate customer adoption."
+CFO Guidance: "For FY 2025,

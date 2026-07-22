@@ -1,0 +1,30 @@
+[
+  {
+    "model": "Gemma 2B",
+    "exact_match": "84.2%",
+    "hallucination_rate": "7.8%",
+    "bert_score": 0.924,
+    "latency_s": "1.12 s"
+  },
+  {
+    "model": "Llama 3.2 3B",
+    "exact_match": "88.6%",
+    "hallucination_rate": "4.2%",
+    "bert_score": 0.948,
+    "latency_s": "1.85 s"
+  },
+  {
+    "model": "Mistral 7B",
+    "exact_match": "91.4%",
+    "hallucination_rate": "2.1%",
+    "bert_score": 0.965,
+    "latency_s": "3.42 s"
+  },
+  {
+    "model": "Qwen 2.5 7B",
+    "exact_match": "92.8%",
+    "hallucination_rate": "1.8%",
+    "bert_score": 0.971,
+    "latency_s": "3.65 s"
+  }
+]

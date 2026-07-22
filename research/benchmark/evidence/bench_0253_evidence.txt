@@ -1,0 +1,5 @@
+QA ID: bench_0253
+Question: What was TSLA's Primary Segment A revenue in 2024 according to the filing?
+Page: 32
+Evidence:
+| Primary Segment A | 5654 | 35154 | 28.5% |

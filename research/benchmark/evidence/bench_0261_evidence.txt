@@ -1,0 +1,5 @@
+QA ID: bench_0261
+Question: What was TSLA's Consumer & Other revenue in 2024 according to the filing?
+Page: 32
+Evidence:
+| Consumer & Other | 7654 | 10454 | 18.9% |

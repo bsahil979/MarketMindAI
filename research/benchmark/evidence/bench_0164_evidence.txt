@@ -1,4 +1,5 @@
 QA ID: bench_0164
-Question: Calculate the year-over-year percentage change for NVDA's Data Center performance.
+Question: Report the FY2024 recorded segment performance for META's Net Income.
+Page: 18
 Evidence:
-| Data Center | 47525 | 15005 |
+| Net Income | 851 | 3761 |

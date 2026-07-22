@@ -1,0 +1,5 @@
+QA ID: bench_0243
+Question: What was NVDA's Total Quarterly Revenue revenue in 2024 according to the filing?
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 13396 | 20096 |

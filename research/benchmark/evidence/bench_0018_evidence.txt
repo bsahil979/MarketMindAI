@@ -1,4 +1,5 @@
 QA ID: bench_0018
-Question: Report the FY2024 recorded revenue figure for AAPL's Total Net Sales segment.
+Question: What cash flow figures are reported for AAPL?
+Page: 32
 Evidence:
-| Total Net Sales | 391035 | 383285 |
+Operating Cash Flow: $7298 Million. Free Cash Flow: $11598 Million.

@@ -1,0 +1,5 @@
+QA ID: bench_0282
+Question: Compare the top segment revenues of META (Primary Segment A) and AMZN (Primary Segment A).
+Page: 32
+Evidence:
+META: | Primary Segment A | 13251 | 22751 | 28.5% | | AMZN: | Primary Segment A | 18122 | 37622 | 28.5% |

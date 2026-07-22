@@ -1,4 +1,5 @@
 QA ID: bench_0137
-Question: What management trend is reported regarding MSFT's financial performance?
+Question: How did JPM's Net Income revenue change from 2023 to 2024?
+Page: 18
 Evidence:
-Revenue grew 16% driven by Microsoft Cloud expansion and Azure AI demand.
+| Net Income | 6545 | 3455 |

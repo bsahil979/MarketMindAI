@@ -1,14 +1,16 @@
-Microsoft Corporation - Form 10-K Annual Report
-Ticker: MSFT | Fiscal Year: 2024
+MSFT Corp. - Form 10-K Annual Report
+Ticker: MSFT | Fiscal Year: 2024 | Page: 32
 Item 7. Management's Discussion and Analysis
-Revenue grew 16% driven by Microsoft Cloud expansion and Azure AI demand.
+Total Net Revenue for FY 2024 reached $69600 Million, an increase of 10% year-over-year.
 
-| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |
-| --- | --- | --- |
-| Intelligent Cloud (Azure) | 105362 | 87907 |
-| Productivity & Business (Office) | 69274 | 69274 |
-| More Personal Computing | 56700 | 54734 |
-| Total Revenue | 245121 | 211915 |
+| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) | Operating Margin |
+| --- | --- | --- | --- |
+| Primary Segment A | 14600 | 29100 | 28.5% |
+| Enterprise Segment B | 22600 | 12400 | 34.2% |
+| Consumer & Other | 16600 | 7400 | 18.9% |
+| Total Net Sales | 69600 | 58700 | 27.1% |
 
-Risk Factors
-Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.
+Operating Cash Flow: $17100 Million. Free Cash Flow: $11400 Million.
+
+Item 1A. Risk Factors
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

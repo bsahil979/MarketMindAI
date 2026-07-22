@@ -1,4 +1,5 @@
 QA ID: bench_0185
-Question: Report the FY2024 recorded revenue figure for TSLA's Automotive Sales segment.
+Question: What primary risk factors are disclosed for MSFT in Item 1A?
+Page: 32
 Evidence:
-| Automotive Sales | 82419 | 71462 |
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

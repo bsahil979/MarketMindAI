@@ -1,4 +1,5 @@
 QA ID: bench_0179
-Question: How did NVDA's Total Revenue revenue change from 2023 to 2024?
+Question: How did MSFT's Consumer & Other revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Total Revenue | 60922 | 26974 |
+| Consumer & Other | 16600 | 7400 | 18.9% |

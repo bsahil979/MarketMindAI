@@ -1,4 +1,5 @@
 QA ID: bench_0038
-Question: How did AMZN's Total Net Sales revenue change from 2023 to 2024?
+Question: Report the FY2024 recorded segment performance for AMZN's Consumer & Other.
+Page: 32
 Evidence:
-| Total Net Sales | 574785 | 513992 |
+| Consumer & Other | 5122 | 10922 | 18.9% |

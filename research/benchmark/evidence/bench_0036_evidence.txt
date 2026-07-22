@@ -1,4 +1,5 @@
 QA ID: bench_0036
-Question: What was AMZN's Total Net Sales revenue in 2024 according to the filing?
+Question: Calculate the year-over-year percentage growth rate for AMZN's Enterprise Segment B.
+Page: 32
 Evidence:
-| Total Net Sales | 574785 | 513992 |
+| Enterprise Segment B | 16122 | 15922 | 34.2% |

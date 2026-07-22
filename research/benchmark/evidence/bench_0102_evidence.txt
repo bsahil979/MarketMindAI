@@ -1,4 +1,5 @@
 QA ID: bench_0102
-Question: Identify key operational or macroeconomic challenges facing JPM.
+Question: What cash flow figures are reported for GOOGL?
+Page: 32
 Evidence:
-Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts.
+Operating Cash Flow: $16982 Million. Free Cash Flow: $6282 Million.

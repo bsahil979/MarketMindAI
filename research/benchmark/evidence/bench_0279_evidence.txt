@@ -1,0 +1,5 @@
+QA ID: bench_0279
+Question: What cash flow figures are reported for TSLA?
+Page: 18
+Evidence:
+Cash and Cash Equivalents ended the quarter at $24654 Million.

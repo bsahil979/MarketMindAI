@@ -1,4 +1,5 @@
 QA ID: bench_0211
-Question: Compare the top segment revenues of AAPL (iPhone) and NVDA (Data Center).
+Question: How did NFLX's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-AAPL: | iPhone | 201183 | 200583 | | NVDA: | Data Center | 47525 | 15005 |
+| Total Net Sales | 49947 | 59047 | 27.1% |

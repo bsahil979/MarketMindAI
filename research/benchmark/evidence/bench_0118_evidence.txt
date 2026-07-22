@@ -1,4 +1,5 @@
 QA ID: bench_0118
-Question: What management trend is reported regarding META's financial performance?
+Question: Report the FY2024 recorded segment performance for JPM's Enterprise Segment B.
+Page: 32
 Evidence:
-Ad impressions increased 28% year-over-year across Family of Apps.
+| Enterprise Segment B | 15945 | 20745 | 34.2% |

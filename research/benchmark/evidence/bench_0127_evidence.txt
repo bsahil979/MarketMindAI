@@ -1,4 +1,5 @@
 QA ID: bench_0127
-Question: What was MSFT's More Personal Computing revenue in 2024 according to the filing?
+Question: How did JPM's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| More Personal Computing | 56700 | 54734 |
+| Total Net Sales | 87945 | 67045 | 27.1% |

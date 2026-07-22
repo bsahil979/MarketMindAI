@@ -1,4 +1,5 @@
 QA ID: bench_0040
-Question: What primary risk factors are highlighted for AMZN in Item 1A?
+Question: Calculate the year-over-year percentage growth rate for AMZN's Consumer & Other.
+Page: 32
 Evidence:
-Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands.
+| Consumer & Other | 5122 | 10922 | 18.9% |

@@ -1,0 +1,5 @@
+QA ID: bench_0322
+Question: Compare the top segment revenues of GOOGL (Primary Segment A) and TSLA (Primary Segment A).
+Page: 32
+Evidence:
+GOOGL: | Primary Segment A | 29482 | 13982 | 28.5% | | TSLA: | Primary Segment A | 5654 | 35154 | 28.5% |

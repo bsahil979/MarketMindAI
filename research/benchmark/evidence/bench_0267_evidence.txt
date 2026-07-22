@@ -1,0 +1,5 @@
+QA ID: bench_0267
+Question: How did TSLA's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
+Evidence:
+| Total Net Sales | 60654 | 49754 | 27.1% |

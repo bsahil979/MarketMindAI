@@ -1,0 +1,5 @@
+QA ID: bench_0325
+Question: Compare the top segment revenues of NFLX (Primary Segment A) and TSLA (Primary Segment A).
+Page: 32
+Evidence:
+NFLX: | Primary Segment A | 14947 | 9447 | 28.5% | | TSLA: | Primary Segment A | 5654 | 35154 | 28.5% |

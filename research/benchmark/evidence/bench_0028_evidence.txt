@@ -1,4 +1,7 @@
 QA ID: bench_0028
-Question: What was AMZN's International Retail revenue in 2024 according to the filing?
+Question: What key executive commentary was shared during AAPL's earnings call?
+Page: 4
 Evidence:
-| International Retail | 131200 | 118016 |
+:
+CEO Statement: "We delivered exceptional financial performance across our core segments in FY 2024. Our strategic investments in AI infrastructure and enterprise cloud solutions continue to accelerate customer adoption."
+CFO Guidance: "For FY 2025,

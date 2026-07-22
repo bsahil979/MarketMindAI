@@ -1,4 +1,5 @@
 QA ID: bench_0003
-Question: How did AAPL's iPhone revenue change from 2023 to 2024?
+Question: How did AAPL's Primary Segment A revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| iPhone | 201183 | 200583 |
+| Primary Segment A | 34798 | 34298 | 28.5% |

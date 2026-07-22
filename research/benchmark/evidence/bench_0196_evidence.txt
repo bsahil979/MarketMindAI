@@ -1,4 +1,7 @@
 QA ID: bench_0196
-Question: What was TSLA's Total Revenues revenue in 2024 according to the filing?
+Question: What key executive commentary was shared during MSFT's earnings call?
+Page: 4
 Evidence:
-| Total Revenues | 96773 | 81462 |
+:
+CEO Statement: "We delivered exceptional financial performance across our core segments in FY 2024. Our strategic investments in AI infrastructure and enterprise cloud solutions continue to accelerate customer adoption."
+CFO Guidance: "For FY 2025,

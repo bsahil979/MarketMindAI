@@ -1,4 +1,5 @@
 QA ID: bench_0041
-Question: Identify key operational or macroeconomic challenges facing AMZN.
+Question: What was AMZN's Total Net Sales revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands.
+| Total Net Sales | 13122 | 62222 | 27.1% |

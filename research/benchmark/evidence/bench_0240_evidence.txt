@@ -1,0 +1,5 @@
+QA ID: bench_0240
+Question: Calculate the year-over-year percentage growth rate for NVDA's Total Net Sales.
+Page: 32
+Evidence:
+| Total Net Sales | 22896 | 41996 | 27.1% |

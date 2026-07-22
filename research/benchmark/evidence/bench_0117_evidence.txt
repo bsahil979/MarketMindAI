@@ -1,4 +1,5 @@
 QA ID: bench_0117
-Question: Identify key operational or macroeconomic challenges facing META.
+Question: What was JPM's Enterprise Segment B revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.
+| Enterprise Segment B | 15945 | 20745 | 34.2% |

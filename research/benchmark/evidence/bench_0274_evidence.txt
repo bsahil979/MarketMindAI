@@ -1,0 +1,5 @@
+QA ID: bench_0274
+Question: Calculate the year-over-year percentage growth rate for TSLA's Total Quarterly Revenue.
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 15154 | 8854 |

@@ -1,0 +1,5 @@
+QA ID: bench_0305
+Question: Compare the top segment revenues of BRK-B (Primary Segment A) and AAPL (Primary Segment A).
+Page: 32
+Evidence:
+BRK-B: | Primary Segment A | 40086 | 34586 | 28.5% | | AAPL: | Primary Segment A | 34798 | 34298 | 28.5% |

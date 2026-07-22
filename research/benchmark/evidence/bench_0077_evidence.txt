@@ -1,4 +1,5 @@
 QA ID: bench_0077
-Question: Calculate the year-over-year percentage change for GOOGL's Google Cloud performance.
+Question: How did BRK-B's Total Quarterly Revenue revenue change from 2023 to 2024?
+Page: 18
 Evidence:
-| Google Cloud | 33088 | 26280 |
+| Total Quarterly Revenue | 3586 | 6286 |

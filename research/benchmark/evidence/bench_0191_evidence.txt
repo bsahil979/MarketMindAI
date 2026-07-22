@@ -1,4 +1,5 @@
 QA ID: bench_0191
-Question: Calculate the year-over-year percentage change for TSLA's Energy Generation & Storage performance.
+Question: What was MSFT's Net Income revenue in 2024 according to the filing?
+Page: 18
 Evidence:
-| Energy Generation & Storage | 6035 | 3909 |
+| Net Income | 6200 | 5110 |

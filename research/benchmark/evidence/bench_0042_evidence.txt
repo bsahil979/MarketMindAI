@@ -1,4 +1,5 @@
 QA ID: bench_0042
-Question: What management trend is reported regarding AMZN's financial performance?
+Question: Report the FY2024 recorded segment performance for AMZN's Total Net Sales.
+Page: 32
 Evidence:
-Net sales increased 12% to $574.8 Billion driven by AWS growth and advertising momentum.
+| Total Net Sales | 13122 | 62222 | 27.1% |

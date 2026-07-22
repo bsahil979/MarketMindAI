@@ -1,4 +1,5 @@
 QA ID: bench_0078
-Question: What was GOOGL's Total Revenues revenue in 2024 according to the filing?
+Question: Calculate the year-over-year percentage growth rate for BRK-B's Total Quarterly Revenue.
+Page: 18
 Evidence:
-| Total Revenues | 307394 | 282836 |
+| Total Quarterly Revenue | 3586 | 6286 |

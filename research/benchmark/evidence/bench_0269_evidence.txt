@@ -1,0 +1,5 @@
+QA ID: bench_0269
+Question: What primary risk factors are disclosed for TSLA in Item 1A?
+Page: 32
+Evidence:
+Key risks include global macroeconomic volatility, cybersecurity threats, international regulatory compliance, and supply chain concentration.

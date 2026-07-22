@@ -1,4 +1,5 @@
 QA ID: bench_0064
-Question: Identify key operational or macroeconomic challenges facing BRK-B.
+Question: Calculate the year-over-year percentage growth rate for BRK-B's Enterprise Segment B.
+Page: 32
 Evidence:
-Catastrophic climate events, equity market volatility, and succession leadership transitions.
+| Enterprise Segment B | 18086 | 17886 | 34.2% |

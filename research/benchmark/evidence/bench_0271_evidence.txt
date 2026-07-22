@@ -1,0 +1,5 @@
+QA ID: bench_0271
+Question: What was TSLA's Total Quarterly Revenue revenue in 2024 according to the filing?
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 15154 | 8854 |

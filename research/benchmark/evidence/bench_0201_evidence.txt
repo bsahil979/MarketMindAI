@@ -1,4 +1,5 @@
 QA ID: bench_0201
-Question: Identify key operational or macroeconomic challenges facing TSLA.
+Question: What was NFLX's Enterprise Segment B revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.
+| Enterprise Segment B | 22947 | 12747 | 34.2% |

@@ -1,4 +1,5 @@
 QA ID: bench_0181
-Question: What primary risk factors are highlighted for NVDA in Item 1A?
+Question: What was MSFT's Total Net Sales revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts.
+| Total Net Sales | 69600 | 58700 | 27.1% |

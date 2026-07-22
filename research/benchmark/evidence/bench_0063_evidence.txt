@@ -1,4 +1,5 @@
 QA ID: bench_0063
-Question: What primary risk factors are highlighted for BRK-B in Item 1A?
+Question: How did BRK-B's Enterprise Segment B revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-Catastrophic climate events, equity market volatility, and succession leadership transitions.
+| Enterprise Segment B | 18086 | 17886 | 34.2% |

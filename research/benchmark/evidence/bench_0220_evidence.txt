@@ -1,4 +1,5 @@
 QA ID: bench_0220
-Question: Compare the top segment revenues of TSLA (Automotive Sales) and JPM (Consumer & Community Banking).
+Question: Report the FY2024 recorded segment performance for NFLX's Net Income.
+Page: 18
 Evidence:
-TSLA: | Automotive Sales | 82419 | 71462 | | JPM: | Consumer & Community Banking | 70123 | 55120 |
+| Net Income | 4547 | 5457 |

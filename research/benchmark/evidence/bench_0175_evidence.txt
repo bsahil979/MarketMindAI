@@ -1,4 +1,5 @@
 QA ID: bench_0175
-Question: How did NVDA's Automotive revenue change from 2023 to 2024?
+Question: How did MSFT's Enterprise Segment B revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Automotive | 1091 | 903 |
+| Enterprise Segment B | 22600 | 12400 | 34.2% |

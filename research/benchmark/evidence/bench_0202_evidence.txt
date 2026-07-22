@@ -1,4 +1,5 @@
 QA ID: bench_0202
-Question: What management trend is reported regarding TSLA's financial performance?
+Question: Report the FY2024 recorded segment performance for NFLX's Enterprise Segment B.
+Page: 32
 Evidence:
-Total revenues increased 19% driven by Model Y volume expansion and Energy Storage deployments.
+| Enterprise Segment B | 22947 | 12747 | 34.2% |

@@ -1,0 +1,5 @@
+QA ID: bench_0239
+Question: How did NVDA's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
+Evidence:
+| Total Net Sales | 22896 | 41996 | 27.1% |

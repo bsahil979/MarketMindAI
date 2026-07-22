@@ -1,0 +1,5 @@
+QA ID: bench_0260
+Question: Calculate the year-over-year percentage growth rate for TSLA's Enterprise Segment B.
+Page: 32
+Evidence:
+| Enterprise Segment B | 13654 | 3454 | 34.2% |

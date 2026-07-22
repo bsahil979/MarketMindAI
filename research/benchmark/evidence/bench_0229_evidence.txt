@@ -1,0 +1,5 @@
+QA ID: bench_0229
+Question: What was NVDA's Enterprise Segment B revenue in 2024 according to the filing?
+Page: 32
+Evidence:
+| Enterprise Segment B | 25896 | 15696 | 34.2% |

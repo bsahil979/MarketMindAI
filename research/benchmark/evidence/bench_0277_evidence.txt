@@ -1,0 +1,5 @@
+QA ID: bench_0277
+Question: How did TSLA's Net Income revenue change from 2023 to 2024?
+Page: 18
+Evidence:
+| Net Income | 3254 | 1164 |

@@ -1,0 +1,5 @@
+QA ID: bench_0257
+Question: What was TSLA's Enterprise Segment B revenue in 2024 according to the filing?
+Page: 32
+Evidence:
+| Enterprise Segment B | 13654 | 3454 | 34.2% |

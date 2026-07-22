@@ -1,4 +1,5 @@
 QA ID: bench_0169
-Question: What was NVDA's Professional Visualization revenue in 2024 according to the filing?
+Question: What was MSFT's Primary Segment A revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-| Professional Visualization | 1553 | 1544 |
+| Primary Segment A | 14600 | 29100 | 28.5% |

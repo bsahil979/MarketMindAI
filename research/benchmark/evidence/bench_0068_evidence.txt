@@ -1,4 +1,5 @@
 QA ID: bench_0068
-Question: How did GOOGL's Google Search & Advertising revenue change from 2023 to 2024?
+Question: Calculate the year-over-year percentage growth rate for BRK-B's Consumer & Other.
+Page: 32
 Evidence:
-| Google Search & Advertising | 175023 | 162450 |
+| Consumer & Other | 12086 | 8886 | 18.9% |

@@ -1,4 +1,5 @@
 QA ID: bench_0156
-Question: How did NFLX's Total Revenue revenue change from 2023 to 2024?
+Question: Calculate the year-over-year percentage growth rate for META's Total Net Sales.
+Page: 32
 Evidence:
-| Total Revenue | 33720 | 31615 |
+| Total Net Sales | 88251 | 17351 | 27.1% |

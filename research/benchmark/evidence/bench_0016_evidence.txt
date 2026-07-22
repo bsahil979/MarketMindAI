@@ -1,4 +1,5 @@
 QA ID: bench_0016
-Question: Calculate the year-over-year percentage change for AAPL's Mac performance.
+Question: Calculate the year-over-year percentage growth rate for AAPL's Total Net Sales.
+Page: 32
 Evidence:
-| Mac | 29984 | 29357 |
+| Total Net Sales | 59798 | 78898 | 27.1% |

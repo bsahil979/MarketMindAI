@@ -1,4 +1,5 @@
 QA ID: bench_0218
-Question: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and BRK-B (Insurance Underwriting & Investment).
+Question: Calculate the year-over-year percentage growth rate for NFLX's Total Quarterly Revenue.
+Page: 18
 Evidence:
-NFLX: | UCAN (US & Canada) | 14860 | 14080 | | BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 |
+| Total Quarterly Revenue | 12447 | 21147 |

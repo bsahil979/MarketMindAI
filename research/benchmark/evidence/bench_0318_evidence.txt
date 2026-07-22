@@ -1,0 +1,5 @@
+QA ID: bench_0318
+Question: Compare the top segment revenues of MSFT (Primary Segment A) and NFLX (Primary Segment A).
+Page: 32
+Evidence:
+MSFT: | Primary Segment A | 14600 | 29100 | 28.5% | | NFLX: | Primary Segment A | 14947 | 9447 | 28.5% |

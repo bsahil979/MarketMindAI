@@ -1,0 +1,5 @@
+QA ID: bench_0231
+Question: How did NVDA's Enterprise Segment B revenue change from 2023 to 2024?
+Page: 32
+Evidence:
+| Enterprise Segment B | 25896 | 15696 | 34.2% |

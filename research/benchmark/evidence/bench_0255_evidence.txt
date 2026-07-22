@@ -1,0 +1,5 @@
+QA ID: bench_0255
+Question: How did TSLA's Primary Segment A revenue change from 2023 to 2024?
+Page: 32
+Evidence:
+| Primary Segment A | 5654 | 35154 | 28.5% |

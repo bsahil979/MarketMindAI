@@ -1,4 +1,5 @@
 QA ID: bench_0111
-Question: Calculate the year-over-year percentage change for META's Reality Labs performance.
+Question: What cash flow figures are reported for GOOGL?
+Page: 18
 Evidence:
-| Reality Labs | 1896 | 2159 |
+Cash and Cash Equivalents ended the quarter at $18482 Million.

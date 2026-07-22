@@ -1,4 +1,5 @@
 QA ID: bench_0088
-Question: Calculate the year-over-year percentage change for JPM's Consumer & Community Banking performance.
+Question: Calculate the year-over-year percentage growth rate for GOOGL's Primary Segment A.
+Page: 32
 Evidence:
-| Consumer & Community Banking | 70123 | 55120 |
+| Primary Segment A | 29482 | 13982 | 28.5% |

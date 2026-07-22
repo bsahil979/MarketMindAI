@@ -1,0 +1,30 @@
+[
+  {
+    "name": "BAAI/bge-large-en-v1.5",
+    "recall1": 0.924,
+    "recall5": 0.968,
+    "mrr": 0.942,
+    "latency": 4.12
+  },
+  {
+    "name": "intfloat/e5-large-v2",
+    "recall1": 0.898,
+    "recall5": 0.945,
+    "mrr": 0.916,
+    "latency": 3.85
+  },
+  {
+    "name": "nomic-ai/nomic-embed-text-v1",
+    "recall1": 0.865,
+    "recall5": 0.921,
+    "mrr": 0.887,
+    "latency": 1.45
+  },
+  {
+    "name": "jinaai/jina-embeddings-v2-base-en",
+    "recall1": 0.881,
+    "recall5": 0.938,
+    "mrr": 0.902,
+    "latency": 2.65
+  }
+]

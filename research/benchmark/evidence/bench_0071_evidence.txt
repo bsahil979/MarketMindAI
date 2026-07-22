@@ -1,4 +1,5 @@
 QA ID: bench_0071
-Question: Report the FY2024 recorded revenue figure for GOOGL's YouTube Ads segment.
+Question: How did BRK-B's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| YouTube Ads | 31510 | 29200 |
+| Total Net Sales | 35086 | 44186 | 27.1% |

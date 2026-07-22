@@ -1,0 +1,5 @@
+QA ID: bench_0263
+Question: How did TSLA's Consumer & Other revenue change from 2023 to 2024?
+Page: 32
+Evidence:
+| Consumer & Other | 7654 | 10454 | 18.9% |

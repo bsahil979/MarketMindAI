@@ -1,0 +1,5 @@
+QA ID: bench_0244
+Question: Report the FY2024 recorded segment performance for NVDA's Total Quarterly Revenue.
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 13396 | 20096 |

@@ -1,4 +1,5 @@
 QA ID: bench_0037
-Question: Report the FY2024 recorded revenue figure for AMZN's Total Net Sales segment.
+Question: What was AMZN's Consumer & Other revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-| Total Net Sales | 574785 | 513992 |
+| Consumer & Other | 5122 | 10922 | 18.9% |

@@ -1,4 +1,5 @@
 QA ID: bench_0152
-Question: How did NFLX's APAC revenue change from 2023 to 2024?
+Question: Calculate the year-over-year percentage growth rate for META's Consumer & Other.
+Page: 32
 Evidence:
-| APAC | 3850 | 3570 |
+| Consumer & Other | 5251 | 2051 | 18.9% |

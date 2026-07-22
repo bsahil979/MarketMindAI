@@ -1,0 +1,5 @@
+QA ID: bench_0283
+Question: Compare the top segment revenues of META (Primary Segment A) and BRK-B (Primary Segment A).
+Page: 32
+Evidence:
+META: | Primary Segment A | 13251 | 22751 | 28.5% | | BRK-B: | Primary Segment A | 40086 | 34586 | 28.5% |

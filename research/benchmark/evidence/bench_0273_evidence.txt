@@ -1,0 +1,5 @@
+QA ID: bench_0273
+Question: How did TSLA's Total Quarterly Revenue revenue change from 2023 to 2024?
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 15154 | 8854 |

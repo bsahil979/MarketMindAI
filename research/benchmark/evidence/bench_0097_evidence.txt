@@ -1,4 +1,5 @@
 QA ID: bench_0097
-Question: What was JPM's Total Net Revenue revenue in 2024 according to the filing?
+Question: What was GOOGL's Total Net Sales revenue in 2024 according to the filing?
+Page: 32
 Evidence:
-| Total Net Revenue | 158104 | 128694 |
+| Total Net Sales | 54482 | 73582 | 27.1% |

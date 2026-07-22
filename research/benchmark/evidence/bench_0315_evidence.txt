@@ -1,0 +1,5 @@
+QA ID: bench_0315
+Question: Compare the top segment revenues of AAPL (Primary Segment A) and TSLA (Primary Segment A).
+Page: 32
+Evidence:
+AAPL: | Primary Segment A | 34798 | 34298 | 28.5% | | TSLA: | Primary Segment A | 5654 | 35154 | 28.5% |

@@ -1,4 +1,5 @@
 QA ID: bench_0059
-Question: What was BRK-B's Total Revenue revenue in 2024 according to the filing?
+Question: How did BRK-B's Primary Segment A revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Total Revenue | 364482 | 302089 |
+| Primary Segment A | 40086 | 34586 | 28.5% |

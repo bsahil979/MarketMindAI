@@ -1,0 +1,5 @@
+QA ID: bench_0272
+Question: Report the FY2024 recorded segment performance for TSLA's Total Quarterly Revenue.
+Page: 18
+Evidence:
+| Total Quarterly Revenue | 15154 | 8854 |

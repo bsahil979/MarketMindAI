@@ -1,4 +1,5 @@
 QA ID: bench_0043
-Question: What was BRK-B's Insurance Underwriting & Investment revenue in 2024 according to the filing?
+Question: How did AMZN's Total Net Sales revenue change from 2023 to 2024?
+Page: 32
 Evidence:
-| Insurance Underwriting & Investment | 95200 | 82400 |
+| Total Net Sales | 13122 | 62222 | 27.1% |

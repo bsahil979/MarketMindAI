@@ -1,4 +1,5 @@
 QA ID: bench_0116
-Question: What primary risk factors are highlighted for META in Item 1A?
+Question: Calculate the year-over-year percentage growth rate for JPM's Primary Segment A.
+Page: 32
 Evidence:
-Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.
+| Primary Segment A | 22945 | 27445 | 28.5% |

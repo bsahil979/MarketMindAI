@@ -1,16 +1,19 @@
 {
-  "version": "2.0.0",
-  "total_benchmark_questions": 228,
+  "version": "3.0.0",
+  "total_benchmark_questions": 325,
   "category_distribution": {
-    "Numerical": 86,
-    "Comparison": 86,
-    "Risk": 20,
-    "Trend": 10,
-    "Multi-document": 26
+    "Numerical": 60,
+    "Segment Revenue": 60,
+    "Comparison": 60,
+    "Financial Ratios": 60,
+    "Risk": 10,
+    "Cash Flow": 20,
+    "CEO Commentary": 10,
+    "Multi-document": 45
   },
   "difficulty_distribution": {
-    "Easy": 86,
-    "Medium": 73,
-    "Hard": 69
+    "Easy": 120,
+    "Medium": 100,
+    "Hard": 105
   }
 }
