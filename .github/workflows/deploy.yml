@@ -82,6 +82,10 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             sudo docker compose up -d --build
-            sleep 5
-            echo "--- Container Status ---"
-            sudo docker compose ps
+            sleep 10
+            echo "================ CONTAINER STATUS ================"
+            sudo docker compose ps -a
+            echo "================ DASHBOARD LOGS ================"
+            sudo docker compose logs --tail=30 dashboard
+            echo "================ ANALYTICS LOGS ================"
+            sudo docker compose logs --tail=30 analytics-service
