@@ -1,0 +1,4 @@
+QA ID: bench_0081
+Question: Calculate the year-over-year percentage change for GOOGL's Total Revenues performance.
+Evidence:
+| Total Revenues | 307394 | 282836 |

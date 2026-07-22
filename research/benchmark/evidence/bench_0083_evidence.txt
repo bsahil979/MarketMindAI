@@ -1,0 +1,4 @@
+QA ID: bench_0083
+Question: Identify key operational or macroeconomic challenges facing GOOGL.
+Evidence:
+Antitrust litigation, search advertising market evolution, and generative AI query latency costs.

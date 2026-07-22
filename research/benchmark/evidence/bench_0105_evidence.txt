@@ -1,0 +1,4 @@
+QA ID: bench_0105
+Question: Report the FY2024 recorded revenue figure for META's Family of Apps (Ad Revenue) segment.
+Evidence:
+| Family of Apps (Ad Revenue) | 131948 | 113642 |

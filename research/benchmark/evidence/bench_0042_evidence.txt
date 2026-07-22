@@ -1,0 +1,4 @@
+QA ID: bench_0042
+Question: What management trend is reported regarding AMZN's financial performance?
+Evidence:
+Net sales increased 12% to $574.8 Billion driven by AWS growth and advertising momentum.

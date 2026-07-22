@@ -1,0 +1,4 @@
+QA ID: bench_0085
+Question: What was JPM's Consumer & Community Banking revenue in 2024 according to the filing?
+Evidence:
+| Consumer & Community Banking | 70123 | 55120 |

@@ -1,0 +1,4 @@
+QA ID: bench_0162
+Question: Report the FY2024 recorded revenue figure for NVDA's Data Center segment.
+Evidence:
+| Data Center | 47525 | 15005 |

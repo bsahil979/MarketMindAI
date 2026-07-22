@@ -1,0 +1,4 @@
+QA ID: bench_0038
+Question: How did AMZN's Total Net Sales revenue change from 2023 to 2024?
+Evidence:
+| Total Net Sales | 574785 | 513992 |

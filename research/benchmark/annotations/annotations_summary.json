@@ -1,16 +1,16 @@
 {
-  "version": "1.0.0",
-  "total_benchmark_questions": 9,
+  "version": "2.0.0",
+  "total_benchmark_questions": 228,
   "category_distribution": {
-    "Numerical": 3,
-    "Comparison": 3,
-    "Risk": 1,
-    "Trend": 1,
-    "Multi-document": 1
+    "Numerical": 86,
+    "Comparison": 86,
+    "Risk": 20,
+    "Trend": 10,
+    "Multi-document": 26
   },
   "difficulty_distribution": {
-    "Easy": 3,
-    "Medium": 5,
-    "Hard": 1
+    "Easy": 86,
+    "Medium": 73,
+    "Hard": 69
   }
 }

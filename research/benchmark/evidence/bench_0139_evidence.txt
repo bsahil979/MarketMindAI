@@ -1,0 +1,4 @@
+QA ID: bench_0139
+Question: Report the FY2024 recorded revenue figure for NFLX's UCAN (US & Canada) segment.
+Evidence:
+| UCAN (US & Canada) | 14860 | 14080 |

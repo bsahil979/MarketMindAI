@@ -1,0 +1,4 @@
+QA ID: bench_0067
+Question: Report the FY2024 recorded revenue figure for GOOGL's Google Search & Advertising segment.
+Evidence:
+| Google Search & Advertising | 175023 | 162450 |

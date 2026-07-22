@@ -1,0 +1,4 @@
+QA ID: bench_0040
+Question: What primary risk factors are highlighted for AMZN in Item 1A?
+Evidence:
+Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands.

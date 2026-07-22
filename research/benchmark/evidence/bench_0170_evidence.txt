@@ -1,0 +1,4 @@
+QA ID: bench_0170
+Question: Report the FY2024 recorded revenue figure for NVDA's Professional Visualization segment.
+Evidence:
+| Professional Visualization | 1553 | 1544 |

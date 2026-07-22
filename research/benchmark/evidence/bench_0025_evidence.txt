@@ -1,0 +1,4 @@
+QA ID: bench_0025
+Question: Report the FY2024 recorded revenue figure for AMZN's North America Retail segment.
+Evidence:
+| North America Retail | 352828 | 315880 |

@@ -1,0 +1,4 @@
+QA ID: bench_0186
+Question: How did TSLA's Automotive Sales revenue change from 2023 to 2024?
+Evidence:
+| Automotive Sales | 82419 | 71462 |

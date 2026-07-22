@@ -1,0 +1,4 @@
+QA ID: bench_0175
+Question: How did NVDA's Automotive revenue change from 2023 to 2024?
+Evidence:
+| Automotive | 1091 | 903 |

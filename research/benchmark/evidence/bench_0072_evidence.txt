@@ -1,0 +1,4 @@
+QA ID: bench_0072
+Question: How did GOOGL's YouTube Ads revenue change from 2023 to 2024?
+Evidence:
+| YouTube Ads | 31510 | 29200 |

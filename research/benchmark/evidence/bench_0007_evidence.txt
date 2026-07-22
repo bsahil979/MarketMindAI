@@ -1,4 +1,4 @@
 QA ID: bench_0007
-Question: What primary risk factors are highlighted for AAPL?
+Question: How did AAPL's Services revenue change from 2023 to 2024?
 Evidence:
-Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.
+| Services | 96169 | 85200 |

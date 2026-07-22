@@ -1,0 +1,4 @@
+QA ID: bench_0069
+Question: Calculate the year-over-year percentage change for GOOGL's Google Search & Advertising performance.
+Evidence:
+| Google Search & Advertising | 175023 | 162450 |

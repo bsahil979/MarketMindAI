@@ -1,0 +1,4 @@
+QA ID: bench_0180
+Question: Calculate the year-over-year percentage change for NVDA's Total Revenue performance.
+Evidence:
+| Total Revenue | 60922 | 26974 |

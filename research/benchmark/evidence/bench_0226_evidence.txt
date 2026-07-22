@@ -1,0 +1,4 @@
+QA ID: bench_0226
+Question: Compare the top segment revenues of GOOGL (Google Search & Advertising) and AMZN (North America Retail).
+Evidence:
+GOOGL: | Google Search & Advertising | 175023 | 162450 | | AMZN: | North America Retail | 352828 | 315880 |

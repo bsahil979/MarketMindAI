@@ -1,0 +1,4 @@
+QA ID: bench_0196
+Question: What was TSLA's Total Revenues revenue in 2024 according to the filing?
+Evidence:
+| Total Revenues | 96773 | 81462 |

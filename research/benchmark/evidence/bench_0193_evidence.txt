@@ -1,0 +1,4 @@
+QA ID: bench_0193
+Question: Report the FY2024 recorded revenue figure for TSLA's Services & Other segment.
+Evidence:
+| Services & Other | 8319 | 6091 |

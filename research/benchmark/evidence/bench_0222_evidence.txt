@@ -1,0 +1,4 @@
+QA ID: bench_0222
+Question: Compare the top segment revenues of TSLA (Automotive Sales) and META (Family of Apps (Ad Revenue)).
+Evidence:
+TSLA: | Automotive Sales | 82419 | 71462 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |

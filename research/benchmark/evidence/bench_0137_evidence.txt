@@ -1,0 +1,4 @@
+QA ID: bench_0137
+Question: What management trend is reported regarding MSFT's financial performance?
+Evidence:
+Revenue grew 16% driven by Microsoft Cloud expansion and Azure AI demand.

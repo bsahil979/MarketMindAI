@@ -1,0 +1,4 @@
+QA ID: bench_0077
+Question: Calculate the year-over-year percentage change for GOOGL's Google Cloud performance.
+Evidence:
+| Google Cloud | 33088 | 26280 |

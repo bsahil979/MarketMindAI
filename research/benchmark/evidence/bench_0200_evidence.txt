@@ -1,0 +1,4 @@
+QA ID: bench_0200
+Question: What primary risk factors are highlighted for TSLA in Item 1A?
+Evidence:
+Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.

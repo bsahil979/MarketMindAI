@@ -1,0 +1,4 @@
+QA ID: bench_0014
+Question: Report the FY2024 recorded revenue figure for AAPL's Mac segment.
+Evidence:
+| Mac | 29984 | 29357 |

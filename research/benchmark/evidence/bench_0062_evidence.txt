@@ -1,0 +1,4 @@
+QA ID: bench_0062
+Question: Calculate the year-over-year percentage change for BRK-B's Total Revenue performance.
+Evidence:
+| Total Revenue | 364482 | 302089 |

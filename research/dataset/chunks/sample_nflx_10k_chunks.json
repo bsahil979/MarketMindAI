@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_nflx_10k_chunk_0000",
+    "document_id": "sample_nflx_10k",
+    "ticker": "NFLX",
+    "company": "NFLX Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "Netflix, Inc. - Form 10-K Annual Report\nTicker: NFLX | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nPaid memberships grew 12.8% to 260 Million global subscribers driven by paid sharing and ad-supported tiers.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| UCAN (US & Canada) | 14860 | 14080 |\n| EMEA | 10560 | 9750 |\n| LATAM | 4450 | 4070 |\n| APAC | 3850 | 3570 |\n| Total Revenue | 33720 | 31615 |\nRisk Factors\nSubscriber churn, content production cost inflation, and international gaming investments.",
+    "token_count": 164
+  }
+]

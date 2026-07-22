@@ -1,0 +1,4 @@
+QA ID: bench_0115
+Question: Calculate the year-over-year percentage change for META's Total Revenue performance.
+Evidence:
+| Total Revenue | 134902 | 116601 |

@@ -1,0 +1,4 @@
+QA ID: bench_0136
+Question: Identify key operational or macroeconomic challenges facing MSFT.
+Evidence:
+Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.

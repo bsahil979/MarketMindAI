@@ -1,0 +1,4 @@
+QA ID: bench_0201
+Question: Identify key operational or macroeconomic challenges facing TSLA.
+Evidence:
+Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.

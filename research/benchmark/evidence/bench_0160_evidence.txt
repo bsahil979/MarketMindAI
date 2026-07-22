@@ -1,0 +1,4 @@
+QA ID: bench_0160
+Question: What management trend is reported regarding NFLX's financial performance?
+Evidence:
+Paid memberships grew 12.8% to 260 Million global subscribers driven by paid sharing and ad-supported tiers.

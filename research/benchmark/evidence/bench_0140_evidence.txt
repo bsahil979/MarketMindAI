@@ -1,0 +1,4 @@
+QA ID: bench_0140
+Question: How did NFLX's UCAN (US & Canada) revenue change from 2023 to 2024?
+Evidence:
+| UCAN (US & Canada) | 14860 | 14080 |

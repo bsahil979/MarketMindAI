@@ -1,0 +1,4 @@
+QA ID: bench_0114
+Question: How did META's Total Revenue revenue change from 2023 to 2024?
+Evidence:
+| Total Revenue | 134902 | 116601 |

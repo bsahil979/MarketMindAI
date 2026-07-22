@@ -1,0 +1,4 @@
+QA ID: bench_0215
+Question: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and META (Family of Apps (Ad Revenue)).
+Evidence:
+NFLX: | UCAN (US & Canada) | 14860 | 14080 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |

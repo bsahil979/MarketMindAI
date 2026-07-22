@@ -1,0 +1,4 @@
+QA ID: bench_0100
+Question: Calculate the year-over-year percentage change for JPM's Total Net Revenue performance.
+Evidence:
+| Total Net Revenue | 158104 | 128694 |

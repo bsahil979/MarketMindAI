@@ -1,0 +1,4 @@
+QA ID: bench_0187
+Question: Calculate the year-over-year percentage change for TSLA's Automotive Sales performance.
+Evidence:
+| Automotive Sales | 82419 | 71462 |

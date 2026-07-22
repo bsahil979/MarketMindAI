@@ -1,0 +1,4 @@
+QA ID: bench_0151
+Question: Report the FY2024 recorded revenue figure for NFLX's APAC segment.
+Evidence:
+| APAC | 3850 | 3570 |

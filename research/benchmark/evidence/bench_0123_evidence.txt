@@ -1,0 +1,4 @@
+QA ID: bench_0123
+Question: What was MSFT's Productivity & Business (Office) revenue in 2024 according to the filing?
+Evidence:
+| Productivity & Business (Office) | 69274 | 69274 |

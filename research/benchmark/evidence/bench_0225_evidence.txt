@@ -1,0 +1,4 @@
+QA ID: bench_0225
+Question: Compare the top segment revenues of META (Family of Apps (Ad Revenue)) and GOOGL (Google Search & Advertising).
+Evidence:
+META: | Family of Apps (Ad Revenue) | 131948 | 113642 | | GOOGL: | Google Search & Advertising | 175023 | 162450 |

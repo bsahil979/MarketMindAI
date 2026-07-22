@@ -1,0 +1,4 @@
+QA ID: bench_0127
+Question: What was MSFT's More Personal Computing revenue in 2024 according to the filing?
+Evidence:
+| More Personal Computing | 56700 | 54734 |

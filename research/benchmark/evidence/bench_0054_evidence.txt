@@ -1,0 +1,4 @@
+QA ID: bench_0054
+Question: Calculate the year-over-year percentage change for BRK-B's Berkshire Hathaway Energy performance.
+Evidence:
+| Berkshire Hathaway Energy | 26100 | 26300 |

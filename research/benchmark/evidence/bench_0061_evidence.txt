@@ -1,0 +1,4 @@
+QA ID: bench_0061
+Question: How did BRK-B's Total Revenue revenue change from 2023 to 2024?
+Evidence:
+| Total Revenue | 364482 | 302089 |

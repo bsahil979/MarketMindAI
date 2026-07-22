@@ -1,0 +1,4 @@
+QA ID: bench_0045
+Question: How did BRK-B's Insurance Underwriting & Investment revenue change from 2023 to 2024?
+Evidence:
+| Insurance Underwriting & Investment | 95200 | 82400 |

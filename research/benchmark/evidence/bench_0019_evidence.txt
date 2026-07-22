@@ -1,0 +1,4 @@
+QA ID: bench_0019
+Question: How did AAPL's Total Net Sales revenue change from 2023 to 2024?
+Evidence:
+| Total Net Sales | 391035 | 383285 |

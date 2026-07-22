@@ -1,0 +1,4 @@
+QA ID: bench_0093
+Question: What was JPM's Asset & Wealth Management revenue in 2024 according to the filing?
+Evidence:
+| Asset & Wealth Management | 19800 | 17700 |

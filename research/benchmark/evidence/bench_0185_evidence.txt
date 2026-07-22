@@ -1,0 +1,4 @@
+QA ID: bench_0185
+Question: Report the FY2024 recorded revenue figure for TSLA's Automotive Sales segment.
+Evidence:
+| Automotive Sales | 82419 | 71462 |

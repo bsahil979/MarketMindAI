@@ -1,0 +1,4 @@
+QA ID: bench_0012
+Question: Calculate the year-over-year percentage change for AAPL's Wearables & Home performance.
+Evidence:
+| Wearables & Home | 37005 | 39845 |

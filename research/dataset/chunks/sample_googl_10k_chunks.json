@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_googl_10k_chunk_0000",
+    "document_id": "sample_googl_10k",
+    "ticker": "GOOGL",
+    "company": "GOOGL Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "Alphabet Inc. - Form 10-K Annual Report\nTicker: GOOGL | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nConsolidated revenues increased 9% reflecting strength in Google Search and Google Cloud profitability.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Google Search & Advertising | 175023 | 162450 |\n| YouTube Ads | 31510 | 29200 |\n| Google Cloud | 33088 | 26280 |\n| Total Revenues | 307394 | 282836 |\nRisk Factors\nAntitrust litigation, search advertising market evolution, and generative AI query latency costs.",
+    "token_count": 150
+  }
+]

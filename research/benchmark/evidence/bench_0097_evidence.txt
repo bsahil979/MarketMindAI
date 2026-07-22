@@ -1,0 +1,4 @@
+QA ID: bench_0097
+Question: What was JPM's Total Net Revenue revenue in 2024 according to the filing?
+Evidence:
+| Total Net Revenue | 158104 | 128694 |

@@ -1,0 +1,4 @@
+QA ID: bench_0058
+Question: Calculate the year-over-year percentage change for BRK-B's Manufacturing & Service performance.
+Evidence:
+| Manufacturing & Service | 164200 | 156800 |

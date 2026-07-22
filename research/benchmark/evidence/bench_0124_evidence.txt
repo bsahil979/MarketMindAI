@@ -1,0 +1,4 @@
+QA ID: bench_0124
+Question: Report the FY2024 recorded revenue figure for MSFT's Productivity & Business (Office) segment.
+Evidence:
+| Productivity & Business (Office) | 69274 | 69274 |

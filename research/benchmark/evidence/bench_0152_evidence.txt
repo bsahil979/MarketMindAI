@@ -1,0 +1,4 @@
+QA ID: bench_0152
+Question: How did NFLX's APAC revenue change from 2023 to 2024?
+Evidence:
+| APAC | 3850 | 3570 |

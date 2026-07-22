@@ -1,0 +1,4 @@
+QA ID: bench_0029
+Question: Report the FY2024 recorded revenue figure for AMZN's International Retail segment.
+Evidence:
+| International Retail | 131200 | 118016 |

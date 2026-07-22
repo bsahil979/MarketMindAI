@@ -1,0 +1,4 @@
+QA ID: bench_0181
+Question: What primary risk factors are highlighted for NVDA in Item 1A?
+Evidence:
+Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts.

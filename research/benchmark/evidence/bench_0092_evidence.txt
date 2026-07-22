@@ -1,0 +1,4 @@
+QA ID: bench_0092
+Question: Calculate the year-over-year percentage change for JPM's Corporate & Investment Bank performance.
+Evidence:
+| Corporate & Investment Bank | 48700 | 46100 |

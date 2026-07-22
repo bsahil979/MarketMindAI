@@ -1,0 +1,4 @@
+QA ID: bench_0064
+Question: Identify key operational or macroeconomic challenges facing BRK-B.
+Evidence:
+Catastrophic climate events, equity market volatility, and succession leadership transitions.

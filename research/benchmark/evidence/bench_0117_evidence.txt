@@ -1,0 +1,4 @@
+QA ID: bench_0117
+Question: Identify key operational or macroeconomic challenges facing META.
+Evidence:
+Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.

@@ -1,0 +1,4 @@
+QA ID: bench_0179
+Question: How did NVDA's Total Revenue revenue change from 2023 to 2024?
+Evidence:
+| Total Revenue | 60922 | 26974 |

@@ -1,0 +1,4 @@
+QA ID: bench_0075
+Question: Report the FY2024 recorded revenue figure for GOOGL's Google Cloud segment.
+Evidence:
+| Google Cloud | 33088 | 26280 |

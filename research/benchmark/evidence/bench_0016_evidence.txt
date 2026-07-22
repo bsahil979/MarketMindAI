@@ -1,0 +1,4 @@
+QA ID: bench_0016
+Question: Calculate the year-over-year percentage change for AAPL's Mac performance.
+Evidence:
+| Mac | 29984 | 29357 |

@@ -1,0 +1,4 @@
+QA ID: bench_0057
+Question: How did BRK-B's Manufacturing & Service revenue change from 2023 to 2024?
+Evidence:
+| Manufacturing & Service | 164200 | 156800 |

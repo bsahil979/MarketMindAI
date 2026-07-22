@@ -1,0 +1,4 @@
+QA ID: bench_0074
+Question: What was GOOGL's Google Cloud revenue in 2024 according to the filing?
+Evidence:
+| Google Cloud | 33088 | 26280 |

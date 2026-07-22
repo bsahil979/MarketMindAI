@@ -1,0 +1,4 @@
+QA ID: bench_0221
+Question: Compare the top segment revenues of TSLA (Automotive Sales) and MSFT (Intelligent Cloud (Azure)).
+Evidence:
+TSLA: | Automotive Sales | 82419 | 71462 | | MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 |

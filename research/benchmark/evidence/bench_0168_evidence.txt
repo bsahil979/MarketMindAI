@@ -1,0 +1,4 @@
+QA ID: bench_0168
+Question: Calculate the year-over-year percentage change for NVDA's Gaming performance.
+Evidence:
+| Gaming | 10447 | 9067 |

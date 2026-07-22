@@ -1,0 +1,4 @@
+QA ID: bench_0199
+Question: Calculate the year-over-year percentage change for TSLA's Total Revenues performance.
+Evidence:
+| Total Revenues | 96773 | 81462 |

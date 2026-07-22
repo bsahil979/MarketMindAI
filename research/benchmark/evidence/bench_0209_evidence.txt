@@ -1,0 +1,4 @@
+QA ID: bench_0209
+Question: Compare the top segment revenues of AAPL (iPhone) and AMZN (North America Retail).
+Evidence:
+AAPL: | iPhone | 201183 | 200583 | | AMZN: | North America Retail | 352828 | 315880 |

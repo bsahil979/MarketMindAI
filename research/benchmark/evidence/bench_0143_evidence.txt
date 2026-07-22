@@ -1,0 +1,4 @@
+QA ID: bench_0143
+Question: Report the FY2024 recorded revenue figure for NFLX's EMEA segment.
+Evidence:
+| EMEA | 10560 | 9750 |

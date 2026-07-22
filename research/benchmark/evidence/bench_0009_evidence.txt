@@ -1,4 +1,4 @@
 QA ID: bench_0009
-Question: Summarize AAPL's key segment financial highlights and primary risk factors.
+Question: What was AAPL's Wearables & Home revenue in 2024 according to the filing?
 Evidence:
-| iPhone | 201183 | 200583 |
+| Wearables & Home | 37005 | 39845 |

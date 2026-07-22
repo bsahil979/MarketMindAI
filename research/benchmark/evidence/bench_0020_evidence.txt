@@ -1,0 +1,4 @@
+QA ID: bench_0020
+Question: Calculate the year-over-year percentage change for AAPL's Total Net Sales performance.
+Evidence:
+| Total Net Sales | 391035 | 383285 |

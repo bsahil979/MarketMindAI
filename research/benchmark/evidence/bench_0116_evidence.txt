@@ -1,0 +1,4 @@
+QA ID: bench_0116
+Question: What primary risk factors are highlighted for META in Item 1A?
+Evidence:
+Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.

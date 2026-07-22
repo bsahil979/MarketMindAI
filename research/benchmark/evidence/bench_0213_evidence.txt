@@ -1,0 +1,4 @@
+QA ID: bench_0213
+Question: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and JPM (Consumer & Community Banking).
+Evidence:
+NFLX: | UCAN (US & Canada) | 14860 | 14080 | | JPM: | Consumer & Community Banking | 70123 | 55120 |

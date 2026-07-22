@@ -1,0 +1,4 @@
+QA ID: bench_0099
+Question: How did JPM's Total Net Revenue revenue change from 2023 to 2024?
+Evidence:
+| Total Net Revenue | 158104 | 128694 |

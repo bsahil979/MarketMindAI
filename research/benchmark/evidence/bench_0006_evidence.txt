@@ -1,4 +1,4 @@
 QA ID: bench_0006
-Question: How did AAPL's Total Net Sales revenue change from 2023 to 2024?
+Question: Report the FY2024 recorded revenue figure for AAPL's Services segment.
 Evidence:
-| Total Net Sales | 391035 | 383285 |
+| Services | 96169 | 85200 |

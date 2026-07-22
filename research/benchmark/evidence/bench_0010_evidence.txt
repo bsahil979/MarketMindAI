@@ -1,0 +1,4 @@
+QA ID: bench_0010
+Question: Report the FY2024 recorded revenue figure for AAPL's Wearables & Home segment.
+Evidence:
+| Wearables & Home | 37005 | 39845 |

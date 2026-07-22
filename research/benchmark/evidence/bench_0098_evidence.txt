@@ -1,0 +1,4 @@
+QA ID: bench_0098
+Question: Report the FY2024 recorded revenue figure for JPM's Total Net Revenue segment.
+Evidence:
+| Total Net Revenue | 158104 | 128694 |

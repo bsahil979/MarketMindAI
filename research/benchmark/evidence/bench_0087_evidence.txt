@@ -1,0 +1,4 @@
+QA ID: bench_0087
+Question: How did JPM's Consumer & Community Banking revenue change from 2023 to 2024?
+Evidence:
+| Consumer & Community Banking | 70123 | 55120 |

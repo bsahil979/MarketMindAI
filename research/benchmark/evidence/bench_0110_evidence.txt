@@ -1,0 +1,4 @@
+QA ID: bench_0110
+Question: How did META's Reality Labs revenue change from 2023 to 2024?
+Evidence:
+| Reality Labs | 1896 | 2159 |

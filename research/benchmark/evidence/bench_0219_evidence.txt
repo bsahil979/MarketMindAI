@@ -1,0 +1,4 @@
+QA ID: bench_0219
+Question: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and NVDA (Data Center).
+Evidence:
+NFLX: | UCAN (US & Canada) | 14860 | 14080 | | NVDA: | Data Center | 47525 | 15005 |

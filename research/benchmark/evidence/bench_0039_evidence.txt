@@ -1,0 +1,4 @@
+QA ID: bench_0039
+Question: Calculate the year-over-year percentage change for AMZN's Total Net Sales performance.
+Evidence:
+| Total Net Sales | 574785 | 513992 |

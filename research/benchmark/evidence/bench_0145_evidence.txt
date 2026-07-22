@@ -1,0 +1,4 @@
+QA ID: bench_0145
+Question: Calculate the year-over-year percentage change for NFLX's EMEA performance.
+Evidence:
+| EMEA | 10560 | 9750 |

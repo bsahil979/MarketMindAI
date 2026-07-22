@@ -1,0 +1,4 @@
+QA ID: bench_0071
+Question: Report the FY2024 recorded revenue figure for GOOGL's YouTube Ads segment.
+Evidence:
+| YouTube Ads | 31510 | 29200 |

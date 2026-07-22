@@ -1,0 +1,4 @@
+QA ID: bench_0159
+Question: Identify key operational or macroeconomic challenges facing NFLX.
+Evidence:
+Subscriber churn, content production cost inflation, and international gaming investments.

@@ -1,0 +1,4 @@
+QA ID: bench_0126
+Question: Calculate the year-over-year percentage change for MSFT's Productivity & Business (Office) performance.
+Evidence:
+| Productivity & Business (Office) | 69274 | 69274 |

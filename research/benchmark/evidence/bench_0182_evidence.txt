@@ -1,0 +1,4 @@
+QA ID: bench_0182
+Question: Identify key operational or macroeconomic challenges facing NVDA.
+Evidence:
+Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts.

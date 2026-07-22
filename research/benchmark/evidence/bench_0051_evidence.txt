@@ -1,0 +1,4 @@
+QA ID: bench_0051
+Question: What was BRK-B's Berkshire Hathaway Energy revenue in 2024 according to the filing?
+Evidence:
+| Berkshire Hathaway Energy | 26100 | 26300 |

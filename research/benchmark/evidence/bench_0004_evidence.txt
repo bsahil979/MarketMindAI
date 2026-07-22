@@ -1,4 +1,4 @@
 QA ID: bench_0004
-Question: How did AAPL's Services revenue change from 2023 to 2024?
+Question: Calculate the year-over-year percentage change for AAPL's iPhone performance.
 Evidence:
-| Services | 96169 | 85200 |
+| iPhone | 201183 | 200583 |

@@ -1,0 +1,4 @@
+QA ID: bench_0094
+Question: Report the FY2024 recorded revenue figure for JPM's Asset & Wealth Management segment.
+Evidence:
+| Asset & Wealth Management | 19800 | 17700 |

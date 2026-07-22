@@ -1,0 +1,4 @@
+QA ID: bench_0111
+Question: Calculate the year-over-year percentage change for META's Reality Labs performance.
+Evidence:
+| Reality Labs | 1896 | 2159 |

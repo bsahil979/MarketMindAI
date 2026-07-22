@@ -1,0 +1,4 @@
+QA ID: bench_0118
+Question: What management trend is reported regarding META's financial performance?
+Evidence:
+Ad impressions increased 28% year-over-year across Family of Apps.

@@ -1,0 +1,4 @@
+QA ID: bench_0171
+Question: How did NVDA's Professional Visualization revenue change from 2023 to 2024?
+Evidence:
+| Professional Visualization | 1553 | 1544 |

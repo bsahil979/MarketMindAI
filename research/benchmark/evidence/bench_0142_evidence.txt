@@ -1,0 +1,4 @@
+QA ID: bench_0142
+Question: What was NFLX's EMEA revenue in 2024 according to the filing?
+Evidence:
+| EMEA | 10560 | 9750 |

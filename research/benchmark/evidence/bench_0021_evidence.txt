@@ -1,0 +1,4 @@
+QA ID: bench_0021
+Question: What primary risk factors are highlighted for AAPL in Item 1A?
+Evidence:
+Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.

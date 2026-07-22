@@ -1,0 +1,4 @@
+QA ID: bench_0194
+Question: How did TSLA's Services & Other revenue change from 2023 to 2024?
+Evidence:
+| Services & Other | 8319 | 6091 |

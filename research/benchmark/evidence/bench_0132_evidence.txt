@@ -1,0 +1,4 @@
+QA ID: bench_0132
+Question: Report the FY2024 recorded revenue figure for MSFT's Total Revenue segment.
+Evidence:
+| Total Revenue | 245121 | 211915 |

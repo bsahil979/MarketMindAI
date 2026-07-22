@@ -1,0 +1,4 @@
+QA ID: bench_0033
+Question: Report the FY2024 recorded revenue figure for AMZN's AWS Cloud segment.
+Evidence:
+| AWS Cloud | 90757 | 80096 |

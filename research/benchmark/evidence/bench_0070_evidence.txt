@@ -1,0 +1,4 @@
+QA ID: bench_0070
+Question: What was GOOGL's YouTube Ads revenue in 2024 according to the filing?
+Evidence:
+| YouTube Ads | 31510 | 29200 |

@@ -5,9 +5,19 @@
     "output": "Answer: $201183 Million"
   },
   {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AAPL's iPhone segment.",
+    "input": "Context snippet: | iPhone | 201183 | 200583 |",
+    "output": "Answer: $201183 Million"
+  },
+  {
     "instruction": "Answer the following financial query based on filing evidence: How did AAPL's iPhone revenue change from 2023 to 2024?",
     "input": "Context snippet: | iPhone | 201183 | 200583 |",
-    "output": "Answer: 2023: $200583 Million, 2024: $201183 Million"
+    "output": "Answer: 2023: $200583 Million, 2024: $201183 Million. Increased by $600.0M (+0.30%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AAPL's iPhone performance.",
+    "input": "Context snippet: | iPhone | 201183 | 200583 |",
+    "output": "Answer: YoY Change: Increased by $600.0M (+0.30%)"
   },
   {
     "instruction": "Answer the following financial query based on filing evidence: What was AAPL's Services revenue in 2024 according to the filing?",
@@ -15,9 +25,59 @@
     "output": "Answer: $96169 Million"
   },
   {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AAPL's Services segment.",
+    "input": "Context snippet: | Services | 96169 | 85200 |",
+    "output": "Answer: $96169 Million"
+  },
+  {
     "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Services revenue change from 2023 to 2024?",
     "input": "Context snippet: | Services | 96169 | 85200 |",
-    "output": "Answer: 2023: $85200 Million, 2024: $96169 Million"
+    "output": "Answer: 2023: $85200 Million, 2024: $96169 Million. Increased by $10969.0M (+12.87%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AAPL's Services performance.",
+    "input": "Context snippet: | Services | 96169 | 85200 |",
+    "output": "Answer: YoY Change: Increased by $10969.0M (+12.87%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AAPL's Wearables & Home revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Wearables & Home | 37005 | 39845 |",
+    "output": "Answer: $37005 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AAPL's Wearables & Home segment.",
+    "input": "Context snippet: | Wearables & Home | 37005 | 39845 |",
+    "output": "Answer: $37005 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Wearables & Home revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Wearables & Home | 37005 | 39845 |",
+    "output": "Answer: 2023: $39845 Million, 2024: $37005 Million. Decreased by $2840.0M (-7.13%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AAPL's Wearables & Home performance.",
+    "input": "Context snippet: | Wearables & Home | 37005 | 39845 |",
+    "output": "Answer: YoY Change: Decreased by $2840.0M (-7.13%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AAPL's Mac revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Mac | 29984 | 29357 |",
+    "output": "Answer: $29984 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AAPL's Mac segment.",
+    "input": "Context snippet: | Mac | 29984 | 29357 |",
+    "output": "Answer: $29984 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Mac revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Mac | 29984 | 29357 |",
+    "output": "Answer: 2023: $29357 Million, 2024: $29984 Million. Increased by $627.0M (+2.14%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AAPL's Mac performance.",
+    "input": "Context snippet: | Mac | 29984 | 29357 |",
+    "output": "Answer: YoY Change: Increased by $627.0M (+2.14%)"
   },
   {
     "instruction": "Answer the following financial query based on filing evidence: What was AAPL's Total Net Sales revenue in 2024 according to the filing?",
@@ -25,12 +85,27 @@
     "output": "Answer: $391035 Million"
   },
   {
-    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Total Net Sales revenue change from 2023 to 2024?",
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AAPL's Total Net Sales segment.",
     "input": "Context snippet: | Total Net Sales | 391035 | 383285 |",
-    "output": "Answer: 2023: $383285 Million, 2024: $391035 Million"
+    "output": "Answer: $391035 Million"
   },
   {
-    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for AAPL?",
+    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Total Net Sales revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Net Sales | 391035 | 383285 |",
+    "output": "Answer: 2023: $383285 Million, 2024: $391035 Million. Increased by $7750.0M (+2.02%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AAPL's Total Net Sales performance.",
+    "input": "Context snippet: | Total Net Sales | 391035 | 383285 |",
+    "output": "Answer: YoY Change: Increased by $7750.0M (+2.02%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for AAPL in Item 1A?",
+    "input": "Context snippet: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
+    "output": "Answer: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing AAPL.",
     "input": "Context snippet: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
     "output": "Answer: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues."
   },
@@ -40,8 +115,1028 @@
     "output": "Answer: Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance."
   },
   {
-    "instruction": "Answer the following financial query based on filing evidence: Summarize AAPL's key segment financial highlights and primary risk factors.",
-    "input": "Context snippet: | iPhone | 201183 | 200583 |",
-    "output": "Answer: Revenue: $201183 Million. Key evidence: | iPhone | 201183 | 200583 |"
+    "instruction": "Answer the following financial query based on filing evidence: What was AMZN's North America Retail revenue in 2024 according to the filing?",
+    "input": "Context snippet: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: $352828 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AMZN's North America Retail segment.",
+    "input": "Context snippet: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: $352828 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AMZN's North America Retail revenue change from 2023 to 2024?",
+    "input": "Context snippet: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: 2023: $315880 Million, 2024: $352828 Million. Increased by $36948.0M (+11.70%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AMZN's North America Retail performance.",
+    "input": "Context snippet: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: YoY Change: Increased by $36948.0M (+11.70%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AMZN's International Retail revenue in 2024 according to the filing?",
+    "input": "Context snippet: | International Retail | 131200 | 118016 |",
+    "output": "Answer: $131200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AMZN's International Retail segment.",
+    "input": "Context snippet: | International Retail | 131200 | 118016 |",
+    "output": "Answer: $131200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AMZN's International Retail revenue change from 2023 to 2024?",
+    "input": "Context snippet: | International Retail | 131200 | 118016 |",
+    "output": "Answer: 2023: $118016 Million, 2024: $131200 Million. Increased by $13184.0M (+11.17%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AMZN's International Retail performance.",
+    "input": "Context snippet: | International Retail | 131200 | 118016 |",
+    "output": "Answer: YoY Change: Increased by $13184.0M (+11.17%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AMZN's AWS Cloud revenue in 2024 according to the filing?",
+    "input": "Context snippet: | AWS Cloud | 90757 | 80096 |",
+    "output": "Answer: $90757 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AMZN's AWS Cloud segment.",
+    "input": "Context snippet: | AWS Cloud | 90757 | 80096 |",
+    "output": "Answer: $90757 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AMZN's AWS Cloud revenue change from 2023 to 2024?",
+    "input": "Context snippet: | AWS Cloud | 90757 | 80096 |",
+    "output": "Answer: 2023: $80096 Million, 2024: $90757 Million. Increased by $10661.0M (+13.31%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AMZN's AWS Cloud performance.",
+    "input": "Context snippet: | AWS Cloud | 90757 | 80096 |",
+    "output": "Answer: YoY Change: Increased by $10661.0M (+13.31%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AMZN's Total Net Sales revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Net Sales | 574785 | 513992 |",
+    "output": "Answer: $574785 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for AMZN's Total Net Sales segment.",
+    "input": "Context snippet: | Total Net Sales | 574785 | 513992 |",
+    "output": "Answer: $574785 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AMZN's Total Net Sales revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Net Sales | 574785 | 513992 |",
+    "output": "Answer: 2023: $513992 Million, 2024: $574785 Million. Increased by $60793.0M (+11.83%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for AMZN's Total Net Sales performance.",
+    "input": "Context snippet: | Total Net Sales | 574785 | 513992 |",
+    "output": "Answer: YoY Change: Increased by $60793.0M (+11.83%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for AMZN in Item 1A?",
+    "input": "Context snippet: Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands.",
+    "output": "Answer: Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing AMZN.",
+    "input": "Context snippet: Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands.",
+    "output": "Answer: Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding AMZN's financial performance?",
+    "input": "Context snippet: Net sales increased 12% to $574.8 Billion driven by AWS growth and advertising momentum.",
+    "output": "Answer: Net sales increased 12% to $574.8 Billion driven by AWS growth and advertising momentum."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was BRK-B's Insurance Underwriting & Investment revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: $95200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for BRK-B's Insurance Underwriting & Investment segment.",
+    "input": "Context snippet: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: $95200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did BRK-B's Insurance Underwriting & Investment revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: 2023: $82400 Million, 2024: $95200 Million. Increased by $12800.0M (+15.53%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for BRK-B's Insurance Underwriting & Investment performance.",
+    "input": "Context snippet: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: YoY Change: Increased by $12800.0M (+15.53%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was BRK-B's BNSF Railroad revenue in 2024 according to the filing?",
+    "input": "Context snippet: | BNSF Railroad | 23400 | 24100 |",
+    "output": "Answer: $23400 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for BRK-B's BNSF Railroad segment.",
+    "input": "Context snippet: | BNSF Railroad | 23400 | 24100 |",
+    "output": "Answer: $23400 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did BRK-B's BNSF Railroad revenue change from 2023 to 2024?",
+    "input": "Context snippet: | BNSF Railroad | 23400 | 24100 |",
+    "output": "Answer: 2023: $24100 Million, 2024: $23400 Million. Decreased by $700.0M (-2.90%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for BRK-B's BNSF Railroad performance.",
+    "input": "Context snippet: | BNSF Railroad | 23400 | 24100 |",
+    "output": "Answer: YoY Change: Decreased by $700.0M (-2.90%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was BRK-B's Berkshire Hathaway Energy revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Berkshire Hathaway Energy | 26100 | 26300 |",
+    "output": "Answer: $26100 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for BRK-B's Berkshire Hathaway Energy segment.",
+    "input": "Context snippet: | Berkshire Hathaway Energy | 26100 | 26300 |",
+    "output": "Answer: $26100 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did BRK-B's Berkshire Hathaway Energy revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Berkshire Hathaway Energy | 26100 | 26300 |",
+    "output": "Answer: 2023: $26300 Million, 2024: $26100 Million. Decreased by $200.0M (-0.76%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for BRK-B's Berkshire Hathaway Energy performance.",
+    "input": "Context snippet: | Berkshire Hathaway Energy | 26100 | 26300 |",
+    "output": "Answer: YoY Change: Decreased by $200.0M (-0.76%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was BRK-B's Manufacturing & Service revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Manufacturing & Service | 164200 | 156800 |",
+    "output": "Answer: $164200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for BRK-B's Manufacturing & Service segment.",
+    "input": "Context snippet: | Manufacturing & Service | 164200 | 156800 |",
+    "output": "Answer: $164200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did BRK-B's Manufacturing & Service revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Manufacturing & Service | 164200 | 156800 |",
+    "output": "Answer: 2023: $156800 Million, 2024: $164200 Million. Increased by $7400.0M (+4.72%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for BRK-B's Manufacturing & Service performance.",
+    "input": "Context snippet: | Manufacturing & Service | 164200 | 156800 |",
+    "output": "Answer: YoY Change: Increased by $7400.0M (+4.72%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was BRK-B's Total Revenue revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenue | 364482 | 302089 |",
+    "output": "Answer: $364482 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for BRK-B's Total Revenue segment.",
+    "input": "Context snippet: | Total Revenue | 364482 | 302089 |",
+    "output": "Answer: $364482 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did BRK-B's Total Revenue revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenue | 364482 | 302089 |",
+    "output": "Answer: 2023: $302089 Million, 2024: $364482 Million. Increased by $62393.0M (+20.65%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for BRK-B's Total Revenue performance.",
+    "input": "Context snippet: | Total Revenue | 364482 | 302089 |",
+    "output": "Answer: YoY Change: Increased by $62393.0M (+20.65%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for BRK-B in Item 1A?",
+    "input": "Context snippet: Catastrophic climate events, equity market volatility, and succession leadership transitions.",
+    "output": "Answer: Catastrophic climate events, equity market volatility, and succession leadership transitions."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing BRK-B.",
+    "input": "Context snippet: Catastrophic climate events, equity market volatility, and succession leadership transitions.",
+    "output": "Answer: Catastrophic climate events, equity market volatility, and succession leadership transitions."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding BRK-B's financial performance?",
+    "input": "Context snippet: Insurance float increased to $169 Billion with strong underwriting income across Geico and reinsurance.",
+    "output": "Answer: Insurance float increased to $169 Billion with strong underwriting income across Geico and reinsurance."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was GOOGL's Google Search & Advertising revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: $175023 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for GOOGL's Google Search & Advertising segment.",
+    "input": "Context snippet: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: $175023 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did GOOGL's Google Search & Advertising revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: 2023: $162450 Million, 2024: $175023 Million. Increased by $12573.0M (+7.74%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for GOOGL's Google Search & Advertising performance.",
+    "input": "Context snippet: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: YoY Change: Increased by $12573.0M (+7.74%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was GOOGL's YouTube Ads revenue in 2024 according to the filing?",
+    "input": "Context snippet: | YouTube Ads | 31510 | 29200 |",
+    "output": "Answer: $31510 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for GOOGL's YouTube Ads segment.",
+    "input": "Context snippet: | YouTube Ads | 31510 | 29200 |",
+    "output": "Answer: $31510 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did GOOGL's YouTube Ads revenue change from 2023 to 2024?",
+    "input": "Context snippet: | YouTube Ads | 31510 | 29200 |",
+    "output": "Answer: 2023: $29200 Million, 2024: $31510 Million. Increased by $2310.0M (+7.91%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for GOOGL's YouTube Ads performance.",
+    "input": "Context snippet: | YouTube Ads | 31510 | 29200 |",
+    "output": "Answer: YoY Change: Increased by $2310.0M (+7.91%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was GOOGL's Google Cloud revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Google Cloud | 33088 | 26280 |",
+    "output": "Answer: $33088 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for GOOGL's Google Cloud segment.",
+    "input": "Context snippet: | Google Cloud | 33088 | 26280 |",
+    "output": "Answer: $33088 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did GOOGL's Google Cloud revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Google Cloud | 33088 | 26280 |",
+    "output": "Answer: 2023: $26280 Million, 2024: $33088 Million. Increased by $6808.0M (+25.91%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for GOOGL's Google Cloud performance.",
+    "input": "Context snippet: | Google Cloud | 33088 | 26280 |",
+    "output": "Answer: YoY Change: Increased by $6808.0M (+25.91%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was GOOGL's Total Revenues revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenues | 307394 | 282836 |",
+    "output": "Answer: $307394 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for GOOGL's Total Revenues segment.",
+    "input": "Context snippet: | Total Revenues | 307394 | 282836 |",
+    "output": "Answer: $307394 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did GOOGL's Total Revenues revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenues | 307394 | 282836 |",
+    "output": "Answer: 2023: $282836 Million, 2024: $307394 Million. Increased by $24558.0M (+8.68%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for GOOGL's Total Revenues performance.",
+    "input": "Context snippet: | Total Revenues | 307394 | 282836 |",
+    "output": "Answer: YoY Change: Increased by $24558.0M (+8.68%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for GOOGL in Item 1A?",
+    "input": "Context snippet: Antitrust litigation, search advertising market evolution, and generative AI query latency costs.",
+    "output": "Answer: Antitrust litigation, search advertising market evolution, and generative AI query latency costs."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing GOOGL.",
+    "input": "Context snippet: Antitrust litigation, search advertising market evolution, and generative AI query latency costs.",
+    "output": "Answer: Antitrust litigation, search advertising market evolution, and generative AI query latency costs."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding GOOGL's financial performance?",
+    "input": "Context snippet: Consolidated revenues increased 9% reflecting strength in Google Search and Google Cloud profitability.",
+    "output": "Answer: Consolidated revenues increased 9% reflecting strength in Google Search and Google Cloud profitability."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was JPM's Consumer & Community Banking revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: $70123 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for JPM's Consumer & Community Banking segment.",
+    "input": "Context snippet: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: $70123 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did JPM's Consumer & Community Banking revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: 2023: $55120 Million, 2024: $70123 Million. Increased by $15003.0M (+27.22%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for JPM's Consumer & Community Banking performance.",
+    "input": "Context snippet: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: YoY Change: Increased by $15003.0M (+27.22%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was JPM's Corporate & Investment Bank revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Corporate & Investment Bank | 48700 | 46100 |",
+    "output": "Answer: $48700 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for JPM's Corporate & Investment Bank segment.",
+    "input": "Context snippet: | Corporate & Investment Bank | 48700 | 46100 |",
+    "output": "Answer: $48700 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did JPM's Corporate & Investment Bank revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Corporate & Investment Bank | 48700 | 46100 |",
+    "output": "Answer: 2023: $46100 Million, 2024: $48700 Million. Increased by $2600.0M (+5.64%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for JPM's Corporate & Investment Bank performance.",
+    "input": "Context snippet: | Corporate & Investment Bank | 48700 | 46100 |",
+    "output": "Answer: YoY Change: Increased by $2600.0M (+5.64%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was JPM's Asset & Wealth Management revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Asset & Wealth Management | 19800 | 17700 |",
+    "output": "Answer: $19800 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for JPM's Asset & Wealth Management segment.",
+    "input": "Context snippet: | Asset & Wealth Management | 19800 | 17700 |",
+    "output": "Answer: $19800 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did JPM's Asset & Wealth Management revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Asset & Wealth Management | 19800 | 17700 |",
+    "output": "Answer: 2023: $17700 Million, 2024: $19800 Million. Increased by $2100.0M (+11.86%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for JPM's Asset & Wealth Management performance.",
+    "input": "Context snippet: | Asset & Wealth Management | 19800 | 17700 |",
+    "output": "Answer: YoY Change: Increased by $2100.0M (+11.86%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was JPM's Total Net Revenue revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Net Revenue | 158104 | 128694 |",
+    "output": "Answer: $158104 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for JPM's Total Net Revenue segment.",
+    "input": "Context snippet: | Total Net Revenue | 158104 | 128694 |",
+    "output": "Answer: $158104 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did JPM's Total Net Revenue revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Net Revenue | 158104 | 128694 |",
+    "output": "Answer: 2023: $128694 Million, 2024: $158104 Million. Increased by $29410.0M (+22.85%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for JPM's Total Net Revenue performance.",
+    "input": "Context snippet: | Total Net Revenue | 158104 | 128694 |",
+    "output": "Answer: YoY Change: Increased by $29410.0M (+22.85%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for JPM in Item 1A?",
+    "input": "Context snippet: Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts.",
+    "output": "Answer: Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing JPM.",
+    "input": "Context snippet: Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts.",
+    "output": "Answer: Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding JPM's financial performance?",
+    "input": "Context snippet: Net interest income rose significantly supported by interest rate environments and First Republic integration.",
+    "output": "Answer: Net interest income rose significantly supported by interest rate environments and First Republic integration."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was META's Family of Apps (Ad Revenue) revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: $131948 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for META's Family of Apps (Ad Revenue) segment.",
+    "input": "Context snippet: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: $131948 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did META's Family of Apps (Ad Revenue) revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: 2023: $113642 Million, 2024: $131948 Million. Increased by $18306.0M (+16.11%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for META's Family of Apps (Ad Revenue) performance.",
+    "input": "Context snippet: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: YoY Change: Increased by $18306.0M (+16.11%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was META's Reality Labs revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Reality Labs | 1896 | 2159 |",
+    "output": "Answer: $1896 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for META's Reality Labs segment.",
+    "input": "Context snippet: | Reality Labs | 1896 | 2159 |",
+    "output": "Answer: $1896 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did META's Reality Labs revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Reality Labs | 1896 | 2159 |",
+    "output": "Answer: 2023: $2159 Million, 2024: $1896 Million. Decreased by $263.0M (-12.18%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for META's Reality Labs performance.",
+    "input": "Context snippet: | Reality Labs | 1896 | 2159 |",
+    "output": "Answer: YoY Change: Decreased by $263.0M (-12.18%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was META's Total Revenue revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenue | 134902 | 116601 |",
+    "output": "Answer: $134902 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for META's Total Revenue segment.",
+    "input": "Context snippet: | Total Revenue | 134902 | 116601 |",
+    "output": "Answer: $134902 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did META's Total Revenue revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenue | 134902 | 116601 |",
+    "output": "Answer: 2023: $116601 Million, 2024: $134902 Million. Increased by $18301.0M (+15.70%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for META's Total Revenue performance.",
+    "input": "Context snippet: | Total Revenue | 134902 | 116601 |",
+    "output": "Answer: YoY Change: Increased by $18301.0M (+15.70%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for META in Item 1A?",
+    "input": "Context snippet: Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.",
+    "output": "Answer: Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing META.",
+    "input": "Context snippet: Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.",
+    "output": "Answer: Youth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding META's financial performance?",
+    "input": "Context snippet: Ad impressions increased 28% year-over-year across Family of Apps.",
+    "output": "Answer: Ad impressions increased 28% year-over-year across Family of Apps."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was MSFT's Intelligent Cloud (Azure) revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: $105362 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for MSFT's Intelligent Cloud (Azure) segment.",
+    "input": "Context snippet: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: $105362 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did MSFT's Intelligent Cloud (Azure) revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: 2023: $87907 Million, 2024: $105362 Million. Increased by $17455.0M (+19.86%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for MSFT's Intelligent Cloud (Azure) performance.",
+    "input": "Context snippet: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: YoY Change: Increased by $17455.0M (+19.86%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was MSFT's Productivity & Business (Office) revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Productivity & Business (Office) | 69274 | 69274 |",
+    "output": "Answer: $69274 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for MSFT's Productivity & Business (Office) segment.",
+    "input": "Context snippet: | Productivity & Business (Office) | 69274 | 69274 |",
+    "output": "Answer: $69274 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did MSFT's Productivity & Business (Office) revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Productivity & Business (Office) | 69274 | 69274 |",
+    "output": "Answer: 2023: $69274 Million, 2024: $69274 Million. Increased by $0.0M (+0.00%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for MSFT's Productivity & Business (Office) performance.",
+    "input": "Context snippet: | Productivity & Business (Office) | 69274 | 69274 |",
+    "output": "Answer: YoY Change: Increased by $0.0M (+0.00%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was MSFT's More Personal Computing revenue in 2024 according to the filing?",
+    "input": "Context snippet: | More Personal Computing | 56700 | 54734 |",
+    "output": "Answer: $56700 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for MSFT's More Personal Computing segment.",
+    "input": "Context snippet: | More Personal Computing | 56700 | 54734 |",
+    "output": "Answer: $56700 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did MSFT's More Personal Computing revenue change from 2023 to 2024?",
+    "input": "Context snippet: | More Personal Computing | 56700 | 54734 |",
+    "output": "Answer: 2023: $54734 Million, 2024: $56700 Million. Increased by $1966.0M (+3.59%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for MSFT's More Personal Computing performance.",
+    "input": "Context snippet: | More Personal Computing | 56700 | 54734 |",
+    "output": "Answer: YoY Change: Increased by $1966.0M (+3.59%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was MSFT's Total Revenue revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenue | 245121 | 211915 |",
+    "output": "Answer: $245121 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for MSFT's Total Revenue segment.",
+    "input": "Context snippet: | Total Revenue | 245121 | 211915 |",
+    "output": "Answer: $245121 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did MSFT's Total Revenue revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenue | 245121 | 211915 |",
+    "output": "Answer: 2023: $211915 Million, 2024: $245121 Million. Increased by $33206.0M (+15.67%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for MSFT's Total Revenue performance.",
+    "input": "Context snippet: | Total Revenue | 245121 | 211915 |",
+    "output": "Answer: YoY Change: Increased by $33206.0M (+15.67%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for MSFT in Item 1A?",
+    "input": "Context snippet: Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.",
+    "output": "Answer: Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing MSFT.",
+    "input": "Context snippet: Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.",
+    "output": "Answer: Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding MSFT's financial performance?",
+    "input": "Context snippet: Revenue grew 16% driven by Microsoft Cloud expansion and Azure AI demand.",
+    "output": "Answer: Revenue grew 16% driven by Microsoft Cloud expansion and Azure AI demand."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NFLX's UCAN (US & Canada) revenue in 2024 according to the filing?",
+    "input": "Context snippet: | UCAN (US & Canada) | 14860 | 14080 |",
+    "output": "Answer: $14860 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NFLX's UCAN (US & Canada) segment.",
+    "input": "Context snippet: | UCAN (US & Canada) | 14860 | 14080 |",
+    "output": "Answer: $14860 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NFLX's UCAN (US & Canada) revenue change from 2023 to 2024?",
+    "input": "Context snippet: | UCAN (US & Canada) | 14860 | 14080 |",
+    "output": "Answer: 2023: $14080 Million, 2024: $14860 Million. Increased by $780.0M (+5.54%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NFLX's UCAN (US & Canada) performance.",
+    "input": "Context snippet: | UCAN (US & Canada) | 14860 | 14080 |",
+    "output": "Answer: YoY Change: Increased by $780.0M (+5.54%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NFLX's EMEA revenue in 2024 according to the filing?",
+    "input": "Context snippet: | EMEA | 10560 | 9750 |",
+    "output": "Answer: $10560 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NFLX's EMEA segment.",
+    "input": "Context snippet: | EMEA | 10560 | 9750 |",
+    "output": "Answer: $10560 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NFLX's EMEA revenue change from 2023 to 2024?",
+    "input": "Context snippet: | EMEA | 10560 | 9750 |",
+    "output": "Answer: 2023: $9750 Million, 2024: $10560 Million. Increased by $810.0M (+8.31%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NFLX's EMEA performance.",
+    "input": "Context snippet: | EMEA | 10560 | 9750 |",
+    "output": "Answer: YoY Change: Increased by $810.0M (+8.31%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NFLX's LATAM revenue in 2024 according to the filing?",
+    "input": "Context snippet: | LATAM | 4450 | 4070 |",
+    "output": "Answer: $4450 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NFLX's LATAM segment.",
+    "input": "Context snippet: | LATAM | 4450 | 4070 |",
+    "output": "Answer: $4450 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NFLX's LATAM revenue change from 2023 to 2024?",
+    "input": "Context snippet: | LATAM | 4450 | 4070 |",
+    "output": "Answer: 2023: $4070 Million, 2024: $4450 Million. Increased by $380.0M (+9.34%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NFLX's LATAM performance.",
+    "input": "Context snippet: | LATAM | 4450 | 4070 |",
+    "output": "Answer: YoY Change: Increased by $380.0M (+9.34%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NFLX's APAC revenue in 2024 according to the filing?",
+    "input": "Context snippet: | APAC | 3850 | 3570 |",
+    "output": "Answer: $3850 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NFLX's APAC segment.",
+    "input": "Context snippet: | APAC | 3850 | 3570 |",
+    "output": "Answer: $3850 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NFLX's APAC revenue change from 2023 to 2024?",
+    "input": "Context snippet: | APAC | 3850 | 3570 |",
+    "output": "Answer: 2023: $3570 Million, 2024: $3850 Million. Increased by $280.0M (+7.84%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NFLX's APAC performance.",
+    "input": "Context snippet: | APAC | 3850 | 3570 |",
+    "output": "Answer: YoY Change: Increased by $280.0M (+7.84%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NFLX's Total Revenue revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenue | 33720 | 31615 |",
+    "output": "Answer: $33720 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NFLX's Total Revenue segment.",
+    "input": "Context snippet: | Total Revenue | 33720 | 31615 |",
+    "output": "Answer: $33720 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NFLX's Total Revenue revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenue | 33720 | 31615 |",
+    "output": "Answer: 2023: $31615 Million, 2024: $33720 Million. Increased by $2105.0M (+6.66%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NFLX's Total Revenue performance.",
+    "input": "Context snippet: | Total Revenue | 33720 | 31615 |",
+    "output": "Answer: YoY Change: Increased by $2105.0M (+6.66%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for NFLX in Item 1A?",
+    "input": "Context snippet: Subscriber churn, content production cost inflation, and international gaming investments.",
+    "output": "Answer: Subscriber churn, content production cost inflation, and international gaming investments."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing NFLX.",
+    "input": "Context snippet: Subscriber churn, content production cost inflation, and international gaming investments.",
+    "output": "Answer: Subscriber churn, content production cost inflation, and international gaming investments."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding NFLX's financial performance?",
+    "input": "Context snippet: Paid memberships grew 12.8% to 260 Million global subscribers driven by paid sharing and ad-supported tiers.",
+    "output": "Answer: Paid memberships grew 12.8% to 260 Million global subscribers driven by paid sharing and ad-supported tiers."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NVDA's Data Center revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Data Center | 47525 | 15005 |",
+    "output": "Answer: $47525 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NVDA's Data Center segment.",
+    "input": "Context snippet: | Data Center | 47525 | 15005 |",
+    "output": "Answer: $47525 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NVDA's Data Center revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Data Center | 47525 | 15005 |",
+    "output": "Answer: 2023: $15005 Million, 2024: $47525 Million. Increased by $32520.0M (+216.73%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NVDA's Data Center performance.",
+    "input": "Context snippet: | Data Center | 47525 | 15005 |",
+    "output": "Answer: YoY Change: Increased by $32520.0M (+216.73%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NVDA's Gaming revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Gaming | 10447 | 9067 |",
+    "output": "Answer: $10447 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NVDA's Gaming segment.",
+    "input": "Context snippet: | Gaming | 10447 | 9067 |",
+    "output": "Answer: $10447 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NVDA's Gaming revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Gaming | 10447 | 9067 |",
+    "output": "Answer: 2023: $9067 Million, 2024: $10447 Million. Increased by $1380.0M (+15.22%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NVDA's Gaming performance.",
+    "input": "Context snippet: | Gaming | 10447 | 9067 |",
+    "output": "Answer: YoY Change: Increased by $1380.0M (+15.22%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NVDA's Professional Visualization revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Professional Visualization | 1553 | 1544 |",
+    "output": "Answer: $1553 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NVDA's Professional Visualization segment.",
+    "input": "Context snippet: | Professional Visualization | 1553 | 1544 |",
+    "output": "Answer: $1553 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NVDA's Professional Visualization revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Professional Visualization | 1553 | 1544 |",
+    "output": "Answer: 2023: $1544 Million, 2024: $1553 Million. Increased by $9.0M (+0.58%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NVDA's Professional Visualization performance.",
+    "input": "Context snippet: | Professional Visualization | 1553 | 1544 |",
+    "output": "Answer: YoY Change: Increased by $9.0M (+0.58%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NVDA's Automotive revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Automotive | 1091 | 903 |",
+    "output": "Answer: $1091 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NVDA's Automotive segment.",
+    "input": "Context snippet: | Automotive | 1091 | 903 |",
+    "output": "Answer: $1091 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NVDA's Automotive revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Automotive | 1091 | 903 |",
+    "output": "Answer: 2023: $903 Million, 2024: $1091 Million. Increased by $188.0M (+20.82%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NVDA's Automotive performance.",
+    "input": "Context snippet: | Automotive | 1091 | 903 |",
+    "output": "Answer: YoY Change: Increased by $188.0M (+20.82%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was NVDA's Total Revenue revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenue | 60922 | 26974 |",
+    "output": "Answer: $60922 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for NVDA's Total Revenue segment.",
+    "input": "Context snippet: | Total Revenue | 60922 | 26974 |",
+    "output": "Answer: $60922 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did NVDA's Total Revenue revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenue | 60922 | 26974 |",
+    "output": "Answer: 2023: $26974 Million, 2024: $60922 Million. Increased by $33948.0M (+125.85%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for NVDA's Total Revenue performance.",
+    "input": "Context snippet: | Total Revenue | 60922 | 26974 |",
+    "output": "Answer: YoY Change: Increased by $33948.0M (+125.85%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for NVDA in Item 1A?",
+    "input": "Context snippet: Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts.",
+    "output": "Answer: Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing NVDA.",
+    "input": "Context snippet: Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts.",
+    "output": "Answer: Geopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding NVDA's financial performance?",
+    "input": "Context snippet: Data Center revenue surged 217% driven by generative AI enterprise adoption and Hopper GPU demand.",
+    "output": "Answer: Data Center revenue surged 217% driven by generative AI enterprise adoption and Hopper GPU demand."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was TSLA's Automotive Sales revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Automotive Sales | 82419 | 71462 |",
+    "output": "Answer: $82419 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for TSLA's Automotive Sales segment.",
+    "input": "Context snippet: | Automotive Sales | 82419 | 71462 |",
+    "output": "Answer: $82419 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did TSLA's Automotive Sales revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Automotive Sales | 82419 | 71462 |",
+    "output": "Answer: 2023: $71462 Million, 2024: $82419 Million. Increased by $10957.0M (+15.33%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for TSLA's Automotive Sales performance.",
+    "input": "Context snippet: | Automotive Sales | 82419 | 71462 |",
+    "output": "Answer: YoY Change: Increased by $10957.0M (+15.33%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was TSLA's Energy Generation & Storage revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Energy Generation & Storage | 6035 | 3909 |",
+    "output": "Answer: $6035 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for TSLA's Energy Generation & Storage segment.",
+    "input": "Context snippet: | Energy Generation & Storage | 6035 | 3909 |",
+    "output": "Answer: $6035 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did TSLA's Energy Generation & Storage revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Energy Generation & Storage | 6035 | 3909 |",
+    "output": "Answer: 2023: $3909 Million, 2024: $6035 Million. Increased by $2126.0M (+54.39%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for TSLA's Energy Generation & Storage performance.",
+    "input": "Context snippet: | Energy Generation & Storage | 6035 | 3909 |",
+    "output": "Answer: YoY Change: Increased by $2126.0M (+54.39%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was TSLA's Services & Other revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Services & Other | 8319 | 6091 |",
+    "output": "Answer: $8319 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for TSLA's Services & Other segment.",
+    "input": "Context snippet: | Services & Other | 8319 | 6091 |",
+    "output": "Answer: $8319 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did TSLA's Services & Other revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Services & Other | 8319 | 6091 |",
+    "output": "Answer: 2023: $6091 Million, 2024: $8319 Million. Increased by $2228.0M (+36.58%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for TSLA's Services & Other performance.",
+    "input": "Context snippet: | Services & Other | 8319 | 6091 |",
+    "output": "Answer: YoY Change: Increased by $2228.0M (+36.58%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was TSLA's Total Revenues revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Revenues | 96773 | 81462 |",
+    "output": "Answer: $96773 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Report the FY2024 recorded revenue figure for TSLA's Total Revenues segment.",
+    "input": "Context snippet: | Total Revenues | 96773 | 81462 |",
+    "output": "Answer: $96773 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did TSLA's Total Revenues revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Revenues | 96773 | 81462 |",
+    "output": "Answer: 2023: $81462 Million, 2024: $96773 Million. Increased by $15311.0M (+18.80%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Calculate the year-over-year percentage change for TSLA's Total Revenues performance.",
+    "input": "Context snippet: | Total Revenues | 96773 | 81462 |",
+    "output": "Answer: YoY Change: Increased by $15311.0M (+18.80%)"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for TSLA in Item 1A?",
+    "input": "Context snippet: Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.",
+    "output": "Answer: Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Identify key operational or macroeconomic challenges facing TSLA.",
+    "input": "Context snippet: Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.",
+    "output": "Answer: Battery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding TSLA's financial performance?",
+    "input": "Context snippet: Total revenues increased 19% driven by Model Y volume expansion and Energy Storage deployments.",
+    "output": "Answer: Total revenues increased 19% driven by Model Y volume expansion and Energy Storage deployments."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and NFLX (UCAN (US & Canada)).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | NFLX: | UCAN (US & Canada) | 14860 | 14080 |",
+    "output": "Answer: AAPL: $201183 Million vs NFLX: $14860 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and TSLA (Automotive Sales).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | TSLA: | Automotive Sales | 82419 | 71462 |",
+    "output": "Answer: AAPL: $201183 Million vs TSLA: $82419 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and JPM (Consumer & Community Banking).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | JPM: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: AAPL: $201183 Million vs JPM: $70123 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and MSFT (Intelligent Cloud (Azure)).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: AAPL: $201183 Million vs MSFT: $105362 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and META (Family of Apps (Ad Revenue)).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: AAPL: $201183 Million vs META: $131948 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and GOOGL (Google Search & Advertising).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | GOOGL: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: AAPL: $201183 Million vs GOOGL: $175023 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and AMZN (North America Retail).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | AMZN: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: AAPL: $201183 Million vs AMZN: $352828 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and BRK-B (Insurance Underwriting & Investment).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: AAPL: $201183 Million vs BRK-B: $95200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AAPL (iPhone) and NVDA (Data Center).",
+    "input": "Context snippet: AAPL: | iPhone | 201183 | 200583 | | NVDA: | Data Center | 47525 | 15005 |",
+    "output": "Answer: AAPL: $201183 Million vs NVDA: $47525 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and TSLA (Automotive Sales).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | TSLA: | Automotive Sales | 82419 | 71462 |",
+    "output": "Answer: NFLX: $14860 Million vs TSLA: $82419 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and JPM (Consumer & Community Banking).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | JPM: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: NFLX: $14860 Million vs JPM: $70123 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and MSFT (Intelligent Cloud (Azure)).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: NFLX: $14860 Million vs MSFT: $105362 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and META (Family of Apps (Ad Revenue)).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: NFLX: $14860 Million vs META: $131948 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and GOOGL (Google Search & Advertising).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | GOOGL: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: NFLX: $14860 Million vs GOOGL: $175023 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and AMZN (North America Retail).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | AMZN: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: NFLX: $14860 Million vs AMZN: $352828 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and BRK-B (Insurance Underwriting & Investment).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: NFLX: $14860 Million vs BRK-B: $95200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and NVDA (Data Center).",
+    "input": "Context snippet: NFLX: | UCAN (US & Canada) | 14860 | 14080 | | NVDA: | Data Center | 47525 | 15005 |",
+    "output": "Answer: NFLX: $14860 Million vs NVDA: $47525 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of TSLA (Automotive Sales) and JPM (Consumer & Community Banking).",
+    "input": "Context snippet: TSLA: | Automotive Sales | 82419 | 71462 | | JPM: | Consumer & Community Banking | 70123 | 55120 |",
+    "output": "Answer: TSLA: $82419 Million vs JPM: $70123 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of TSLA (Automotive Sales) and MSFT (Intelligent Cloud (Azure)).",
+    "input": "Context snippet: TSLA: | Automotive Sales | 82419 | 71462 | | MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: TSLA: $82419 Million vs MSFT: $105362 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of TSLA (Automotive Sales) and META (Family of Apps (Ad Revenue)).",
+    "input": "Context snippet: TSLA: | Automotive Sales | 82419 | 71462 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: TSLA: $82419 Million vs META: $131948 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of JPM (Consumer & Community Banking) and MSFT (Intelligent Cloud (Azure)).",
+    "input": "Context snippet: JPM: | Consumer & Community Banking | 70123 | 55120 | | MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 |",
+    "output": "Answer: JPM: $70123 Million vs MSFT: $105362 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of MSFT (Intelligent Cloud (Azure)) and META (Family of Apps (Ad Revenue)).",
+    "input": "Context snippet: MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 | | META: | Family of Apps (Ad Revenue) | 131948 | 113642 |",
+    "output": "Answer: MSFT: $105362 Million vs META: $131948 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of META (Family of Apps (Ad Revenue)) and GOOGL (Google Search & Advertising).",
+    "input": "Context snippet: META: | Family of Apps (Ad Revenue) | 131948 | 113642 | | GOOGL: | Google Search & Advertising | 175023 | 162450 |",
+    "output": "Answer: META: $131948 Million vs GOOGL: $175023 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of GOOGL (Google Search & Advertising) and AMZN (North America Retail).",
+    "input": "Context snippet: GOOGL: | Google Search & Advertising | 175023 | 162450 | | AMZN: | North America Retail | 352828 | 315880 |",
+    "output": "Answer: GOOGL: $175023 Million vs AMZN: $352828 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of AMZN (North America Retail) and BRK-B (Insurance Underwriting & Investment).",
+    "input": "Context snippet: AMZN: | North America Retail | 352828 | 315880 | | BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 |",
+    "output": "Answer: AMZN: $352828 Million vs BRK-B: $95200 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Compare the top segment revenues of BRK-B (Insurance Underwriting & Investment) and NVDA (Data Center).",
+    "input": "Context snippet: BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 | | NVDA: | Data Center | 47525 | 15005 |",
+    "output": "Answer: BRK-B: $95200 Million vs NVDA: $47525 Million"
   }
 ]

@@ -1,0 +1,4 @@
+QA ID: bench_0144
+Question: How did NFLX's EMEA revenue change from 2023 to 2024?
+Evidence:
+| EMEA | 10560 | 9750 |

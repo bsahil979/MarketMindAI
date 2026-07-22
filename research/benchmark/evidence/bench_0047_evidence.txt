@@ -1,0 +1,4 @@
+QA ID: bench_0047
+Question: What was BRK-B's BNSF Railroad revenue in 2024 according to the filing?
+Evidence:
+| BNSF Railroad | 23400 | 24100 |

@@ -1,0 +1,4 @@
+QA ID: bench_0173
+Question: What was NVDA's Automotive revenue in 2024 according to the filing?
+Evidence:
+| Automotive | 1091 | 903 |

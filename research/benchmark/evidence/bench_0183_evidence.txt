@@ -1,0 +1,4 @@
+QA ID: bench_0183
+Question: What management trend is reported regarding NVDA's financial performance?
+Evidence:
+Data Center revenue surged 217% driven by generative AI enterprise adoption and Hopper GPU demand.

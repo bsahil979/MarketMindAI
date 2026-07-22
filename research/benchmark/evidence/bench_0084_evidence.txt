@@ -1,0 +1,4 @@
+QA ID: bench_0084
+Question: What management trend is reported regarding GOOGL's financial performance?
+Evidence:
+Consolidated revenues increased 9% reflecting strength in Google Search and Google Cloud profitability.

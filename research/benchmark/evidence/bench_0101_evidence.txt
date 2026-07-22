@@ -1,0 +1,4 @@
+QA ID: bench_0101
+Question: What primary risk factors are highlighted for JPM in Item 1A?
+Evidence:
+Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts.

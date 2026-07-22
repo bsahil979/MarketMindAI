@@ -1,0 +1,4 @@
+QA ID: bench_0158
+Question: What primary risk factors are highlighted for NFLX in Item 1A?
+Evidence:
+Subscriber churn, content production cost inflation, and international gaming investments.

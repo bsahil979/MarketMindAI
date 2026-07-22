@@ -1,0 +1,4 @@
+QA ID: bench_0022
+Question: Identify key operational or macroeconomic challenges facing AAPL.
+Evidence:
+Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.

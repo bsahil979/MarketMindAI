@@ -1,0 +1,4 @@
+QA ID: bench_0191
+Question: Calculate the year-over-year percentage change for TSLA's Energy Generation & Storage performance.
+Evidence:
+| Energy Generation & Storage | 6035 | 3909 |

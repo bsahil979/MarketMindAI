@@ -1,0 +1,4 @@
+QA ID: bench_0032
+Question: What was AMZN's AWS Cloud revenue in 2024 according to the filing?
+Evidence:
+| AWS Cloud | 90757 | 80096 |

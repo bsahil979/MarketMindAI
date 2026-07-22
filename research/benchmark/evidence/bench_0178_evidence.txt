@@ -1,0 +1,4 @@
+QA ID: bench_0178
+Question: Report the FY2024 recorded revenue figure for NVDA's Total Revenue segment.
+Evidence:
+| Total Revenue | 60922 | 26974 |

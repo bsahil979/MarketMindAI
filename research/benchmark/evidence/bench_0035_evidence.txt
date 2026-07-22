@@ -1,0 +1,4 @@
+QA ID: bench_0035
+Question: Calculate the year-over-year percentage change for AMZN's AWS Cloud performance.
+Evidence:
+| AWS Cloud | 90757 | 80096 |

@@ -1,0 +1,4 @@
+QA ID: bench_0227
+Question: Compare the top segment revenues of AMZN (North America Retail) and BRK-B (Insurance Underwriting & Investment).
+Evidence:
+AMZN: | North America Retail | 352828 | 315880 | | BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 |

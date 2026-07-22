@@ -1,0 +1,4 @@
+QA ID: bench_0080
+Question: How did GOOGL's Total Revenues revenue change from 2023 to 2024?
+Evidence:
+| Total Revenues | 307394 | 282836 |

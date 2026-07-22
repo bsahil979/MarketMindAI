@@ -1,0 +1,4 @@
+QA ID: bench_0027
+Question: Calculate the year-over-year percentage change for AMZN's North America Retail performance.
+Evidence:
+| North America Retail | 352828 | 315880 |

@@ -1,0 +1,9 @@
+{
+  "document_id": "sample_jpm_10k",
+  "company": "JPM Corporation",
+  "ticker": "JPM",
+  "document_type": "10-K",
+  "source": "SEC EDGAR",
+  "publication_date": "2024-01-01",
+  "token_count": 153
+}

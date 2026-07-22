@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_brk-b_10k_chunk_0000",
+    "document_id": "sample_brk-b_10k",
+    "ticker": "BRK-B",
+    "company": "BRK-B Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "Berkshire Hathaway Inc. - Form 10-K Annual Report\nTicker: BRK-B | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nInsurance float increased to $169 Billion with strong underwriting income across Geico and reinsurance.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Insurance Underwriting & Investment | 95200 | 82400 |\n| BNSF Railroad | 23400 | 24100 |\n| Berkshire Hathaway Energy | 26100 | 26300 |\n| Manufacturing & Service | 164200 | 156800 |\n| Total Revenue | 364482 | 302089 |\nRisk Factors\nCatastrophic climate events, equity market volatility, and succession leadership transitions.",
+    "token_count": 170
+  }
+]

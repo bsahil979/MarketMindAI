@@ -1,0 +1,4 @@
+QA ID: bench_0107
+Question: Calculate the year-over-year percentage change for META's Family of Apps (Ad Revenue) performance.
+Evidence:
+| Family of Apps (Ad Revenue) | 131948 | 113642 |

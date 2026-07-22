@@ -1,0 +1,4 @@
+QA ID: bench_0028
+Question: What was AMZN's International Retail revenue in 2024 according to the filing?
+Evidence:
+| International Retail | 131200 | 118016 |

@@ -1,0 +1,4 @@
+QA ID: bench_0044
+Question: Report the FY2024 recorded revenue figure for BRK-B's Insurance Underwriting & Investment segment.
+Evidence:
+| Insurance Underwriting & Investment | 95200 | 82400 |

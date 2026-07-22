@@ -3,10 +3,10 @@
     "chunk_id": "sample_aapl_10k_chunk_0000",
     "document_id": "sample_aapl_10k",
     "ticker": "AAPL",
-    "company": "AAPL Inc.",
+    "company": "AAPL Corporation",
     "document_type": "10-K",
     "chunk_index": 0,
-    "text": "Apple Inc. - Form 10-K Annual Report\nTicker: AAPL | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nTotal net sales increased 6% year-over-year driven by record Services revenue and Mac performance.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| iPhone | 201183 | 200583 |\n| Services | 96169 | 85200 |\n| Total Net Sales | 391035 | 383285 |\nRisk Factors\nGlobal economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
-    "token_count": 132
+    "text": "Apple Inc. - Form 10-K Annual Report\nTicker: AAPL | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nTotal net sales increased 6% year-over-year driven by record Services revenue and Mac performance.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| iPhone | 201183 | 200583 |\n| Services | 96169 | 85200 |\n| Wearables & Home | 37005 | 39845 |\n| Mac | 29984 | 29357 |\n| Total Net Sales | 391035 | 383285 |\nRisk Factors\nGlobal economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
+    "token_count": 157
   }
 ]

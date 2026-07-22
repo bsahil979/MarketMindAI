@@ -1,0 +1,4 @@
+QA ID: bench_0150
+Question: What was NFLX's APAC revenue in 2024 according to the filing?
+Evidence:
+| APAC | 3850 | 3570 |

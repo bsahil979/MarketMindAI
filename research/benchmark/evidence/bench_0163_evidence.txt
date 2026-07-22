@@ -1,0 +1,4 @@
+QA ID: bench_0163
+Question: How did NVDA's Data Center revenue change from 2023 to 2024?
+Evidence:
+| Data Center | 47525 | 15005 |

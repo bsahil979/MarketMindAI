@@ -1,0 +1,4 @@
+QA ID: bench_0011
+Question: How did AAPL's Wearables & Home revenue change from 2023 to 2024?
+Evidence:
+| Wearables & Home | 37005 | 39845 |

@@ -1,0 +1,4 @@
+QA ID: bench_0103
+Question: What management trend is reported regarding JPM's financial performance?
+Evidence:
+Net interest income rose significantly supported by interest rate environments and First Republic integration.

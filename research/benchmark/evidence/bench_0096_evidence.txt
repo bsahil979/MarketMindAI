@@ -1,0 +1,4 @@
+QA ID: bench_0096
+Question: Calculate the year-over-year percentage change for JPM's Asset & Wealth Management performance.
+Evidence:
+| Asset & Wealth Management | 19800 | 17700 |

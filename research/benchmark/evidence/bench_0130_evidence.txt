@@ -1,0 +1,4 @@
+QA ID: bench_0130
+Question: Calculate the year-over-year percentage change for MSFT's More Personal Computing performance.
+Evidence:
+| More Personal Computing | 56700 | 54734 |

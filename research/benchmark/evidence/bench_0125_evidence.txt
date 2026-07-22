@@ -1,0 +1,4 @@
+QA ID: bench_0125
+Question: How did MSFT's Productivity & Business (Office) revenue change from 2023 to 2024?
+Evidence:
+| Productivity & Business (Office) | 69274 | 69274 |

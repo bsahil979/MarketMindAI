@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_nvda_10k_chunk_0000",
+    "document_id": "sample_nvda_10k",
+    "ticker": "NVDA",
+    "company": "NVDA Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "NVIDIA Corporation - Form 10-K Annual Report\nTicker: NVDA | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nData Center revenue surged 217% driven by generative AI enterprise adoption and Hopper GPU demand.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Data Center | 47525 | 15005 |\n| Gaming | 10447 | 9067 |\n| Professional Visualization | 1553 | 1544 |\n| Automotive | 1091 | 903 |\n| Total Revenue | 60922 | 26974 |\nRisk Factors\nGeopolitical trade restrictions, semiconductor fabrication concentration, and rapid technological shifts.",
+    "token_count": 154
+  }
+]

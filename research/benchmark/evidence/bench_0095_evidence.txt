@@ -1,0 +1,4 @@
+QA ID: bench_0095
+Question: How did JPM's Asset & Wealth Management revenue change from 2023 to 2024?
+Evidence:
+| Asset & Wealth Management | 19800 | 17700 |

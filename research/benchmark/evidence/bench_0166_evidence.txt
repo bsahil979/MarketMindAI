@@ -1,0 +1,4 @@
+QA ID: bench_0166
+Question: Report the FY2024 recorded revenue figure for NVDA's Gaming segment.
+Evidence:
+| Gaming | 10447 | 9067 |

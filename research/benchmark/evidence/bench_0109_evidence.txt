@@ -1,0 +1,4 @@
+QA ID: bench_0109
+Question: Report the FY2024 recorded revenue figure for META's Reality Labs segment.
+Evidence:
+| Reality Labs | 1896 | 2159 |

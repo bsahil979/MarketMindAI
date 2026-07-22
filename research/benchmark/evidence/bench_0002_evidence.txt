@@ -1,4 +1,4 @@
 QA ID: bench_0002
-Question: How did AAPL's iPhone revenue change from 2023 to 2024?
+Question: Report the FY2024 recorded revenue figure for AAPL's iPhone segment.
 Evidence:
 | iPhone | 201183 | 200583 |

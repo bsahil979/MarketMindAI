@@ -1,0 +1,4 @@
+QA ID: bench_0015
+Question: How did AAPL's Mac revenue change from 2023 to 2024?
+Evidence:
+| Mac | 29984 | 29357 |

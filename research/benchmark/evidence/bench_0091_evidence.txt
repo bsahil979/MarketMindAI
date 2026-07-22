@@ -1,0 +1,4 @@
+QA ID: bench_0091
+Question: How did JPM's Corporate & Investment Bank revenue change from 2023 to 2024?
+Evidence:
+| Corporate & Investment Bank | 48700 | 46100 |

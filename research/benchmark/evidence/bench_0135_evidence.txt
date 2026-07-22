@@ -1,0 +1,4 @@
+QA ID: bench_0135
+Question: What primary risk factors are highlighted for MSFT in Item 1A?
+Evidence:
+Cybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.

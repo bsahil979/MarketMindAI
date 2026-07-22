@@ -1,0 +1,4 @@
+QA ID: bench_0147
+Question: Report the FY2024 recorded revenue figure for NFLX's LATAM segment.
+Evidence:
+| LATAM | 4450 | 4070 |

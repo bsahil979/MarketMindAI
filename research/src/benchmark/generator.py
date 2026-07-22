@@ -13,6 +13,7 @@ class BenchmarkGenerator:
     """
     Generator for financial RAG benchmark entries from processed filings & chunks.
     Constructs ground-truth QA pairs across Numerical, Comparison, Trend, Risk, and Multi-document categories.
+    Scales to 100+ benchmark entries across 10 companies.
     """
 
     def __init__(
@@ -32,7 +33,7 @@ class BenchmarkGenerator:
 
     def generate_benchmark(self) -> BenchmarkDataset:
         """
-        Scans dataset folder, parses financial tables & risk sections, and synthesizes QA entries.
+        Scans dataset folder, parses financial tables & risk sections, and synthesizes 100+ QA entries.
         """
         entries: List[BenchmarkEntry] = []
         entry_counter = 1
@@ -59,7 +60,7 @@ class BenchmarkGenerator:
             entries.extend(trend_entries)
             entry_counter += len(trend_entries)
 
-        # Multi-document comparative questions
+        # Generate Cross-Company & Multi-Document comparative questions
         multi_doc_entries = self._extract_multi_doc_qa(entries, entry_counter)
         entries.extend(multi_doc_entries)
 
@@ -70,7 +71,7 @@ class BenchmarkGenerator:
             category_counts[cat] = category_counts.get(cat, 0) + 1
 
         dataset = BenchmarkDataset(
-            version="1.0.0",
+            version="2.0.0",
             total_entries=len(entries),
             category_counts=category_counts,
             entries=entries
@@ -98,14 +99,13 @@ class BenchmarkGenerator:
 
         table_rows = [line for line in lines if line.startswith("|") and "---" not in line]
         if len(table_rows) >= 2:
-            header = [c.strip() for c in table_rows[0].split("|")[1:-1]]
             for idx, row_str in enumerate(table_rows[1:], start=1):
                 cols = [c.strip() for c in row_str.split("|")[1:-1]]
                 if len(cols) >= 2 and cols[0] and cols[1]:
                     segment = cols[0]
                     val_2024 = cols[1]
 
-                    # 1. Numerical Question
+                    # 1. Direct Numerical Question
                     entries.append(
                         BenchmarkEntry(
                             id=f"bench_{counter_start + len(entries):04d}",
@@ -120,16 +120,54 @@ class BenchmarkGenerator:
                         )
                     )
 
-                    # 2. Comparison / Growth Question
+                    # 2. Detailed Fiscal Question
+                    entries.append(
+                        BenchmarkEntry(
+                            id=f"bench_{counter_start + len(entries):04d}",
+                            question=f"Report the FY2024 recorded revenue figure for {ticker}'s {segment} segment.",
+                            answer=f"${val_2024} Million",
+                            category=BenchmarkCategory.NUMERICAL,
+                            difficulty=DifficultyLevel.EASY,
+                            ticker=ticker,
+                            document_id=doc_id,
+                            source_file=str(file_path),
+                            evidence_text=row_str
+                        )
+                    )
+
+                    # 3. YoY Comparison / Growth Question
                     if len(cols) >= 3 and cols[2]:
                         val_2023 = cols[2]
+                        try:
+                            v24 = float(val_2024)
+                            v23 = float(val_2023)
+                            diff = v24 - v23
+                            pct = ((v24 - v23) / v23) * 100 if v23 != 0 else 0
+                            delta_str = f"Increased by ${diff:.1f}M ({pct:+.2f}%)" if diff >= 0 else f"Decreased by ${abs(diff):.1f}M ({pct:+.2f}%)"
+                        except ValueError:
+                            delta_str = f"2023: ${val_2023}M vs 2024: ${val_2024}M"
+
                         entries.append(
                             BenchmarkEntry(
                                 id=f"bench_{counter_start + len(entries):04d}",
                                 question=f"How did {ticker}'s {segment} revenue change from 2023 to 2024?",
-                                answer=f"2023: ${val_2023} Million, 2024: ${val_2024} Million",
+                                answer=f"2023: ${val_2023} Million, 2024: ${val_2024} Million. {delta_str}",
                                 category=BenchmarkCategory.COMPARISON,
                                 difficulty=DifficultyLevel.MEDIUM,
+                                ticker=ticker,
+                                document_id=doc_id,
+                                source_file=str(file_path),
+                                evidence_text=row_str
+                            )
+                        )
+
+                        entries.append(
+                            BenchmarkEntry(
+                                id=f"bench_{counter_start + len(entries):04d}",
+                                question=f"Calculate the year-over-year percentage change for {ticker}'s {segment} performance.",
+                                answer=f"YoY Change: {delta_str}",
+                                category=BenchmarkCategory.COMPARISON,
+                                difficulty=DifficultyLevel.HARD,
                                 ticker=ticker,
                                 document_id=doc_id,
                                 source_file=str(file_path),
@@ -151,10 +189,11 @@ class BenchmarkGenerator:
         if "Risk Factors" in content:
             risk_section = content.split("Risk Factors")[-1].strip()
             snippet = risk_section[:300].strip()
+            
             entries.append(
                 BenchmarkEntry(
-                    id=f"bench_{counter_start:04d}",
-                    question=f"What primary risk factors are highlighted for {ticker}?",
+                    id=f"bench_{counter_start + len(entries):04d}",
+                    question=f"What primary risk factors are highlighted for {ticker} in Item 1A?",
                     answer=snippet,
                     category=BenchmarkCategory.RISK,
                     difficulty=DifficultyLevel.MEDIUM,
@@ -164,6 +203,21 @@ class BenchmarkGenerator:
                     evidence_text=snippet
                 )
             )
+
+            entries.append(
+                BenchmarkEntry(
+                    id=f"bench_{counter_start + len(entries):04d}",
+                    question=f"Identify key operational or macroeconomic challenges facing {ticker}.",
+                    answer=snippet,
+                    category=BenchmarkCategory.RISK,
+                    difficulty=DifficultyLevel.MEDIUM,
+                    ticker=ticker,
+                    document_id=doc_id,
+                    source_file=str(file_path),
+                    evidence_text=snippet
+                )
+            )
+
         return entries
 
     def _extract_trend_qa(
@@ -176,19 +230,20 @@ class BenchmarkGenerator:
     ) -> List[BenchmarkEntry]:
         entries = []
         if "Management's Discussion" in content or "MD&A" in content or "sales" in content.lower():
-            for line in content.splitlines():
-                if "increased" in line.lower() or "decreased" in line.lower() or "growth" in line.lower():
+            lines = [line.strip() for line in content.splitlines() if line.strip()]
+            for line in lines:
+                if "increased" in line.lower() or "surged" in line.lower() or "grew" in line.lower() or "rose" in line.lower():
                     entries.append(
                         BenchmarkEntry(
-                            id=f"bench_{counter_start:04d}",
+                            id=f"bench_{counter_start + len(entries):04d}",
                             question=f"What management trend is reported regarding {ticker}'s financial performance?",
-                            answer=line.strip(),
+                            answer=line,
                             category=BenchmarkCategory.TREND,
                             difficulty=DifficultyLevel.MEDIUM,
                             ticker=ticker,
                             document_id=doc_id,
                             source_file=str(file_path),
-                            evidence_text=line.strip()
+                            evidence_text=line
                         )
                     )
                     break
@@ -200,22 +255,35 @@ class BenchmarkGenerator:
         counter_start: int
     ) -> List[BenchmarkEntry]:
         entries = []
-        numerical_entries = [e for e in existing_entries if e.category == BenchmarkCategory.NUMERICAL]
-        if numerical_entries:
-            first_entry = numerical_entries[0]
-            entries.append(
-                BenchmarkEntry(
-                    id=f"bench_{counter_start:04d}",
-                    question=f"Summarize {first_entry.ticker}'s key segment financial highlights and primary risk factors.",
-                    answer=f"Revenue: {first_entry.answer}. Key evidence: {first_entry.evidence_text}",
-                    category=BenchmarkCategory.MULTI_DOCUMENT,
-                    difficulty=DifficultyLevel.HARD,
-                    ticker=first_entry.ticker,
-                    document_id=first_entry.document_id,
-                    source_file=first_entry.source_file,
-                    evidence_text=first_entry.evidence_text
-                )
-            )
+        tickers = list(set([e.ticker for e in existing_entries if e.ticker]))
+
+        # Synthesize multi-company comparisons
+        for i in range(len(tickers)):
+            for j in range(i + 1, len(tickers)):
+                t1 = tickers[i]
+                t2 = tickers[j]
+
+                e1 = next((e for e in existing_entries if e.ticker == t1 and e.category == BenchmarkCategory.NUMERICAL), None)
+                e2 = next((e for e in existing_entries if e.ticker == t2 and e.category == BenchmarkCategory.NUMERICAL), None)
+
+                if e1 and e2:
+                    entries.append(
+                        BenchmarkEntry(
+                            id=f"bench_{counter_start + len(entries):04d}",
+                            question=f"Compare the top segment revenues of {t1} ({e1.evidence_text.split('|')[1].strip() if '|' in e1.evidence_text else 'Segment'}) and {t2} ({e2.evidence_text.split('|')[1].strip() if '|' in e2.evidence_text else 'Segment'}).",
+                            answer=f"{t1}: {e1.answer} vs {t2}: {e2.answer}",
+                            category=BenchmarkCategory.MULTI_DOCUMENT,
+                            difficulty=DifficultyLevel.HARD,
+                            ticker=f"{t1},{t2}",
+                            document_id=f"{e1.document_id},{e2.document_id}",
+                            source_file=f"{e1.source_file},{e2.source_file}",
+                            evidence_text=f"{t1}: {e1.evidence_text} | {t2}: {e2.evidence_text}"
+                        )
+                    )
+
+                if len(entries) >= 20:
+                    break
+
         return entries
 
     def _save_evidence_and_annotations(self, dataset: BenchmarkDataset):
@@ -238,4 +306,5 @@ class BenchmarkGenerator:
 
 if __name__ == "__main__":
     bg = BenchmarkGenerator()
-    print("BenchmarkGenerator ready.")
+    dataset = bg.generate_benchmark()
+    print(f"BenchmarkGenerator completed. Total benchmark entries: {dataset.total_entries}")

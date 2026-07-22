@@ -1,0 +1,4 @@
+QA ID: bench_0165
+Question: What was NVDA's Gaming revenue in 2024 according to the filing?
+Evidence:
+| Gaming | 10447 | 9067 |

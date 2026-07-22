@@ -1,0 +1,4 @@
+QA ID: bench_0036
+Question: What was AMZN's Total Net Sales revenue in 2024 according to the filing?
+Evidence:
+| Total Net Sales | 574785 | 513992 |

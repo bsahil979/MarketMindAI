@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_msft_10k_chunk_0000",
+    "document_id": "sample_msft_10k",
+    "ticker": "MSFT",
+    "company": "MSFT Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "Microsoft Corporation - Form 10-K Annual Report\nTicker: MSFT | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nRevenue grew 16% driven by Microsoft Cloud expansion and Azure AI demand.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Intelligent Cloud (Azure) | 105362 | 87907 |\n| Productivity & Business (Office) | 69274 | 69274 |\n| More Personal Computing | 56700 | 54734 |\n| Total Revenue | 245121 | 211915 |\nRisk Factors\nCybersecurity threats, fierce AI infrastructure competition, and regulatory scrutiny regarding acquisitions.",
+    "token_count": 149
+  }
+]

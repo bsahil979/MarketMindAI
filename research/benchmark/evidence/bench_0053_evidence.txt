@@ -1,0 +1,4 @@
+QA ID: bench_0053
+Question: How did BRK-B's Berkshire Hathaway Energy revenue change from 2023 to 2024?
+Evidence:
+| Berkshire Hathaway Energy | 26100 | 26300 |

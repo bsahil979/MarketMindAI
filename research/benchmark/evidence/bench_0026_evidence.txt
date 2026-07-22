@@ -1,0 +1,4 @@
+QA ID: bench_0026
+Question: How did AMZN's North America Retail revenue change from 2023 to 2024?
+Evidence:
+| North America Retail | 352828 | 315880 |

@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_jpm_10k_chunk_0000",
+    "document_id": "sample_jpm_10k",
+    "ticker": "JPM",
+    "company": "JPM Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "JPMorgan Chase & Co. - Form 10-K Annual Report\nTicker: JPM | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nNet interest income rose significantly supported by interest rate environments and First Republic integration.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Consumer & Community Banking | 70123 | 55120 |\n| Corporate & Investment Bank | 48700 | 46100 |\n| Asset & Wealth Management | 19800 | 17700 |\n| Total Net Revenue | 158104 | 128694 |\nRisk Factors\nCredit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts.",
+    "token_count": 153
+  }
+]

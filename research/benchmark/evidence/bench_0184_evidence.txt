@@ -1,0 +1,4 @@
+QA ID: bench_0184
+Question: What was TSLA's Automotive Sales revenue in 2024 according to the filing?
+Evidence:
+| Automotive Sales | 82419 | 71462 |

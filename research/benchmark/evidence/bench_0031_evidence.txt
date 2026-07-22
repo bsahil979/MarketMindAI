@@ -1,0 +1,4 @@
+QA ID: bench_0031
+Question: Calculate the year-over-year percentage change for AMZN's International Retail performance.
+Evidence:
+| International Retail | 131200 | 118016 |

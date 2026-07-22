@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_tsla_10k_chunk_0000",
+    "document_id": "sample_tsla_10k",
+    "ticker": "TSLA",
+    "company": "TSLA Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "Tesla, Inc. - Form 10-K Annual Report\nTicker: TSLA | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nTotal revenues increased 19% driven by Model Y volume expansion and Energy Storage deployments.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Automotive Sales | 82419 | 71462 |\n| Energy Generation & Storage | 6035 | 3909 |\n| Services & Other | 8319 | 6091 |\n| Total Revenues | 96773 | 81462 |\nRisk Factors\nBattery cell supply constraints, autonomous driving regulatory delays, and global EV price sensitivity.",
+    "token_count": 149
+  }
+]

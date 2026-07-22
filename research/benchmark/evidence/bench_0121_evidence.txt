@@ -1,0 +1,4 @@
+QA ID: bench_0121
+Question: How did MSFT's Intelligent Cloud (Azure) revenue change from 2023 to 2024?
+Evidence:
+| Intelligent Cloud (Azure) | 105362 | 87907 |

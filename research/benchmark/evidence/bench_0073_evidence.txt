@@ -1,0 +1,4 @@
+QA ID: bench_0073
+Question: Calculate the year-over-year percentage change for GOOGL's YouTube Ads performance.
+Evidence:
+| YouTube Ads | 31510 | 29200 |

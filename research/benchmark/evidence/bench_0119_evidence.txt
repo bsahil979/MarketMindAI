@@ -1,0 +1,4 @@
+QA ID: bench_0119
+Question: What was MSFT's Intelligent Cloud (Azure) revenue in 2024 according to the filing?
+Evidence:
+| Intelligent Cloud (Azure) | 105362 | 87907 |

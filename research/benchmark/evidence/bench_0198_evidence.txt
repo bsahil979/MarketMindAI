@@ -1,0 +1,4 @@
+QA ID: bench_0198
+Question: How did TSLA's Total Revenues revenue change from 2023 to 2024?
+Evidence:
+| Total Revenues | 96773 | 81462 |

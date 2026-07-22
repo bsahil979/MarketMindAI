@@ -1,4 +1,4 @@
 QA ID: bench_0003
-Question: What was AAPL's Services revenue in 2024 according to the filing?
+Question: How did AAPL's iPhone revenue change from 2023 to 2024?
 Evidence:
-| Services | 96169 | 85200 |
+| iPhone | 201183 | 200583 |

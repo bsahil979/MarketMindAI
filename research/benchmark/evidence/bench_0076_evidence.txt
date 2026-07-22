@@ -1,0 +1,4 @@
+QA ID: bench_0076
+Question: How did GOOGL's Google Cloud revenue change from 2023 to 2024?
+Evidence:
+| Google Cloud | 33088 | 26280 |

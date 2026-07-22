@@ -1,0 +1,4 @@
+QA ID: bench_0055
+Question: What was BRK-B's Manufacturing & Service revenue in 2024 according to the filing?
+Evidence:
+| Manufacturing & Service | 164200 | 156800 |

@@ -1,0 +1,4 @@
+QA ID: bench_0024
+Question: What was AMZN's North America Retail revenue in 2024 according to the filing?
+Evidence:
+| North America Retail | 352828 | 315880 |

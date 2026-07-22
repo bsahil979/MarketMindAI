@@ -1,0 +1,4 @@
+QA ID: bench_0034
+Question: How did AMZN's AWS Cloud revenue change from 2023 to 2024?
+Evidence:
+| AWS Cloud | 90757 | 80096 |

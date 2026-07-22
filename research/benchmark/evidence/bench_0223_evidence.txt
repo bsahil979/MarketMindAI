@@ -1,0 +1,4 @@
+QA ID: bench_0223
+Question: Compare the top segment revenues of JPM (Consumer & Community Banking) and MSFT (Intelligent Cloud (Azure)).
+Evidence:
+JPM: | Consumer & Community Banking | 70123 | 55120 | | MSFT: | Intelligent Cloud (Azure) | 105362 | 87907 |

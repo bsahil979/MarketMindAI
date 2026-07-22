@@ -1,0 +1,4 @@
+QA ID: bench_0065
+Question: What management trend is reported regarding BRK-B's financial performance?
+Evidence:
+Insurance float increased to $169 Billion with strong underwriting income across Geico and reinsurance.

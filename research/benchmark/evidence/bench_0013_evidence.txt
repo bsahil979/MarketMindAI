@@ -1,0 +1,4 @@
+QA ID: bench_0013
+Question: What was AAPL's Mac revenue in 2024 according to the filing?
+Evidence:
+| Mac | 29984 | 29357 |

@@ -1,0 +1,4 @@
+QA ID: bench_0134
+Question: Calculate the year-over-year percentage change for MSFT's Total Revenue performance.
+Evidence:
+| Total Revenue | 245121 | 211915 |

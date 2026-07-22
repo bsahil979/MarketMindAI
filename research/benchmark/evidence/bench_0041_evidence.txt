@@ -1,0 +1,4 @@
+QA ID: bench_0041
+Question: Identify key operational or macroeconomic challenges facing AMZN.
+Evidence:
+Fulfillment logistics costs, international currency fluctuations, and AWS infrastructure energy demands.

@@ -1,0 +1,4 @@
+QA ID: bench_0153
+Question: Calculate the year-over-year percentage change for NFLX's APAC performance.
+Evidence:
+| APAC | 3850 | 3570 |

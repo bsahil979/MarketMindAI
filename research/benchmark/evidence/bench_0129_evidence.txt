@@ -1,0 +1,4 @@
+QA ID: bench_0129
+Question: How did MSFT's More Personal Computing revenue change from 2023 to 2024?
+Evidence:
+| More Personal Computing | 56700 | 54734 |

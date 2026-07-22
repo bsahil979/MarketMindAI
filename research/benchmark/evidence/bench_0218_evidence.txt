@@ -1,0 +1,4 @@
+QA ID: bench_0218
+Question: Compare the top segment revenues of NFLX (UCAN (US & Canada)) and BRK-B (Insurance Underwriting & Investment).
+Evidence:
+NFLX: | UCAN (US & Canada) | 14860 | 14080 | | BRK-B: | Insurance Underwriting & Investment | 95200 | 82400 |

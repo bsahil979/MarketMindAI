@@ -1,0 +1,4 @@
+QA ID: bench_0037
+Question: Report the FY2024 recorded revenue figure for AMZN's Total Net Sales segment.
+Evidence:
+| Total Net Sales | 574785 | 513992 |

@@ -1,0 +1,4 @@
+QA ID: bench_0157
+Question: Calculate the year-over-year percentage change for NFLX's Total Revenue performance.
+Evidence:
+| Total Revenue | 33720 | 31615 |

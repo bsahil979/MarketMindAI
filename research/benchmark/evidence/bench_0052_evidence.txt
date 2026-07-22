@@ -1,0 +1,4 @@
+QA ID: bench_0052
+Question: Report the FY2024 recorded revenue figure for BRK-B's Berkshire Hathaway Energy segment.
+Evidence:
+| Berkshire Hathaway Energy | 26100 | 26300 |

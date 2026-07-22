@@ -1,0 +1,4 @@
+QA ID: bench_0068
+Question: How did GOOGL's Google Search & Advertising revenue change from 2023 to 2024?
+Evidence:
+| Google Search & Advertising | 175023 | 162450 |

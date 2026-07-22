@@ -1,0 +1,4 @@
+QA ID: bench_0102
+Question: Identify key operational or macroeconomic challenges facing JPM.
+Evidence:
+Credit default rate spikes, commercial real estate exposure, and macroeconomic interest rate shifts.

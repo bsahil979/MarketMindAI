@@ -1,0 +1,4 @@
+QA ID: bench_0164
+Question: Calculate the year-over-year percentage change for NVDA's Data Center performance.
+Evidence:
+| Data Center | 47525 | 15005 |

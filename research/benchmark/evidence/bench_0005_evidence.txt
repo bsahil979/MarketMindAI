@@ -1,4 +1,4 @@
 QA ID: bench_0005
-Question: What was AAPL's Total Net Sales revenue in 2024 according to the filing?
+Question: What was AAPL's Services revenue in 2024 according to the filing?
 Evidence:
-| Total Net Sales | 391035 | 383285 |
+| Services | 96169 | 85200 |

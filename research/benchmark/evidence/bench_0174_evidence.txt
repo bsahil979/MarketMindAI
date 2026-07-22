@@ -1,0 +1,4 @@
+QA ID: bench_0174
+Question: Report the FY2024 recorded revenue figure for NVDA's Automotive segment.
+Evidence:
+| Automotive | 1091 | 903 |

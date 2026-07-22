@@ -1,0 +1,4 @@
+QA ID: bench_0106
+Question: How did META's Family of Apps (Ad Revenue) revenue change from 2023 to 2024?
+Evidence:
+| Family of Apps (Ad Revenue) | 131948 | 113642 |

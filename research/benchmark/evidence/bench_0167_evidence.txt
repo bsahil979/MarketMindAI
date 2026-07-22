@@ -1,0 +1,4 @@
+QA ID: bench_0167
+Question: How did NVDA's Gaming revenue change from 2023 to 2024?
+Evidence:
+| Gaming | 10447 | 9067 |

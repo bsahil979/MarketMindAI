@@ -1,0 +1,12 @@
+[
+  {
+    "chunk_id": "sample_meta_10k_chunk_0000",
+    "document_id": "sample_meta_10k",
+    "ticker": "META",
+    "company": "META Corporation",
+    "document_type": "10-K",
+    "chunk_index": 0,
+    "text": "Meta Platforms, Inc. - Form 10-K Annual Report\nTicker: META | Fiscal Year: 2024\nItem 7. Management's Discussion and Analysis\nAd impressions increased 28% year-over-year across Family of Apps.\n| Segment | 2024 Revenue ($M) | 2023 Revenue ($M) |\n| --- | --- | --- |\n| Family of Apps (Ad Revenue) | 131948 | 113642 |\n| Reality Labs | 1896 | 2159 |\n| Total Revenue | 134902 | 116601 |\nRisk Factors\nYouth safety regulatory mandates, advertising privacy restrictions, and Reality Labs capital expenditure.",
+    "token_count": 134
+  }
+]
