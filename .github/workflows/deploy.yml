@@ -70,10 +70,15 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            if ! command -v docker &> /dev/null; then
+              echo "Docker is not installed. Installing Docker..."
+              curl -fsSL https://get.docker.com | sudo sh
+              sudo systemctl enable --now docker
+            fi
             if [ ! -d "$HOME/MarketMindAI" ]; then
               git clone https://github.com/bsahil979/MarketMindAI.git $HOME/MarketMindAI
             fi
             cd $HOME/MarketMindAI
             git fetch origin main
             git reset --hard origin/main
-            docker compose up -d --build
+            sudo docker compose up -d --build
