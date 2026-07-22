@@ -1,3 +1,4 @@
+
 # MarketMind AI - Architecture & Design Specifications
 
 This specification details the engineering systems design, ER schemas, and data pipelines structure of the MarketMind AI platform.
@@ -61,7 +62,7 @@ erDiagram
         varchar ticker UK
         varchar name
         int sector_id FK
-        int exchange_id FK
+        int exchange_id Fk 
     }
 
     dim_date {
