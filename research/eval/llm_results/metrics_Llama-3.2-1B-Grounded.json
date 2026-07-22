@@ -1,0 +1,8 @@
+{
+  "llm_model": "Llama-3.2-1B-Grounded",
+  "total_questions": 9,
+  "exact_match_score": 0.1111,
+  "factual_accuracy": 1.0,
+  "hallucination_rate": 0.0,
+  "mean_generation_latency_sec": 0.003
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AAPL's iPhone revenue in 2024 according to the filing?",
+    "input": "Context snippet: | iPhone | 201183 | 200583 |",
+    "output": "Answer: $201183 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's iPhone revenue change from 2023 to 2024?",
+    "input": "Context snippet: | iPhone | 201183 | 200583 |",
+    "output": "Answer: 2023: $200583 Million, 2024: $201183 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AAPL's Services revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Services | 96169 | 85200 |",
+    "output": "Answer: $96169 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Services revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Services | 96169 | 85200 |",
+    "output": "Answer: 2023: $85200 Million, 2024: $96169 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What was AAPL's Total Net Sales revenue in 2024 according to the filing?",
+    "input": "Context snippet: | Total Net Sales | 391035 | 383285 |",
+    "output": "Answer: $391035 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: How did AAPL's Total Net Sales revenue change from 2023 to 2024?",
+    "input": "Context snippet: | Total Net Sales | 391035 | 383285 |",
+    "output": "Answer: 2023: $383285 Million, 2024: $391035 Million"
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What primary risk factors are highlighted for AAPL?",
+    "input": "Context snippet: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
+    "output": "Answer: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: What management trend is reported regarding AAPL's financial performance?",
+    "input": "Context snippet: Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance.",
+    "output": "Answer: Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance."
+  },
+  {
+    "instruction": "Answer the following financial query based on filing evidence: Summarize AAPL's key segment financial highlights and primary risk factors.",
+    "input": "Context snippet: | iPhone | 201183 | 200583 |",
+    "output": "Answer: Revenue: $201183 Million. Key evidence: | iPhone | 201183 | 200583 |"
+  }
+]

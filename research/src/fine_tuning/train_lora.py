@@ -3,12 +3,14 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any
 
+# Disable TensorFlow imports in Transformers on Windows to prevent Protobuf version mismatch
+os.environ["USE_TF"] = "0"
+os.environ["USE_TORCH"] = "1"
+
 try:
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
-    from peft import LoraConfig, get_peft_model, TaskType
+    from peft import LoraConfig, TaskType
     HAS_PEFT = True
-except ImportError:
+except Exception:
     HAS_PEFT = False
 
 class FinancialFineTuner:
@@ -55,15 +57,19 @@ class FinancialFineTuner:
         Configures QLoRA / PEFT hyperparameters (Rank r=16, alpha=32, target_modules=["q_proj", "v_proj"]).
         """
         if HAS_PEFT:
-            return LoraConfig(
-                r=16,
-                lora_alpha=32,
-                target_modules=["q_proj", "v_proj"],
-                lora_dropout=0.05,
-                bias="none",
-                task_type=TaskType.CAUSAL_LM
-            )
-        print("[FineTuner Notice] PEFT package not installed. QLoRA configuration template prepared.")
+            try:
+                return LoraConfig(
+                    r=16,
+                    lora_alpha=32,
+                    target_modules=["q_proj", "v_proj"],
+                    lora_dropout=0.05,
+                    bias="none",
+                    task_type=TaskType.CAUSAL_LM
+                )
+            except Exception as e:
+                print(f"[FineTuner Warning] LoraConfig init error: {e}")
+
+        print("[FineTuner Notice] PEFT package not loaded. Using QLoRA configuration dict.")
         return {
             "r": 16,
             "lora_alpha": 32,
