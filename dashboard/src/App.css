@@ -182,3 +182,72 @@
     border-right-color: var(--border);
   }
 }
+
+/* Portfolio Advisor AI RAG Styles */
+.rag-explorer-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+  color: #f8fafc;
+  margin-top: 16px;
+}
+
+.rag-metric-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 20px;
+  background: #0f172a;
+  border: 1px solid #3b82f6;
+  border-radius: 8px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.rag-metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.rag-metric-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.rag-citation-box {
+  background: #0f172a;
+  border-left: 4px solid #10b981;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  margin-top: 12px;
+  white-space: pre-wrap;
+}
+
+.rag-stepper {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.rag-step {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.rag-step-active {
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+}
+
