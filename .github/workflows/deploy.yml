@@ -69,23 +69,35 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 15m
           script: |
+            # 1. Ensure Swap Space exists (prevents OOM on EC2 t2/t3.micro)
+            if [ ! -f /swapfile ]; then
+              echo "Creating 2GB swap file for build stability..."
+              sudo fallocate -l 2G /swapfile || sudo dd if=/dev/zero of=/swapfile bs=1M count=2048
+              sudo chmod 600 /swapfile
+              sudo mkswap /swapfile
+              sudo swapon /swapfile
+            fi
+
+            # 2. Ensure Docker is installed and running
             if ! command -v docker &> /dev/null; then
-              echo "Docker is not installed. Installing Docker..."
+              echo "Installing Docker..."
               curl -fsSL https://get.docker.com | sudo sh
               sudo systemctl enable --now docker
             fi
+
+            # 3. Clone or pull repo
             if [ ! -d "$HOME/MarketMindAI" ]; then
               git clone https://github.com/bsahil979/MarketMindAI.git $HOME/MarketMindAI
             fi
+
             cd $HOME/MarketMindAI
-            git fetch origin main
+            git fetch origin main || sleep 5 && git fetch origin main
             git reset --hard origin/main
+
+            # 4. Build and start containers
             sudo docker compose up -d --build
-            sleep 10
+            sleep 5
             echo "================ CONTAINER STATUS ================"
             sudo docker compose ps -a
-            echo "================ DASHBOARD LOGS ================"
-            sudo docker compose logs --tail=30 dashboard
-            echo "================ ANALYTICS LOGS ================"
-            sudo docker compose logs --tail=30 analytics-service
