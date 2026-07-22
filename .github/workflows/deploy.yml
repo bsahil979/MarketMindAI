@@ -1,4 +1,4 @@
-name: Build and Deploy to AWS
+name: Build and Deploy to EC2
 
 on:
   push:
@@ -7,16 +7,6 @@ on:
   pull_request:
     branches:
       - main
-
-env:
-  AWS_REGION: us-east-1
-  ECR_REPOSITORY_INGEST: marketmind-ingestion
-  ECR_REPOSITORY_ANALYTICS: marketmind-analytics
-  ECR_REPOSITORY_DASHBOARD: marketmind-dashboard
-  ECS_CLUSTER: marketmind-cluster
-  ECS_SERVICE_INGEST: marketmind-ingestion-service
-  ECS_SERVICE_ANALYTICS: marketmind-analytics-service
-  ECS_SERVICE_DASHBOARD: marketmind-dashboard-service
 
 jobs:
   build-and-test:
@@ -29,7 +19,7 @@ jobs:
 
       # --- INGESTION TESTS ---
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -42,7 +32,7 @@ jobs:
 
       # --- ANALYTICS TESTS ---
       - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
           cache: 'pip'
@@ -66,60 +56,24 @@ jobs:
           npm install
           npm run build
 
-  deploy-to-aws:
-    name: Build Docker Images & Deploy
+  deploy-to-ec2:
+    name: Deploy to EC2 via Docker Compose
     needs: build-and-test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Log in to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
-
-      # --- BUILD AND PUSH INGESTION ---
-      - name: Build, tag, and push Ingestion image to ECR
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_INGEST:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY_INGEST:latest ./ingestion-service
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_INGEST:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_INGEST:latest
-
-      # --- BUILD AND PUSH ANALYTICS ---
-      - name: Build, tag, and push Analytics image to ECR
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_ANALYTICS:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY_ANALYTICS:latest ./analytics-service
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_ANALYTICS:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_ANALYTICS:latest
-
-      # --- BUILD AND PUSH DASHBOARD ---
-      - name: Build, tag, and push Dashboard image to ECR
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_DASHBOARD:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY_DASHBOARD:latest ./dashboard
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_DASHBOARD:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY_DASHBOARD:latest
-
-      # --- ECS SERVICE REDEPLOY ---
-      - name: Force ECS Cluster Redeployment
-        run: |
-          aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE_INGEST }} --force-new-deployment
-          aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE_ANALYTICS }} --force-new-deployment
-          aws ecs update-service --cluster ${{ env.ECS_CLUSTER }} --service ${{ env.ECS_SERVICE_DASHBOARD }} --force-new-deployment
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            if [ ! -d "$HOME/MarketMindAI" ]; then
+              git clone https://github.com/bsahil979/MarketMindAI.git $HOME/MarketMindAI
+            fi
+            cd $HOME/MarketMindAI
+            git fetch origin main
+            git reset --hard origin/main
+            docker compose up -d --build
