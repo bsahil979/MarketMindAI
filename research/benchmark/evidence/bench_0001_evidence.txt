@@ -1,0 +1,4 @@
+QA ID: bench_0001
+Question: What was AAPL's iPhone revenue in 2024 according to the filing?
+Evidence:
+| iPhone | 201183 | 200583 |

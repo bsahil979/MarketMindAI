@@ -1,0 +1,4 @@
+QA ID: bench_0004
+Question: How did AAPL's Services revenue change from 2023 to 2024?
+Evidence:
+| Services | 96169 | 85200 |

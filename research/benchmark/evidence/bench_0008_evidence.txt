@@ -1,0 +1,4 @@
+QA ID: bench_0008
+Question: What management trend is reported regarding AAPL's financial performance?
+Evidence:
+Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance.

@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "total_entries": 9,
+  "category_counts": {
+    "Numerical": 3,
+    "Comparison": 3,
+    "Risk": 1,
+    "Trend": 1,
+    "Multi-document": 1
+  },
+  "entries": [
+    {
+      "id": "bench_0001",
+      "question": "What was AAPL's iPhone revenue in 2024 according to the filing?",
+      "answer": "$201183 Million",
+      "category": "Numerical",
+      "difficulty": "Easy",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| iPhone | 201183 | 200583 |",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0002",
+      "question": "How did AAPL's iPhone revenue change from 2023 to 2024?",
+      "answer": "2023: $200583 Million, 2024: $201183 Million",
+      "category": "Comparison",
+      "difficulty": "Medium",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| iPhone | 201183 | 200583 |",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0003",
+      "question": "What was AAPL's Services revenue in 2024 according to the filing?",
+      "answer": "$96169 Million",
+      "category": "Numerical",
+      "difficulty": "Easy",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| Services | 96169 | 85200 |",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0004",
+      "question": "How did AAPL's Services revenue change from 2023 to 2024?",
+      "answer": "2023: $85200 Million, 2024: $96169 Million",
+      "category": "Comparison",
+      "difficulty": "Medium",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| Services | 96169 | 85200 |",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0005",
+      "question": "What was AAPL's Total Net Sales revenue in 2024 according to the filing?",
+      "answer": "$391035 Million",
+      "category": "Numerical",
+      "difficulty": "Easy",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| Total Net Sales | 391035 | 383285 |",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0006",
+      "question": "How did AAPL's Total Net Sales revenue change from 2023 to 2024?",
+      "answer": "2023: $383285 Million, 2024: $391035 Million",
+      "category": "Comparison",
+      "difficulty": "Medium",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| Total Net Sales | 391035 | 383285 |",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0007",
+      "question": "What primary risk factors are highlighted for AAPL?",
+      "answer": "Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
+      "category": "Risk",
+      "difficulty": "Medium",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0008",
+      "question": "What management trend is reported regarding AAPL's financial performance?",
+      "answer": "Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance.",
+      "category": "Trend",
+      "difficulty": "Medium",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance.",
+      "chunk_id": null
+    },
+    {
+      "id": "bench_0009",
+      "question": "Summarize AAPL's key segment financial highlights and primary risk factors.",
+      "answer": "Revenue: $201183 Million. Key evidence: | iPhone | 201183 | 200583 |",
+      "category": "Multi-document",
+      "difficulty": "Hard",
+      "ticker": "AAPL",
+      "document_id": "sample_aapl_10k",
+      "source_file": "research\\dataset\\processed\\sample_aapl_10k.md",
+      "evidence_text": "| iPhone | 201183 | 200583 |",
+      "chunk_id": null
+    }
+  ]
+}

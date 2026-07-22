@@ -1,0 +1,4 @@
+QA ID: bench_0002
+Question: How did AAPL's iPhone revenue change from 2023 to 2024?
+Evidence:
+| iPhone | 201183 | 200583 |

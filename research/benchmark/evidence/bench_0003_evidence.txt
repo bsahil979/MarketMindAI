@@ -1,0 +1,4 @@
+QA ID: bench_0003
+Question: What was AAPL's Services revenue in 2024 according to the filing?
+Evidence:
+| Services | 96169 | 85200 |

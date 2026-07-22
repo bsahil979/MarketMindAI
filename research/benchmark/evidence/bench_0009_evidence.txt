@@ -1,0 +1,4 @@
+QA ID: bench_0009
+Question: Summarize AAPL's key segment financial highlights and primary risk factors.
+Evidence:
+| iPhone | 201183 | 200583 |
