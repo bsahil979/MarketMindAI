@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api, getToken, clearToken, getUsername } from './services/api';
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentTab, setCurrentTab] = useState('dashboard'); // dashboard, details, news, portfolio, copilot, health, settings
   const [username, setUsername] = useState('Guest');
   
@@ -28,10 +28,15 @@ export default function App() {
   // Portfolio Watchlist
   const [watchlist, setWatchlist] = useState(['AAPL', 'MSFT']);
 
-  // AI Copilot State
-  const [chatMessages, setChatMessages] = useState([
-    { sender: 'ai', text: "Hello! I am your MarketMind AI Copilot. Ask me about stock forecasts, risk metrics, or market sentiment indicators!" }
-  ]);
+  const [userInput, setUserInput] = useState('');
+
+  // ETL / Telemetry State
+  const [etlHistory, setEtlHistory] = useState([]);
+  const [etlRunning, setEtlRunning] = useState(false);
+  const [etlMessage, setEtlMessage] = useState('');
+  const [schedulerEnabled, setSchedulerEnabled] = useState(true);
+  const [ingestionCount, setIngestionCount] = useState({ prices: 12, news: 8 });
+
   // Portfolio Advisor RAG Explorer State
   const [ragQueryInput, setRagQueryInput] = useState('');
   const [ragActiveResponse, setRagActiveResponse] = useState(null);
