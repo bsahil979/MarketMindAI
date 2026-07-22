@@ -1251,19 +1251,15 @@ export default function App() {
                     <strong style={{ color: '#e2e8f0' }}>Query:</strong> "{ragActiveResponse.query}"
                   </p>
 
-                  <div style={{ fontSize: '14.5px', color: '#f8fafc', fontWeight: '500', lineHeight: '1.6', background: '#0f172a', padding: '14px 18px', borderRadius: '6px', borderLeft: '4px solid #38bdf8' }}>
+                  <div style={{ fontSize: '14.5px', color: '#f8fafc', fontWeight: '500', lineHeight: '1.6', background: '#0f172a', padding: '14px 18px', borderRadius: '6px', borderLeft: '4px solid #38bdf8', marginBottom: '16px' }}>
                     {ragActiveResponse.answer}
                   </div>
-                </div>
-              )}
 
-              {/* Verified Context Citation Card */}
-              <div style={{ marginTop: '20px' }}>
-                <h4 style={{ fontSize: '14px', fontWeight: '600', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-                  Retrieved Grounded Evidence Snippet (ChromaDB Chunk: <span style={{ fontFamily: 'monospace', color: '#38bdf8' }}>sample_aapl_10k_chunk_0000</span>)
-                </h4>
-                <div className="rag-citation-box">
-{`Apple Inc. - Form 10-K Annual Report | Ticker: AAPL | Fiscal Year: 2024
+                  <h4 style={{ fontSize: '13px', fontWeight: '600', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
+                    Retrieved Grounded Evidence Snippet (ChromaDB Chunk: <span style={{ fontFamily: 'monospace', color: '#38bdf8' }}>{ragActiveResponse.chunk_id}</span>)
+                  </h4>
+                  <div className="rag-citation-box">
+{`Apple Inc. - Form 10-K Annual Report | Ticker: ${ragActiveResponse.ticker} | Fiscal Year: 2024
 Item 7. Management's Discussion and Analysis
 Total net sales increased 6% year-over-year driven by record Services revenue and Mac performance.
 
@@ -1274,8 +1270,9 @@ Total net sales increased 6% year-over-year driven by record Services revenue an
 | Total Net Sales   | 391035            | 383285            |
 
 Risk Factors: Global economic conditions, supply chain disruptions, and intense competition could impact future revenues.`}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Benchmark Empirical Results Summary */}
