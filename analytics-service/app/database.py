@@ -1,6 +1,6 @@
 import os
 import logging
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, DateTime, Date, BigInteger, ForeignKey
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, DateTime, Date, BigInteger, ForeignKey, Text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 logger = logging.getLogger("marketmind.database")
@@ -145,6 +145,18 @@ class FactAgentEvaluation(Base):
     faithfulness_score = Column(Float, nullable=True)
     hallucinated = Column(Integer, nullable=True)  # 1 = hallucinated, 0 = not
     latency_ms = Column(Integer, nullable=True)
+    created_at = Column(DateTime, server_default=None)
+
+
+class FactAgentRetrieval(Base):
+    __tablename__ = "fact_agent_retrieval"
+    retrieval_id = Column(Integer, primary_key=True, index=True)
+    eval_id = Column(Integer, ForeignKey("fact_agent_evaluation.eval_id", ondelete="CASCADE"), nullable=False)
+    rank = Column(Integer, nullable=False)
+    doc_id = Column(String(200), nullable=True)
+    snippet = Column(Text, nullable=True)
+    is_relevant = Column(Integer, nullable=True)  # 1 or 0
+    similarity_score = Column(Float, nullable=True)
     created_at = Column(DateTime, server_default=None)
 
 def init_db():

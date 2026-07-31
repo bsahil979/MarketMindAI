@@ -267,6 +267,15 @@ export const api = {
     }
   },
 
+  // Inspection endpoints
+  getEvaluation: async (evalId) => {
+    return apiFetch(`/api/v1/agent/evaluations/${encodeURIComponent(evalId)}`);
+  },
+
+  getRetrievals: async (evalId) => {
+    return apiFetch(`/api/v1/agent/retrievals/${encodeURIComponent(evalId)}`);
+  },
+
   // ETL
   runEtl: async () => {
     const token = getToken();

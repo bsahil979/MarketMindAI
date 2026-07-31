@@ -16,6 +16,12 @@ from app.database import (
     DimCompany, DimSector, DimExchange, DimDate,
     FactMarketPrice, FactNewsSentiment, FactRiskMetrics, FactPrediction, FactPipelineRun, ModelRegistry
 )
+from app.database import FactAgentEvaluation, FactAgentRetrieval
+from app.semantic import semantic_similarity
+import os
+
+# Semantic threshold (matches eval runner default)
+SEMANTIC_THRESHOLD = float(os.getenv('SEMANTIC_THRESHOLD', '0.75'))
 from app.etl.etl_pipeline import run_etl, seed_dimensions
 from app.cache import get_cached, set_cached
 from app.auth import (
@@ -551,43 +557,151 @@ def run_agent_portfolio(payload: PortfolioQuerySchema):
 
 @app.get("/api/v1/agent/metrics")
 def get_agent_metrics(db: Session = Depends(get_db)):
-    # Aggregate evaluation metrics from FactAgentEvaluation table
-    from app.database import FactAgentEvaluation
-
+    # Aggregate evaluation metrics from FactAgentEvaluation and retrievals from FactAgentRetrieval
     total = db.query(func.count(FactAgentEvaluation.eval_id)).scalar() or 0
 
     if total == 0:
         # No evaluation records yet — return placeholder defaults
         return {
-            "recall_at_5": 0.94,
-            "precision_at_5": 0.91,
-            "latency_avg_sec": 1.18,
-            "faithfulness_score": 0.98,
-            "hallucination_rate": 0.021,
+            "accuracy": 0.0,
+            "semantic_accuracy": 0.0,
+            "faithfulness_score": 0.0,
+            "hallucination_rate": 0.0,
+            "avg_latency_ms": 0.0,
+            "precision_at_5": 0.0,
+            "recall_at_5": 0.0,
+            "mrr": 0.0,
+            "ndcg_at_5": 0.0,
             "eval_sample_count": 0,
             "benchmark_dataset": "SEC 10-K & 10-Q FinancialQA Benchmark"
         }
 
-    # Compute aggregates
-    # Sum of correct_at_5 (0-5 per question). Normalize by (5 * total) to get fraction.
-    sum_at_5 = db.query(func.coalesce(func.sum(FactAgentEvaluation.correct_at_5), 0)).scalar() or 0
-    recall_at_5 = float(sum_at_5) / (5.0 * total)
-    precision_at_5 = recall_at_5
-
+    # Basic aggregates from evaluations
     avg_latency_ms = db.query(func.coalesce(func.avg(FactAgentEvaluation.latency_ms), 0)).scalar() or 0
-    latency_avg_sec = float(avg_latency_ms) / 1000.0 if avg_latency_ms else 0.0
-
     faithfulness_score = db.query(func.coalesce(func.avg(FactAgentEvaluation.faithfulness_score), 0)).scalar() or 0
-
     hallucinated_count = db.query(func.coalesce(func.sum(FactAgentEvaluation.hallucinated), 0)).scalar() or 0
     hallucination_rate = float(hallucinated_count) / float(total) if total > 0 else 0.0
 
+    # Compute IR metrics using persisted retrieval rows
+    # For each eval_id, compute relevant_count_in_top5, first_relevant_rank, ndcg
+    eval_ids = [r[0] for r in db.query(FactAgentRetrieval.eval_id).distinct().all()]
+    # fall back: if no retrieval rows, return earlier aggregates
+    if not eval_ids:
+        return {
+            "faithfulness_score": round(float(faithfulness_score), 4) if faithfulness_score else 0.0,
+            "hallucination_rate": round(hallucination_rate, 4),
+            "avg_latency_ms": round(float(avg_latency_ms), 3),
+            "precision_at_5": 0.0,
+            "recall_at_5": 0.0,
+            "mrr": 0.0,
+            "ndcg_at_5": 0.0,
+            "eval_sample_count": int(total),
+            "benchmark_dataset": "SEC 10-K & 10-Q FinancialQA Benchmark"
+        }
+
+    precisions = []
+    recalls = []
+    rr_list = []
+    ndcg_list = []
+
+    for eid in eval_ids:
+        rows = db.query(FactAgentRetrieval).filter_by(eval_id=eid).order_by(FactAgentRetrieval.rank.asc()).limit(5).all()
+        if not rows:
+            precisions.append(0.0)
+            recalls.append(0.0)
+            rr_list.append(0.0)
+            ndcg_list.append(0.0)
+            continue
+
+        rels = [1 if (r.is_relevant and int(r.is_relevant) == 1) else 0 for r in rows]
+        relevant_count = sum(rels)
+        # Precision@5: relevant_count / 5
+        precisions.append(float(relevant_count) / 5.0)
+        # Recall@5 (binary): 1 if any relevant in top5 else 0 (assumes single-ground-truth relevance)
+        recalls.append(1.0 if relevant_count > 0 else 0.0)
+
+        # MRR: reciprocal of first relevant rank
+        first_rank = 0
+        for i, rrel in enumerate(rels, start=1):
+            if rrel:
+                first_rank = i
+                break
+        rr_list.append((1.0 / first_rank) if first_rank > 0 else 0.0)
+
+        # NDCG@5: compute DCG and IDCG with binary relevance
+        import math
+        dcg = 0.0
+        for i, rrel in enumerate(rels, start=1):
+            if rrel:
+                dcg += (2 ** rrel - 1) / math.log2(i + 1)
+        # IDCG: ideal ordering with min(relevant_total,5) ones at top
+        ideal_rels = min(sum(rels), 5)
+        idcg = 0.0
+        for i in range(1, ideal_rels + 1):
+            idcg += (2 ** 1 - 1) / math.log2(i + 1)
+        ndcg = (dcg / idcg) if idcg > 0 else 0.0
+        ndcg_list.append(ndcg)
+
+    # Average metrics across evals that had retrievals (use count of eval_ids)
+    count_evals = len(eval_ids)
+    precision_at_5 = float(sum(precisions) / count_evals) if count_evals else 0.0
+    recall_at_5 = float(sum(recalls) / count_evals) if count_evals else 0.0
+    mrr = float(sum(rr_list) / count_evals) if count_evals else 0.0
+    ndcg_at_5 = float(sum(ndcg_list) / count_evals) if count_evals else 0.0
+
     return {
-        "recall_at_5": round(recall_at_5, 4),
-        "precision_at_5": round(precision_at_5, 4),
-        "latency_avg_sec": round(latency_avg_sec, 3),
+        "accuracy": None,
+        "semantic_accuracy": None,
         "faithfulness_score": round(float(faithfulness_score), 4) if faithfulness_score else 0.0,
         "hallucination_rate": round(hallucination_rate, 4),
+        "avg_latency_ms": round(float(avg_latency_ms), 3),
+        "precision_at_5": round(precision_at_5, 4),
+        "recall_at_5": round(recall_at_5, 4),
+        "mrr": round(mrr, 4),
+        "ndcg_at_5": round(ndcg_at_5, 4),
         "eval_sample_count": int(total),
         "benchmark_dataset": "SEC 10-K & 10-Q FinancialQA Benchmark"
     }
+
+
+@app.get("/api/v1/agent/evaluations/{eval_id}")
+def get_evaluation_detail(eval_id: int, db: Session = Depends(get_db)):
+    rec = db.query(FactAgentEvaluation).filter_by(eval_id=eval_id).first()
+    if not rec:
+        raise HTTPException(status_code=404, detail=f"Evaluation id {eval_id} not found")
+    # compute semantic similarity for this record
+    try:
+        sim = semantic_similarity((rec.predicted_answer or ''), (rec.ground_truth or ''))
+    except Exception:
+        sim = 0.0
+    return {
+        "eval_id": rec.eval_id,
+        "question_id": rec.question_id,
+        "predicted_answer": rec.predicted_answer,
+        "ground_truth": rec.ground_truth,
+        "correct_at_1": int(rec.correct_at_1 or 0),
+        "correct_at_5": int(rec.correct_at_5 or 0),
+        "faithfulness_score": float(rec.faithfulness_score or 0.0),
+        "hallucinated": int(rec.hallucinated or 0),
+        "latency_ms": int(rec.latency_ms or 0),
+        "semantic_similarity": float(sim)
+    }
+
+
+@app.get("/api/v1/agent/retrievals/{eval_id}")
+def get_retrievals_for_eval(eval_id: int, db: Session = Depends(get_db)):
+    rows = db.query(FactAgentRetrieval).filter_by(eval_id=eval_id).order_by(FactAgentRetrieval.rank.asc()).all()
+    if not rows:
+        raise HTTPException(status_code=404, detail=f"No retrievals found for eval_id {eval_id}")
+    return [
+        {
+            "retrieval_id": r.retrieval_id,
+            "eval_id": r.eval_id,
+            "rank": r.rank,
+            "doc_id": r.doc_id,
+            "snippet": r.snippet,
+            "is_relevant": int(r.is_relevant) if r.is_relevant is not None else None,
+            "similarity_score": float(r.similarity_score) if r.similarity_score is not None else None
+        }
+        for r in rows
+    ]
