@@ -80,6 +80,8 @@ export default function App() {
     faithfulness_score: 0.98,
     hallucination_rate: 0.021
   });
+  const [evalLoading, setEvalLoading] = useState(false);
+  const [evalError, setEvalError] = useState('');
 
   const handleExecuteRagQuery = async (overrideQuery) => {
     const q = (overrideQuery || ragQueryInput || "").trim();
@@ -140,11 +142,21 @@ export default function App() {
   };
 
   const loadAgentMetrics = async () => {
+    setEvalError('');
+    setEvalLoading(true);
     try {
+      console.debug('Loading agent metrics...');
       const res = await api.getAgentMetrics();
-      if (res) setEvalMetrics(res);
+      if (res) {
+        setEvalMetrics(res);
+      } else {
+        setEvalError('No metrics returned from server');
+      }
     } catch (e) {
-      console.error("Agent metrics load error:", e);
+      console.error('Agent metrics load error:', e);
+      setEvalError(e.message || 'Failed to load agent metrics');
+    } finally {
+      setEvalLoading(false);
     }
   };
 
@@ -1527,13 +1539,21 @@ export default function App() {
                     Real-time benchmark evaluation calculated across SEC 10-K & 10-Q retrieval test sets.
                   </p>
                 </div>
-                <button 
-                  onClick={loadAgentMetrics}
-                  className="btn btn-secondary"
-                  style={{ fontSize: '12px', padding: '6px 14px' }}
-                >
-                  ⚡ Refresh Metrics
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <button 
+                    onClick={loadAgentMetrics}
+                    className="btn btn-secondary"
+                    style={{ fontSize: '12px', padding: '6px 14px' }}
+                    disabled={evalLoading}
+                  >
+                    {evalLoading ? 'Refreshing…' : '⚡ Refresh Metrics'}
+                  </button>
+                  {evalError && (
+                    <div style={{ color: '#f87171', fontSize: '13px' }}>
+                      {evalError}
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div style={{ overflowX: 'auto' }}>

@@ -1,4 +1,8 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+// Prefer Vite build-time `VITE_API_URL`. If missing, allow a runtime override
+// via `window.__API_BASE_URL__` (useful for deployments where you can inject
+// a runtime config), otherwise fall back to an empty string so requests are
+// relative to the current origin.
+const API_BASE_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.__API_BASE_URL__) || "";
 
 // Helper to check if token exists
 export const getToken = () => localStorage.getItem("marketmind_token");
@@ -250,9 +254,15 @@ export const api = {
 
   getAgentMetrics: async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/agent/metrics`);
-      return await response.json();
+      // Use the shared apiFetch helper so we get the same timeout and
+      // mock-fallback behavior used across the client.
+      const res = await apiFetch('/api/v1/agent/metrics');
+      console.debug('getAgentMetrics -> response', res);
+      return res;
     } catch (e) {
+      console.error('getAgentMetrics failed:', e);
+      // Keep the existing mock fallback values so the UI remains responsive
+      // when the backend is unreachable.
       return { recall_at_5: 0.94, precision_at_5: 0.91, latency_avg_sec: 1.18, faithfulness_score: 0.98, hallucination_rate: 0.021 };
     }
   },

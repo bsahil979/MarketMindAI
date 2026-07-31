@@ -51,13 +51,18 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: dashboard/package-lock.json
+          cache-dependency-path: dashboard/package.json
 
       - name: Build Dashboard
         run: |
           cd dashboard
           npm install
           npm run build
+        env:
+          # Make sure the dashboard build embeds the backend URL during Vite build.
+          # Set this secret in the repo to your Render backend URL, e.g.
+          # https://marketmind-analytics-api.onrender.com
+          VITE_API_URL: ${{ secrets.BACKEND_URL }}
 
   # ─────────────────────────────────────────────────────────
   # JOB 2: Deploy (only on push to main, after CI passes)
