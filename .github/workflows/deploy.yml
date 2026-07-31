@@ -78,14 +78,17 @@ jobs:
         uses: actions/checkout@v4
 
       # ── Deploy Dashboard → Vercel ──────────────────────
-      - name: Deploy Dashboard to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./dashboard
-          vercel-args: '--prod'
+      - name: Deploy Dashboard to Vercel (using latest CLI)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          echo "Deploying dashboard with latest Vercel CLI"
+          cd dashboard
+          # Use npx to fetch the latest vercel CLI instead of the old action which
+          # pins an outdated CLI version that fails on modern Vercel endpoints.
+          npx vercel@latest --prod -t "$VERCEL_TOKEN" --confirm
 
       # ── Deploy Analytics API → Render ─────────────────
       - name: Trigger Render Deploy (Analytics API)
