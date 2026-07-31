@@ -84,11 +84,10 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          echo "Deploying dashboard with latest Vercel CLI"
-          cd dashboard
-          # Use npx to fetch the latest vercel CLI instead of the old action which
-          # pins an outdated CLI version that fails on modern Vercel endpoints.
-          npx vercel@latest --prod -t "$VERCEL_TOKEN" --confirm
+          echo "Deploying dashboard with latest Vercel CLI (using local config)"
+          # Run from the repository root and tell the CLI to use the dashboard
+          # local config so we don't double-apply a project root setting.
+          npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --local-config dashboard/vercel.json
 
       # ── Deploy Analytics API → Render ─────────────────
       - name: Trigger Render Deploy (Analytics API)
