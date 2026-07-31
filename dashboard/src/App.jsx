@@ -82,6 +82,7 @@ export default function App() {
   });
   const [evalLoading, setEvalLoading] = useState(false);
   const [evalError, setEvalError] = useState('');
+  const [evalLastUpdated, setEvalLastUpdated] = useState(null);
 
   const handleExecuteRagQuery = async (overrideQuery) => {
     const q = (overrideQuery || ragQueryInput || "").trim();
@@ -149,6 +150,7 @@ export default function App() {
       const res = await api.getAgentMetrics();
       if (res) {
         setEvalMetrics(res);
+          setEvalLastUpdated(new Date().toISOString());
       } else {
         setEvalError('No metrics returned from server');
       }
@@ -1551,6 +1553,11 @@ export default function App() {
                   {evalError && (
                     <div style={{ color: '#f87171', fontSize: '13px' }}>
                       {evalError}
+                    </div>
+                  )}
+                  {evalLastUpdated && (
+                    <div style={{ color: '#94a3b8', fontSize: '13px' }}>
+                      Last updated: {new Date(evalLastUpdated).toLocaleString()}
                     </div>
                   )}
                 </div>
