@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: marketmind-analytics-api
+    runtime: docker
+    dockerfilePath: ./analytics-service/Dockerfile
+    dockerContext: ./analytics-service
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: marketmind-db
+          property: connectionString
+      - key: REDIS_HOST
+        value: ""
+      - key: REDIS_PORT
+        value: "6379"
+      - key: ALLOWED_ORIGINS
+        value: "https://marketmindai.vercel.app,http://localhost:5173,http://localhost:5174"
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: marketmind-db
+    plan: free
+    databaseName: marketmind
+    user: marketmind_user
