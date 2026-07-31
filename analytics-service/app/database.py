@@ -131,6 +131,22 @@ class ModelRegistry(Base):
     created_at = Column(DateTime, server_default=None)
     status = Column(String(20), nullable=False)
 
+
+class FactAgentEvaluation(Base):
+    __tablename__ = "fact_agent_evaluation"
+    eval_id = Column(Integer, primary_key=True, index=True)
+    question_id = Column(String(50), nullable=True, index=True)
+    predicted_answer = Column(String, nullable=False)
+    ground_truth = Column(String, nullable=True)
+    # number of relevant items in top-5 (0-5)
+    correct_at_5 = Column(Integer, nullable=True, default=0)
+    # top-1 correct flag (0 or 1)
+    correct_at_1 = Column(Integer, nullable=True, default=0)
+    faithfulness_score = Column(Float, nullable=True)
+    hallucinated = Column(Integer, nullable=True)  # 1 = hallucinated, 0 = not
+    latency_ms = Column(Integer, nullable=True)
+    created_at = Column(DateTime, server_default=None)
+
 def init_db():
     logger.info("Initializing database schemas...")
     Base.metadata.create_all(bind=engine)
