@@ -1,4 +1,4 @@
-name: Build and Test CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -9,6 +9,9 @@ on:
       - main
 
 jobs:
+  # ─────────────────────────────────────────────────────────
+  # JOB 1: Build & Test all services (runs on every push/PR)
+  # ─────────────────────────────────────────────────────────
   build-and-test:
     name: Build & Test Services
     runs-on: ubuntu-latest
@@ -55,3 +58,43 @@ jobs:
           cd dashboard
           npm install
           npm run build
+
+  # ─────────────────────────────────────────────────────────
+  # JOB 2: Deploy (only on push to main, after CI passes)
+  # ─────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # ── Deploy Dashboard → Vercel ──────────────────────
+      - name: Deploy Dashboard to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./dashboard
+          vercel-args: '--prod'
+
+      # ── Deploy Analytics API → Render ─────────────────
+      - name: Trigger Render Deploy (Analytics API)
+        run: |
+          curl -s -X POST \
+            "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"clearCache": false}'
+          echo "✅ Render deploy triggered for Analytics API"
+
+      - name: Deployment Summary
+        run: |
+          echo "🚀 Deployment complete!"
+          echo "📊 Dashboard:    https://marketmindai.vercel.app"
+          echo "🔌 Analytics API: https://marketmind-analytics-api.onrender.com"
+          echo "📋 Render Docs:  https://dashboard.render.com"

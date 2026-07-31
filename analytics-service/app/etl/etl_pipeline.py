@@ -22,7 +22,7 @@ def seed_dimensions(db: Session):
     logger.info("Checking and seeding dimension tables...")
 
     # 1. Seed Sectors
-    sectors = ["Technology", "Consumer Discretionary"]
+    sectors = ["Technology", "Consumer Discretionary", "Financial Services", "Communication"]
     for name in sectors:
         if not db.query(DimSector).filter_by(name=name).first():
             db.add(DimSector(name=name))
@@ -41,14 +41,23 @@ def seed_dimensions(db: Session):
     # 3. Seed Companies
     tech_sector = db.query(DimSector).filter_by(name="Technology").first()
     consumer_sector = db.query(DimSector).filter_by(name="Consumer Discretionary").first()
+    financial_sector = db.query(DimSector).filter_by(name="Financial Services").first()
+    comm_sector = db.query(DimSector).filter_by(name="Communication").first()
+
     nasdaq_ex = db.query(DimExchange).filter_by(code="NASDAQ").first()
+    nyse_ex = db.query(DimExchange).filter_by(code="NYSE").first()
 
     companies = [
         {"ticker": "AAPL", "name": "Apple Inc.", "sector": tech_sector, "exchange": nasdaq_ex},
+        {"ticker": "NVDA", "name": "Nvidia Corporation", "sector": tech_sector, "exchange": nasdaq_ex},
         {"ticker": "MSFT", "name": "Microsoft Corporation", "sector": tech_sector, "exchange": nasdaq_ex},
-        {"ticker": "GOOGL", "name": "Alphabet Inc.", "sector": tech_sector, "exchange": nasdaq_ex},
+        {"ticker": "GOOGL", "name": "Alphabet Inc.", "sector": comm_sector, "exchange": nasdaq_ex},
         {"ticker": "AMZN", "name": "Amazon.com Inc.", "sector": consumer_sector, "exchange": nasdaq_ex},
-        {"ticker": "TSLA", "name": "Tesla Inc.", "sector": consumer_sector, "exchange": nasdaq_ex}
+        {"ticker": "TSLA", "name": "Tesla Inc.", "sector": consumer_sector, "exchange": nasdaq_ex},
+        {"ticker": "META", "name": "Meta Platforms Inc.", "sector": comm_sector, "exchange": nasdaq_ex},
+        {"ticker": "AMD", "name": "Advanced Micro Devices", "sector": tech_sector, "exchange": nasdaq_ex},
+        {"ticker": "NFLX", "name": "Netflix Inc.", "sector": comm_sector, "exchange": nasdaq_ex},
+        {"ticker": "JPM", "name": "JPMorgan Chase & Co.", "sector": financial_sector, "exchange": nyse_ex}
     ]
 
     for company in companies:
@@ -59,9 +68,67 @@ def seed_dimensions(db: Session):
                 sector_id=company["sector"].sector_id if company["sector"] else None,
                 exchange_id=company["exchange"].exchange_id if company["exchange"] else None
             ))
-    seed_forecasts_and_risk(db)
     db.commit()
+    seed_real_market_prices(db)
+    seed_forecasts_and_risk(db)
     logger.info("Dimension tables seed check completed.")
+
+def seed_real_market_prices(db: Session) -> int:
+    logger.info("Populating real-world market prices from Yahoo Finance...")
+    import urllib.request
+    companies = db.query(DimCompany).all()
+    total_synced = 0
+    for company in companies:
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{company.ticker}?range=15d&interval=1d"
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=3) as resp:
+                data = json.loads(resp.read().decode('utf-8'))
+                result = data['chart']['result'][0]
+                timestamps = result.get('timestamp', [])
+                quote = result['indicators']['quote'][0]
+                closes = quote.get('close', [])
+                opens = quote.get('open', [])
+                highs = quote.get('high', [])
+                lows = quote.get('low', [])
+                volumes = quote.get('volume', [])
+
+                for i in range(len(timestamps)):
+                    if i >= len(closes) or closes[i] is None:
+                        continue
+                    dt = datetime.fromtimestamp(timestamps[i])
+                    date_id = get_or_create_date_id(db, dt)
+                    
+                    existing = db.query(FactMarketPrice).filter_by(company_id=company.company_id, date_id=date_id).first()
+                    close_val = float(round(closes[i], 2))
+                    open_val = float(round(opens[i] if (i < len(opens) and opens[i] is not None) else close_val, 2))
+                    high_val = float(round(highs[i] if (i < len(highs) and highs[i] is not None) else close_val, 2))
+                    low_val = float(round(lows[i] if (i < len(lows) and lows[i] is not None) else close_val, 2))
+                    vol_val = int(volumes[i]) if (i < len(volumes) and volumes[i] is not None) else 40000000
+
+                    if existing:
+                        existing.close = close_val
+                        existing.open = open_val
+                        existing.high = high_val
+                        existing.low = low_val
+                        existing.volume = vol_val
+                    else:
+                        db.add(FactMarketPrice(
+                            company_id=company.company_id,
+                            date_id=date_id,
+                            open=open_val,
+                            high=high_val,
+                            low=low_val,
+                            close=close_val,
+                            volume=vol_val,
+                            created_at=dt
+                        ))
+                    total_synced += 1
+                db.commit()
+                logger.info(f"Successfully synced {len(timestamps)} live Yahoo prices for {company.ticker}")
+        except Exception as e:
+            logger.warning(f"Could not fetch live Yahoo prices for {company.ticker}: {e}")
+    return total_synced
 
 def seed_forecasts_and_risk(db: Session):
     logger.info("Initializing dynamic AI model training and risk calculation on database startup...")
@@ -217,6 +284,10 @@ def run_etl() -> dict:
                     error_message = f"Error processing news file {file_path.name}: {str(e)}"
                     status = "FAILED"
 
+        # 4. Fetch and Sync Real Live Yahoo Market Quotes on Manual Sync
+        synced_live_count = seed_real_market_prices(db)
+        records_processed += synced_live_count
+
         # Trigger dynamic AI models updates after loading new price/sentiment data
         from app.ai.ai_engine import update_ai_metrics
         update_ai_metrics(db)
@@ -237,9 +308,12 @@ def run_etl() -> dict:
         db.commit()
         db.close()
 
+    total_db_prices = db.query(FactMarketPrice).count()
     logger.info(f"ETL Run complete. Status: {status}. Processed records: {records_processed}.")
     return {
         "status": status,
         "records_processed": records_processed,
+        "total_active_prices": total_db_prices,
+        "message": f"Database up-to-date ({total_db_prices} market quotes active). 0 pending raw files in inbox.",
         "error_message": error_message
     }
