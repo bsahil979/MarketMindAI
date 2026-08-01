@@ -11,7 +11,17 @@ export default function StockDetailView({
   renderInteractiveChart,
 }) {
   if (!selectedStockData) {
-    return null;
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px', textAlign: 'center' }}>
+        <div style={{ fontSize: '48px', marginBottom: '20px' }}>📊</div>
+        <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: 'var(--color-text-primary)' }}>
+          Loading Stock Data...
+        </h3>
+        <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', maxWidth: '400px' }}>
+          Fetching real-time analytics for {selectedTicker || 'selected stock'}. If this persists, the backend API may be unavailable.
+        </p>
+      </div>
+    );
   }
 
   return (
