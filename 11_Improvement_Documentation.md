@@ -125,8 +125,10 @@ Improvement target:
 
 ---
 
-## 6. First improvement started
-The first improvement implemented is frontend modularization:
-- the login/register experience was extracted into a dedicated component to reduce the size and complexity of the main dashboard file.
+## 6. Progress update
+The initial refactor work has now reached a more substantial milestone:
+- the main dashboard view was split into reusable presentation components for overview, pipeline health, settings, and detail views;
+- the analytics FastAPI entrypoint was reorganized into domain-specific route modules for auth, financial data, copilot, agent workflows, and system/ETL endpoints;
+- the frontend build and backend import path were both verified successfully after the restructuring.
 
-This is a small but meaningful step toward a cleaner and more maintainable codebase.
+These changes improve maintainability, reduce the size of the main application entrypoints, and make it easier to evolve the system without entangling unrelated concerns.

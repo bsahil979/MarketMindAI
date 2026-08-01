@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { api, getToken, clearToken, getUsername } from './services/api';
 import AuthPanel from './components/AuthPanel';
+import StockDetailView from './components/StockDetailView';
+import AICopilotView from './components/AICopilotView';
+import EvaluationInspectorView from './components/EvaluationInspectorView';
+import MultiStockCompareView from './components/MultiStockCompareView';
+import PortfolioAllocatorView from './components/PortfolioAllocatorView';
+import OverviewDashboardView from './components/OverviewDashboardView';
+import PipelineHealthView from './components/PipelineHealthView';
+import SettingsView from './components/SettingsView';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -849,258 +857,29 @@ export default function App() {
 
         {/* --- VIEW: DASHBOARD --- */}
         {currentTab === 'dashboard' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            
-            {/* Index Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
-              {[
-                { name: "S&P 500 Index", val: "5,432.12", chg: "+0.32%", up: true },
-                { name: "NASDAQ Composite", val: "17,845.60", chg: "+0.85%", up: true },
-                { name: "Dow Jones Industrial", val: "39,120.45", chg: "-0.14%", up: false },
-              ].map((idx, i) => (
-                <div key={i} className="glass-panel glass-panel-hover" style={{ padding: '24px' }}>
-                  <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', marginBottom: '8px' }}>{idx.name}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                    <h3 style={{ fontSize: '24px', fontWeight: '700' }}>{idx.val}</h3>
-                    <span style={{ color: idx.up ? 'var(--color-success)' : 'var(--color-danger)', fontWeight: '600', fontSize: '13px' }}>{idx.chg}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Main Stock List table */}
-            <div className="glass-panel" style={{ padding: '24px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '20px' }}>Monitored Asset Feeds</h3>
-              
-              {stocksLoading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '40px' }}><div className="spinner"></div></div>
-              ) : (
-                <div style={{ overflowX: 'auto' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                    <thead>
-                      <tr style={{ borderBottom: '1px solid var(--glass-border)', color: 'var(--color-text-secondary)', fontSize: '13px' }}>
-                        <th style={{ padding: '16px' }}>Company</th>
-                        <th style={{ padding: '16px' }}>Sector</th>
-                        <th style={{ padding: '16px' }}>Exchange</th>
-                        <th style={{ padding: '16px' }}>Trend (7D)</th>
-                        <th style={{ padding: '16px', textAlign: 'right' }}>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {stocks.map((stock) => {
-                        const isStarred = watchlist.includes(stock.ticker);
-                        return (
-                          <tr key={stock.ticker} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)', fontSize: '14px', transition: 'var(--transition-smooth)' }} className="table-row-hover">
-                            <td style={{ padding: '16px', fontWeight: '600' }}>
-                              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                <span style={{ color: 'var(--color-text-primary)' }}>{stock.ticker}</span>
-                                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>{stock.name}</span>
-                              </div>
-                            </td>
-                            <td style={{ padding: '16px', color: 'var(--color-text-secondary)' }}>{stock.sector}</td>
-                            <td style={{ padding: '16px', color: 'var(--color-text-muted)' }}>
-                              <span style={{ background: 'rgba(255,255,255,0.04)', padding: '2px 8px', borderRadius: '4px', fontSize: '11px' }}>{stock.exchange}</span>
-                            </td>
-                            <td style={{ padding: '16px' }}>
-                              {/* deterministic sparklines for lists */}
-                              {renderSparkline([
-                                { close: 100 }, { close: 102 }, { close: 98 }, { close: 105 }, 
-                                { close: stock.ticker === 'TSLA' ? 95 : 108 }
-                              ])}
-                            </td>
-                            <td style={{ padding: '16px', textAlign: 'right' }}>
-                              <div style={{ display: 'inline-flex', gap: '8px' }}>
-                                <button 
-                                  onClick={() => { setSelectedTicker(stock.ticker); setCurrentTab('details'); }} 
-                                  className="btn btn-secondary" 
-                                  style={{ padding: '6px 12px', fontSize: '12px' }}
-                                >
-                                  Analyze
-                                </button>
-                                <button 
-                                  onClick={() => toggleWatchlist(stock.ticker)} 
-                                  className="btn btn-secondary" 
-                                  style={{ padding: '6px 10px', fontSize: '12px' }}
-                                >
-                                  {isStarred ? '★' : '☆'}
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-          </div>
+          <OverviewDashboardView
+            stocks={stocks}
+            stocksLoading={stocksLoading}
+            watchlist={watchlist}
+            setSelectedTicker={setSelectedTicker}
+            setCurrentTab={setCurrentTab}
+            toggleWatchlist={toggleWatchlist}
+            renderSparkline={renderSparkline}
+          />
         )}
 
         {/* --- VIEW: STOCK DETAILS --- */}
         {currentTab === 'details' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            
-            {/* Ticker selector tab bar */}
-            <div style={{ display: 'flex', gap: '10px', borderBottom: '1px solid var(--glass-border)', paddingBottom: '16px', flexWrap: 'wrap' }}>
-              {stocks.map(s => (
-                <button
-                  key={s.ticker}
-                  onClick={() => setSelectedTicker(s.ticker)}
-                  className={`ticker-pill ${selectedTicker === s.ticker ? 'ticker-pill-active' : ''}`}
-                >
-                  {s.ticker}
-                </button>
-              ))}
-            </div>
-
-            {selectedStockData && (
-              <div className="glass-panel" style={{ padding: '30px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                  <div>
-                    <h2 style={{ fontSize: '24px', fontWeight: '700' }}>{selectedStockData.name} ({selectedTicker})</h2>
-                    <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', marginTop: '4px' }}>{selectedStockData.sector} • {selectedStockData.exchange}</p>
-                  </div>
-                  {priceHistory.length > 0 && (
-                    <div style={{ textAlign: 'right' }}>
-                      <h3 style={{ fontSize: '28px', fontWeight: '800', color: 'var(--accent-blue)' }}>
-                        ${priceHistory[priceHistory.length - 1].close}
-                      </h3>
-                      <p style={{ fontSize: '12px', color: 'var(--color-success)', fontWeight: '600' }}>+1.45% past day</p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Primary SVG Chart */}
-                <div className="glass-panel" style={{ padding: '20px', background: 'rgba(0,0,0,0.15)', marginBottom: '30px' }}>
-                  <h4 style={{ fontSize: '14px', fontWeight: '600', color: 'var(--color-text-secondary)', marginBottom: '16px' }}>Price History & AI Predictions (3-Day Horizon)</h4>
-                  {renderInteractiveChart()}
-                </div>
-
-                {/* Grid details */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
-                  
-                  {/* Stats Grid */}
-                  <div className="glass-panel" style={{ padding: '20px' }}>
-                    <h4 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '16px', color: 'var(--color-text-secondary)' }}>Historic Price Points</h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      {priceHistory.length > 0 ? (
-                        <>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>Open</span>
-                            <span style={{ fontWeight: '600' }}>${priceHistory[priceHistory.length - 1].open}</span>
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>High</span>
-                            <span style={{ fontWeight: '600' }}>${priceHistory[priceHistory.length - 1].high}</span>
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>Low</span>
-                            <span style={{ fontWeight: '600' }}>${priceHistory[priceHistory.length - 1].low}</span>
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>Volume</span>
-                            <span style={{ fontWeight: '600' }}>{priceHistory[priceHistory.length - 1].volume.toLocaleString()}</span>
-                          </div>
-                        </>
-                      ) : <p style={{ opacity: 0.5 }}>Run ETL to seed database records.</p>}
-                    </div>
-                  </div>
-
-                  {/* Risk Analytics Grid */}
-                  <div className="glass-panel" style={{ padding: '20px' }}>
-                    <h4 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '16px', color: 'var(--color-text-secondary)' }}>Risk Indicators</h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      {riskMetrics ? (
-                        <>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>Beta Index</span>
-                            <span style={{ fontWeight: '600' }}>{riskMetrics.beta}</span>
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>Sharpe Ratio</span>
-                            <span style={{ fontWeight: '600' }}>{riskMetrics.sharpe_ratio}</span>
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
-                            <span style={{ color: 'var(--color-text-muted)' }}>Value at Risk (VaR)</span>
-                            <span style={{ fontWeight: '600', color: 'var(--color-danger)' }}>{(riskMetrics.value_at_risk * 100).toFixed(1)}%</span>
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--color-text-muted)', borderTop: '1px solid var(--glass-border)', paddingTop: '8px', marginTop: '4px' }}>
-                            <span>Source: {riskMetrics.source}</span>
-                          </div>
-                        </>
-                      ) : <p style={{ opacity: 0.5 }}>No risk indicators loaded.</p>}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Model Registry Comparison Table */}
-                <div className="glass-panel" style={{ padding: '24px', marginTop: '30px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
-                    <div>
-                      <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#f8fafc' }}>
-                        MLOps Model Registry & Deployment Benchmark
-                      </h4>
-                      <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '2px' }}>
-                        Accuracy metrics logged across historical evaluation runs.
-                      </p>
-                    </div>
-                    
-                    {/* Status Definitions Legend */}
-                    <div style={{ display: 'flex', gap: '16px', fontSize: '11px', background: '#090d16', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
-                        <span style={{ color: '#34d399', fontWeight: '700' }}>DEPLOYED:</span>
-                        <span style={{ color: '#94a3b8' }}>Active serving model in API</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#94a3b8' }}></span>
-                        <span style={{ color: '#cbd5e1', fontWeight: '700' }}>TRAINED:</span>
-                        <span style={{ color: '#94a3b8' }}>Evaluated baseline in registry</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ overflowX: 'auto' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid var(--glass-border)', color: '#94a3b8' }}>
-                          <th style={{ padding: '12px 10px' }}>Model Name</th>
-                          <th style={{ padding: '12px 10px' }}>Version</th>
-                          <th style={{ padding: '12px 10px' }}>RMSE</th>
-                          <th style={{ padding: '12px 10px' }}>MAPE</th>
-                          <th style={{ padding: '12px 10px' }}>R² Score</th>
-                          <th style={{ padding: '12px 10px' }}>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {modelRegistry.map((model, idx) => (
-                          <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)' }} className="table-row-hover">
-                            <td style={{ padding: '12px 10px', fontWeight: '600', color: '#f8fafc' }}>{model.model_name}</td>
-                            <td style={{ padding: '12px 10px', color: '#cbd5e1', fontFamily: 'var(--font-mono)' }}>{model.version}</td>
-                            <td style={{ padding: '12px 10px', fontFamily: 'var(--font-mono)' }}>{model.rmse.toFixed(3)}</td>
-                            <td style={{ padding: '12px 10px', fontFamily: 'var(--font-mono)' }}>{(model.mape * 100).toFixed(2)}%</td>
-                            <td style={{ padding: '12px 10px', color: '#34d399', fontWeight: '700', fontFamily: 'var(--font-mono)' }}>{model.r2_score.toFixed(3)}</td>
-                            <td style={{ padding: '12px 10px' }}>
-                              <span className={model.status === 'DEPLOYED' ? 'badge-success' : 'btn-secondary'} style={{ fontSize: '10px', padding: '3px 8px', borderRadius: '4px' }}>
-                                {model.status === 'DEPLOYED' ? '● DEPLOYED' : 'TRAINED'}
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
-                        {modelRegistry.length === 0 && (
-                          <tr>
-                            <td colSpan="6" style={{ padding: '16px', textAlign: 'center', opacity: 0.5 }}>Run Ingest/ETL to seed the models registry records.</td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-              </div>
-            )}
-          </div>
+          <StockDetailView
+            selectedStockData={selectedStockData}
+            selectedTicker={selectedTicker}
+            priceHistory={priceHistory}
+            riskMetrics={riskMetrics}
+            modelRegistry={modelRegistry}
+            stocks={stocks}
+            onSelectTicker={setSelectedTicker}
+            renderInteractiveChart={renderInteractiveChart}
+          />
         )}
 
         {/* --- VIEW: NEWS SENTIMENT --- */}
@@ -1251,51 +1030,12 @@ export default function App() {
 
         {/* --- VIEW: AI COPILOT --- */}
         {currentTab === 'copilot' && (
-          <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', height: '560px', overflow: 'hidden' }}>
-            
-            {/* Conversation Log */}
-            <div style={{ flex: 1, padding: '24px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {copilotMessages.map((msg, i) => (
-                <div 
-                  key={i} 
-                  style={{
-                    display: 'flex', 
-                    justifyContent: msg.sender === 'ai' ? 'flex-start' : 'flex-end',
-                  }}
-                >
-                  <div 
-                    className="glass-panel" 
-                    style={{
-                      maxWidth: '75%', 
-                      padding: '12px 18px', 
-                      background: msg.sender === 'ai' ? 'var(--glass-bg)' : 'linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(59,130,246,0.1) 100%)',
-                      borderColor: msg.sender === 'ai' ? 'var(--glass-border)' : 'rgba(59,130,246,0.2)',
-                      borderRadius: msg.sender === 'ai' ? '16px 16px 16px 4px' : '16px 16px 4px 16px',
-                      fontSize: '13.5px',
-                      lineHeight: '1.5'
-                    }}
-                  >
-                    <p>{msg.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Prompt input Form */}
-            <form onSubmit={handleSendCopilotMessage} style={{ padding: '16px 24px', borderTop: '1px solid var(--glass-border)', display: 'flex', gap: '12px' }}>
-              <input 
-                type="text" 
-                className="input-field" 
-                placeholder="Ask about forecast prices, beta risk, or database sentiments..." 
-                value={copilotInput}
-                onChange={(e) => setCopilotInput(e.target.value)}
-              />
-              <button type="submit" className="btn btn-primary">
-                Send
-              </button>
-            </form>
-
-          </div>
+          <AICopilotView
+            copilotMessages={copilotMessages}
+            copilotInput={copilotInput}
+            setCopilotInput={setCopilotInput}
+            handleSendCopilotMessage={handleSendCopilotMessage}
+          />
         )}
 
         {/* --- VIEW: PORTFOLIO ADVISOR RAG --- */}
@@ -1617,435 +1357,62 @@ export default function App() {
 
         {/* --- VIEW: MULTI-STOCK COMPARE --- */}
         {currentTab === 'compare' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            <div className="glass-panel" style={{ padding: '30px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
-                <div>
-                  <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#f8fafc' }}>Side-by-Side Multi-Company Financial Matrix</h3>
-                  <p style={{ fontSize: '13px', color: '#94a3b8', marginTop: '4px' }}>Compare revenue, net income, cash flow, and debt liabilities across top market leader tickers.</p>
-                </div>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {["AAPL", "MSFT", "NVDA", "AMZN", "TSLA", "GOOGL", "META"].map(t => {
-                    const isSel = compareTickers.includes(t);
-                    return (
-                      <button
-                        key={t}
-                        onClick={() => {
-                          let nextT;
-                          if (isSel) {
-                            if (compareTickers.length <= 2) return;
-                            nextT = compareTickers.filter(x => x !== t);
-                          } else {
-                            nextT = [...compareTickers, t];
-                          }
-                          setCompareTickers(nextT);
-                          handleRunComparison(nextT);
-                        }}
-                        style={{
-                          padding: '6px 14px',
-                          borderRadius: '20px',
-                          border: isSel ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.1)',
-                          background: isSel ? 'rgba(56, 189, 248, 0.2)' : 'rgba(255,255,255,0.03)',
-                          color: isSel ? '#38bdf8' : '#94a3b8',
-                          fontSize: '12px',
-                          fontWeight: '700',
-                          cursor: 'pointer'
-                        }}
-                      >
-                        {isSel ? `✓ ${t}` : `+ ${t}`}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Comparison Data Table */}
-              {compareLoading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', padding: '40px' }}><div className="spinner"></div></div>
-              ) : (
-                <div style={{ overflowX: 'auto' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
-                    <thead>
-                      <tr style={{ borderBottom: '1px solid var(--glass-border)', color: 'var(--color-text-secondary)' }}>
-                        <th style={{ padding: '14px' }}>Company</th>
-                        <th style={{ padding: '14px' }}>Revenue ($B)</th>
-                        <th style={{ padding: '14px' }}>Net Income ($B)</th>
-                        <th style={{ padding: '14px' }}>Free Cash Flow ($B)</th>
-                        <th style={{ padding: '14px' }}>Total Debt ($B)</th>
-                        <th style={{ padding: '14px' }}>Cash Reserves ($B)</th>
-                        <th style={{ padding: '14px' }}>Current Ratio</th>
-                        <th style={{ padding: '14px' }}>Debt/Equity</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {compareData.map((item) => (
-                        <tr key={item.ticker} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                          <td style={{ padding: '14px', fontWeight: '700', color: '#f8fafc' }}>
-                            {item.name} <span style={{ color: '#38bdf8', fontSize: '11px', marginLeft: '6px' }}>({item.ticker})</span>
-                          </td>
-                          <td style={{ padding: '14px', fontWeight: '600' }}>${item.revenue_b}B</td>
-                          <td style={{ padding: '14px', color: '#34d399', fontWeight: '600' }}>${item.net_income_b}B</td>
-                          <td style={{ padding: '14px', color: '#38bdf8' }}>${item.fcf_b}B</td>
-                          <td style={{ padding: '14px', color: '#f43f5e' }}>${item.debt_b}B</td>
-                          <td style={{ padding: '14px', color: '#c084fc', fontWeight: '600' }}>${item.cash_b}B</td>
-                          <td style={{ padding: '14px' }}>{item.current_ratio}x</td>
-                          <td style={{ padding: '14px' }}>{item.debt_equity}x</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-
-            {/* Visual Financial Comparison Progress Bars */}
-            <div className="glass-panel" style={{ padding: '30px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#f8fafc', marginBottom: '20px' }}>
-                Visual Cash vs Debt Breakdown
-              </h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-                {compareData.map((comp) => (
-                  <div key={comp.ticker} style={{ background: '#090d16', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#f8fafc', marginBottom: '14px' }}>
-                      {comp.ticker} — {comp.name}
-                    </h4>
-                    <div className="visual-bar-container">
-                      <div className="visual-bar-label">
-                        <span>Revenue</span>
-                        <span style={{ color: '#38bdf8' }}>${comp.revenue_b}B</span>
-                      </div>
-                      <div className="visual-bar-track">
-                        <div className="visual-bar-fill" style={{ width: `${Math.min((comp.revenue_b / 600) * 100, 100)}%`, background: '#38bdf8' }}></div>
-                      </div>
-
-                      <div className="visual-bar-label" style={{ marginTop: '6px' }}>
-                        <span>Cash Reserves</span>
-                        <span style={{ color: '#34d399' }}>${comp.cash_b}B</span>
-                      </div>
-                      <div className="visual-bar-track">
-                        <div className="visual-bar-fill" style={{ width: `${Math.min((comp.cash_b / 120) * 100, 100)}%`, background: '#34d399' }}></div>
-                      </div>
-
-                      <div className="visual-bar-label" style={{ marginTop: '6px' }}>
-                        <span>Total Debt</span>
-                        <span style={{ color: '#f43f5e' }}>${comp.debt_b}B</span>
-                      </div>
-                      <div className="visual-bar-track">
-                        <div className="visual-bar-fill" style={{ width: `${Math.min((comp.debt_b / 160) * 100, 100)}%`, background: '#f43f5e' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <MultiStockCompareView
+            compareTickers={compareTickers}
+            setCompareTickers={setCompareTickers}
+            compareData={compareData}
+            compareLoading={compareLoading}
+            handleRunComparison={handleRunComparison}
+          />
         )}
 
         {/* --- VIEW: PORTFOLIO ALLOCATOR --- */}
         {currentTab === 'portfolio' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            <div className="glass-panel" style={{ padding: '30px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#f8fafc', marginBottom: '6px' }}>
-                Risk-Adjusted Portfolio Allocation Calculator
-              </h3>
-              <p style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '24px' }}>
-                Configure your target investment capital, risk appetite, and horizon to generate optimized allocation recommendations.
-              </p>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginBottom: '24px' }}>
-                <div>
-                  <label style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '600', display: 'block', marginBottom: '8px' }}>Total Capital ($ or ₹)</label>
-                  <input
-                    type="number"
-                    className="input-field"
-                    value={portfolioCapital}
-                    onChange={(e) => setPortfolioCapital(Number(e.target.value))}
-                  />
-                </div>
-                <div>
-                  <label style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '600', display: 'block', marginBottom: '8px' }}>Risk Appetite</label>
-                  <select
-                    className="input-field"
-                    value={portfolioRisk}
-                    onChange={(e) => setPortfolioRisk(e.target.value)}
-                  >
-                    <option value="Conservative">Conservative (Low Risk)</option>
-                    <option value="Moderate">Moderate (Balanced)</option>
-                    <option value="Aggressive">Aggressive (High Growth)</option>
-                  </select>
-                </div>
-                <div>
-                  <label style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '600', display: 'block', marginBottom: '8px' }}>Time Horizon (Years)</label>
-                  <select
-                    className="input-field"
-                    value={portfolioDuration}
-                    onChange={(e) => setPortfolioDuration(Number(e.target.value))}
-                  >
-                    <option value={1}>1 Year (Short Term)</option>
-                    <option value={5}>5 Years (Medium Term)</option>
-                    <option value={10}>10 Years (Long Term)</option>
-                  </select>
-                </div>
-              </div>
-
-              <button onClick={handleRunPortfolioAllocation} className="btn btn-primary" style={{ padding: '12px 28px', fontSize: '14px', fontWeight: '700' }}>
-                Generate Recommendation
-              </button>
-            </div>
-
-            {portfolioResult && (
-              <div className="glass-panel" style={{ padding: '30px' }}>
-                <h3 style={{ fontSize: '18px', fontWeight: '700', color: '#f8fafc', marginBottom: '16px' }}>
-                  Recommended Asset Allocation
-                </h3>
-                <p style={{ fontSize: '13.5px', color: '#cbd5e1', marginBottom: '24px' }}>{portfolioResult.summary}</p>
-
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
-                  {portfolioResult.allocations.map((alloc, idx) => (
-                    <div key={idx} style={{ background: '#090d16', padding: '20px', borderRadius: '12px', border: `1px solid ${alloc.color}40` }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                        <span style={{ fontSize: '15px', fontWeight: '700', color: '#f8fafc' }}>{alloc.asset}</span>
-                        <span style={{ fontSize: '16px', fontWeight: '800', color: alloc.color }}>{alloc.percentage}%</span>
-                      </div>
-                      <div className="visual-bar-track" style={{ marginBottom: '12px' }}>
-                        <div className="visual-bar-fill" style={{ width: `${alloc.percentage}%`, background: alloc.color }}></div>
-                      </div>
-                      <div style={{ fontSize: '12px', color: '#94a3b8' }}>
-                        Allocated Capital: <strong style={{ color: '#f8fafc' }}>${((portfolioCapital * alloc.percentage) / 100).toLocaleString()}</strong>
-                      </div>
-                      <div style={{ fontSize: '11.5px', color: '#cbd5e1', marginTop: '6px', fontStyle: 'italic' }}>
-                        Rationale: {alloc.reason}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          <PortfolioAllocatorView
+            portfolioCapital={portfolioCapital}
+            setPortfolioCapital={setPortfolioCapital}
+            portfolioRisk={portfolioRisk}
+            setPortfolioRisk={setPortfolioRisk}
+            portfolioDuration={portfolioDuration}
+            setPortfolioDuration={setPortfolioDuration}
+            portfolioResult={portfolioResult}
+            handleRunPortfolioAllocation={handleRunPortfolioAllocation}
+          />
         )}
 
         {/* --- VIEW: EVALUATION INSPECTOR --- */}
         {currentTab === 'inspector' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div className="glass-panel" style={{ padding: '20px', display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <input
-                type="text"
-                className="input-field"
-                placeholder="Evaluation ID (e.g. 1 or bench_0001)"
-                value={inspectorEvalId}
-                onChange={(e) => setInspectorEvalId(e.target.value)}
-                style={{ flex: 1 }}
-              />
-              <button onClick={() => loadInspection(inspectorEvalId)} className="btn btn-primary">Load</button>
-              <button onClick={() => { setInspectorEvalId(''); setInspectorEval(null); setInspectorRetrievals([]); }} className="btn">Clear</button>
-            </div>
-
-            {inspectorLoading && (
-              <div className="glass-panel" style={{ padding: '20px', textAlign: 'center' }}><div className="spinner"></div></div>
-            )}
-
-            {inspectorError && (
-              <div className="glass-panel" style={{ padding: '16px', color: '#f87171' }}>{inspectorError}</div>
-            )}
-
-            {inspectorEval && (
-              <div className="glass-panel" style={{ padding: '20px' }}>
-                <h3 style={{ marginTop: 0 }}>Evaluation #{inspectorEval.eval_id}</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                  <div><strong>Question ID:</strong> {inspectorEval.question_id}</div>
-                  <div><strong>Latency (ms):</strong> {inspectorEval.latency_ms}</div>
-                  <div style={{ gridColumn: '1 / -1' }}><strong>Question:</strong> <div style={{ color: '#cbd5e1' }}>{inspectorEval.question || ''}</div></div>
-                  <div style={{ gridColumn: '1 / -1' }}><strong>Predicted Answer:</strong> <div style={{ color: '#f8fafc' }}>{inspectorEval.predicted_answer}</div></div>
-                  <div style={{ gridColumn: '1 / -1' }}><strong>Ground Truth:</strong> <div style={{ color: '#94a3b8' }}>{inspectorEval.ground_truth}</div></div>
-                  <div><strong>Correct@1:</strong> {inspectorEval.correct_at_1}</div>
-                  <div><strong>Correct@5:</strong> {inspectorEval.correct_at_5}</div>
-                  <div><strong>Faithfulness:</strong> {inspectorEval.faithfulness_score}</div>
-                  <div><strong>Hallucinated:</strong> {inspectorEval.hallucinated}</div>
-                  <div><strong>Semantic Similarity:</strong> {inspectorEval.semantic_similarity?.toFixed ? inspectorEval.semantic_similarity.toFixed(3) : inspectorEval.semantic_similarity}</div>
-                </div>
-              </div>
-            )}
-
-            {inspectorRetrievals && inspectorRetrievals.length > 0 && (
-              <div className="glass-panel" style={{ padding: '20px' }}>
-                <h4 style={{ marginTop: 0 }}>Retrieval Candidates (ordered by rank)</h4>
-                <div style={{ overflowX: 'auto' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                    <thead>
-                      <tr style={{ borderBottom: '1px solid var(--glass-border)', color: 'var(--color-text-secondary)' }}>
-                        <th style={{ padding: '10px' }}>Rank</th>
-                        <th style={{ padding: '10px' }}>Doc ID</th>
-                        <th style={{ padding: '10px' }}>Similarity</th>
-                        <th style={{ padding: '10px' }}>Is Relevant</th>
-                        <th style={{ padding: '10px' }}>Snippet</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {inspectorRetrievals.map(r => (
-                        <tr key={r.retrieval_id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
-                          <td style={{ padding: '10px', fontWeight: '700' }}>{r.rank}</td>
-                          <td style={{ padding: '10px' }}>{r.doc_id}</td>
-                          <td style={{ padding: '10px' }}>{r.similarity_score != null ? (r.similarity_score.toFixed ? r.similarity_score.toFixed(3) : r.similarity_score) : 'n/a'}</td>
-                          <td style={{ padding: '10px' }}>{r.is_relevant != null ? (r.is_relevant ? '✅' : '❌') : '—'}</td>
-                          <td style={{ padding: '10px' }}>{r.snippet}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            )}
-          </div>
+          <EvaluationInspectorView
+            inspectorEvalId={inspectorEvalId}
+            setInspectorEvalId={setInspectorEvalId}
+            loadInspection={loadInspection}
+            inspectorLoading={inspectorLoading}
+            inspectorError={inspectorError}
+            inspectorEval={inspectorEval}
+            inspectorRetrievals={inspectorRetrievals}
+            setInspectorEval={setInspectorEval}
+            setInspectorRetrievals={setInspectorRetrievals}
+          />
         )}
 
         {/* --- VIEW: PIPELINE HEALTH --- */}
         {currentTab === 'health' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            
-            {/* Connection Status cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
-              <div className="glass-panel" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--color-success)', boxShadow: '0 0 10px var(--color-success)' }}></div>
-                <div>
-                  <h4 style={{ fontSize: '15px', fontWeight: '600' }}>Ingestion Server (Spring Boot)</h4>
-                  <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '2px' }}>Operational on port 8080</p>
-                </div>
-              </div>
-
-              <div className="glass-panel" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--color-success)', boxShadow: '0 0 10px var(--color-success)' }}></div>
-                <div>
-                  <h4 style={{ fontSize: '15px', fontWeight: '600' }}>Analytics Database</h4>
-                  <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '2px' }}>Active connections populated</p>
-                </div>
-              </div>
-            </div>
-
-            {/* ETL Trigger control */}
-            <div className="glass-panel" style={{ padding: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '6px' }}>Database ETL Sync Loader</h3>
-                <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px' }}>
-                  Execute full database synchronization to parse raw JSON folder entries and load compiled star schemas indices.
-                </p>
-              </div>
-              <button onClick={handleRunEtl} disabled={etlRunning} className="btn btn-primary" style={{ padding: '12px 24px' }}>
-                {etlRunning ? <div className="spinner"></div> : 'Run ETL Sync Pipeline'}
-              </button>
-            </div>
-
-            {/* Pipeline Runs history */}
-            <div className="glass-panel" style={{ padding: '24px' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '20px' }}>Pipeline Run History</h3>
-              <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '13.5px' }}>
-                  <thead>
-                    <tr style={{ borderBottom: '1px solid var(--glass-border)', color: 'var(--color-text-secondary)' }}>
-                      <th style={{ padding: '12px' }}>Run ID</th>
-                      <th style={{ padding: '12px' }}>Timestamp</th>
-                      <th style={{ padding: '12px' }}>Processed Records</th>
-                      <th style={{ padding: '12px' }}>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {etlHistory.map(run => (
-                      <tr key={run.run_id} style={{ borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
-                        <td style={{ padding: '12px', fontWeight: '600' }}>#{run.run_id}</td>
-                        <td style={{ padding: '12px', color: 'var(--color-text-secondary)' }}>{run.run_date}</td>
-                        <td style={{ padding: '12px' }}>{run.records_processed} files</td>
-                        <td style={{ padding: '12px' }}>
-                          <span style={{
-                            padding: '2px 8px',
-                            borderRadius: '4px',
-                            fontSize: '11px',
-                            fontWeight: '600',
-                            backgroundColor: run.status === 'SUCCESS' ? 'rgba(16,185,129,0.1)' : 'rgba(239,68,68,0.1)',
-                            color: run.status === 'SUCCESS' ? 'var(--color-success)' : 'var(--color-danger)'
-                          }}>{run.status}</span>
-                        </td>
-                      </tr>
-                    ))}
-                    {etlHistory.length === 0 && (
-                      <tr>
-                        <td colSpan="4" style={{ padding: '20px', textAlign: 'center', opacity: 0.5 }}>No logs saved. Trigger a sync run to populate.</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-          </div>
+          <PipelineHealthView
+            etlRunning={etlRunning}
+            etlHistory={etlHistory}
+            handleRunEtl={handleRunEtl}
+          />
         )}
 
         {/* --- VIEW: SETTINGS --- */}
         {currentTab === 'settings' && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            
-            {/* Scheduler toggles */}
-            <div className="glass-panel" style={{ padding: '30px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '24px' }}>Automatic Ingestion Preferences</h3>
-              
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid var(--glass-border)' }}>
-                <div>
-                  <h4 style={{ fontSize: '15px', fontWeight: '600', marginBottom: '4px' }}>Real-time Background Scheduler</h4>
-                  <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px' }}>
-                    Enable or disable the Spring Boot background scheduled thread runner (runs every 30 seconds).
-                  </p>
-                </div>
-                <div style={{ position: 'relative', display: 'inline-block', width: '50px', height: '26px' }}>
-                  <input 
-                    type="checkbox" 
-                    id="schedulerToggle" 
-                    checked={schedulerEnabled}
-                    onChange={(e) => handleToggleScheduler(e.target.checked)}
-                    style={{ opacity: 0, width: 0, height: 0 }}
-                  />
-                  <label 
-                    htmlFor="schedulerToggle" 
-                    style={{
-                      position: 'absolute', cursor: 'pointer', inset: 0, 
-                      backgroundColor: schedulerEnabled ? 'var(--accent-blue)' : 'rgba(255,255,255,0.1)',
-                      borderRadius: '34px', transition: '0.3s',
-                      display: 'flex', alignItems: 'center',
-                      justifyContent: schedulerEnabled ? 'flex-end' : 'flex-start',
-                      padding: '4px'
-                    }}
-                  >
-                    <span style={{ width: '18px', height: '18px', borderRadius: '50%', backgroundColor: '#ffffff', display: 'block', transition: '0.3s' }}></span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Status details */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', paddingTop: '20px', fontSize: '13px' }}>
-                <div>
-                  <span style={{ color: 'var(--color-text-muted)' }}>Prices Files Ingested in Session</span>
-                  <p style={{ fontSize: '20px', fontWeight: '700', marginTop: '6px', color: 'var(--accent-blue)' }}>{ingestionCount.prices}</p>
-                </div>
-                <div>
-                  <span style={{ color: 'var(--color-text-muted)' }}>News Files Ingested in Session</span>
-                  <p style={{ fontSize: '20px', fontWeight: '700', marginTop: '6px', color: 'var(--accent-purple)' }}>{ingestionCount.news}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Profile specifications */}
-            <div className="glass-panel" style={{ padding: '30px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '20px' }}>User Details</h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '13.5px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
-                  <span style={{ color: 'var(--color-text-secondary)' }}>Registered Username</span>
-                  <span style={{ fontWeight: '600' }}>{username}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '12px', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
-                  <span style={{ color: 'var(--color-text-secondary)' }}>Security Token Active</span>
-                  <span style={{ fontFamily: 'monospace', color: 'var(--color-text-muted)' }}>{getToken() ? 'Bearer *********' : 'None (Mock Auth)'}</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <SettingsView
+            schedulerEnabled={schedulerEnabled}
+            handleToggleScheduler={handleToggleScheduler}
+            ingestionCount={ingestionCount}
+            username={username}
+            getToken={getToken}
+          />
         )}
 
       </main>

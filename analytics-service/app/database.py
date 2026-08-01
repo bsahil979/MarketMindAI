@@ -12,15 +12,19 @@ DATABASE_URL_SQLITE = "sqlite:///../marketmind.db" # relative to app folder
 # Connection trial
 engine = None
 try:
-    logger.info(f"Attempting to connect to PostgreSQL at {DATABASE_URL_POSTGRES}...")
-    # set short timeout for postgres connection test so it doesn't hang long
-    test_engine = create_engine(DATABASE_URL_POSTGRES, connect_args={"connect_timeout": 3})
+    logger.info(f"Attempting to connect using DATABASE_URL '{DATABASE_URL_POSTGRES}'...")
+    # If the URL is for SQLite, create engine without postgres-specific connect_args
+    if DATABASE_URL_POSTGRES.startswith("sqlite"):
+        test_engine = create_engine(DATABASE_URL_POSTGRES, connect_args={"check_same_thread": False})
+    else:
+        # set short timeout for postgres connection test so it doesn't hang long
+        test_engine = create_engine(DATABASE_URL_POSTGRES, connect_args={"connect_timeout": 3})
     conn = test_engine.connect()
     conn.close()
     engine = test_engine
-    logger.info("Successfully connected to PostgreSQL database!")
+    logger.info("Successfully connected to database!")
 except Exception as e:
-    logger.warning(f"PostgreSQL connection failed ({e}). Falling back to local SQLite database at {DATABASE_URL_SQLITE}...")
+    logger.warning(f"Database connection test failed ({e}). Falling back to local SQLite database at {DATABASE_URL_SQLITE}...")
     engine = create_engine(DATABASE_URL_SQLITE, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL_SQLITE else {})
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
