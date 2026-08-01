@@ -44,6 +44,8 @@ services:
         fromDatabase:
           name: marketmind-db
           property: connectionString
+      - key: SKIP_RAG_INIT
+        value: "true"
 
 databases:
   - name: marketmind-db
