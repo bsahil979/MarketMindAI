@@ -98,7 +98,31 @@ services:
       - MARKET_PROVIDER=yfinance
       - NEWS_PROVIDER=newsapi
       - NEWS_API_KEY=${NEWS_API_KEY:-}
+      - SKIP_RAG_INIT=true
+      - ENABLE_AUTO_SYNC=false
     restart: unless-stopped
+
+  ai-service:
+    build:
+      context: ./analytics-service
+      dockerfile: ai-service/Dockerfile
+    container_name: marketmind-ai
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/marketmind
+      - LLM_PROVIDER=ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          memory: 2G
+        limits:
+          memory: 4G
+    profiles:
+      - ai  # Only start with --profile ai
 
   dashboard:
     build:
