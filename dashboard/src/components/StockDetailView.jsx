@@ -4,6 +4,7 @@ export default function StockDetailView({
   selectedStockData,
   selectedTicker,
   priceHistory,
+  forecastData = [],
   riskMetrics,
   modelRegistry,
   stocks = [],

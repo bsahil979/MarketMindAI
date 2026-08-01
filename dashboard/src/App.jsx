@@ -920,6 +920,7 @@ export default function App() {
             selectedStockData={selectedStockData}
             selectedTicker={selectedTicker}
             priceHistory={priceHistory}
+            forecastData={forecastData}
             riskMetrics={riskMetrics}
             modelRegistry={modelRegistry}
             stocks={stocks}
