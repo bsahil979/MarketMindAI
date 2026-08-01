@@ -4,6 +4,15 @@
 // relative to the current origin.
 const API_BASE_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.__API_BASE_URL__) || "";
 
+// Debug: Log API URL configuration
+if (typeof window !== 'undefined') {
+  console.log('API Configuration:', {
+    VITE_API_URL: import.meta.env.VITE_API_URL,
+    window_API_URL: window.__API_BASE_URL__,
+    final_API_URL: API_BASE_URL
+  });
+}
+
 // Helper to check if token exists
 export const getToken = () => localStorage.getItem("marketmind_token");
 export const getUsername = () => localStorage.getItem("marketmind_username") || "Guest";
