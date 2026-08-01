@@ -7,6 +7,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 import logging
+import os
 from sqlalchemy.orm import Session
 
 from app.database import SessionLocal, DimCompany
@@ -108,15 +109,19 @@ def rag_query(request: RAGQueryRequest):
 async def startup():
     """Initialize AI components"""
     global rag_retriever, llm_interface
-    
-    try:
-        logger.info("Initializing RAG system...")
-        rag_retriever = RAGRetriever(embedding_provider="bge")
-        rag_retriever.initialize_with_sample_data()
-        logger.info("RAG system initialized")
-    except Exception as e:
-        logger.warning(f"RAG initialization failed: {e}")
-    
+
+    # Skip RAG initialization if environment variable is set
+    if os.getenv("SKIP_RAG_INIT", "false").lower() == "true":
+        logger.info("Skipping RAG system initialization (SKIP_RAG_INIT=true)")
+    else:
+        try:
+            logger.info("Initializing RAG system...")
+            rag_retriever = RAGRetriever(embedding_provider="bge")
+            rag_retriever.initialize_with_sample_data()
+            logger.info("RAG system initialized")
+        except Exception as e:
+            logger.warning(f"RAG initialization failed: {e}")
+
     try:
         logger.info("Initializing LLM interface...")
         llm_interface = LLMInterface(provider="ollama")
