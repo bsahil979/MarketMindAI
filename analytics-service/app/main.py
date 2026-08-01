@@ -64,14 +64,25 @@ async def on_startup():
     finally:
         db.close()
     
-    # Initialize RAG system
-    try:
-        initialize_rag_system()
-    except Exception as e:
-        import logging
-        logging.getLogger("marketmind").warning(f"RAG system initialization failed: {e}")
+    # Initialize RAG system (non-blocking for production)
+    import logging
+    logger = logging.getLogger("marketmind")
     
-    asyncio.create_task(periodic_auto_sync())
+    # Skip RAG initialization in production if not configured
+    if os.getenv("SKIP_RAG_INIT", "false").lower() == "true":
+        logger.info("Skipping RAG system initialization (SKIP_RAG_INIT=true)")
+    else:
+        try:
+            initialize_rag_system()
+        except Exception as e:
+            logger.warning(f"RAG system initialization failed: {e}")
+            logger.info("Application will continue without RAG system")
+    
+    # Start periodic auto-sync only if enabled
+    if os.getenv("ENABLE_AUTO_SYNC", "true").lower() == "true":
+        asyncio.create_task(periodic_auto_sync())
+    else:
+        logger.info("Periodic auto-sync disabled (ENABLE_AUTO_SYNC=false)")
 
 @app.get("/")
 def read_root():
