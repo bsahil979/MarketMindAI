@@ -293,50 +293,25 @@ export default function App() {
     if (!selectedTicker) setSelectedTicker('AAPL');
   };
 
-  const generateFallbackPrices = (ticker) => {
-    const marketQuotes = {
-      AMZN: 233.66,
-      AAPL: 224.23,
-      NVDA: 128.90,
-      MSFT: 448.20,
-      GOOGL: 179.30,
-      TSLA: 245.50,
-      META: 512.10,
-      AMD: 156.80,
-      NFLX: 645.20,
-      JPM: 204.60
-    };
-    const basePrice = marketQuotes[ticker.toUpperCase()] || 200.0;
-    const history = [];
-    for (let i = 14; i >= 0; i--) {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      const randomVar = (Math.random() - 0.48) * 3;
-      history.push({
-        price_date: date.toISOString().split('T')[0],
-        close: Number((basePrice + randomVar + (14 - i) * 0.3).toFixed(2)),
-        open: Number((basePrice + randomVar - 0.5).toFixed(2)),
-        high: Number((basePrice + randomVar + 1.8).toFixed(2)),
-        low: Number((basePrice + randomVar - 1.5).toFixed(2)),
-        volume: 45000000 + Math.floor(Math.random() * 20000000)
-      });
-    }
-    return history;
+  const normalizePriceData = (response) => {
+    if (!response || !Array.isArray(response.prices)) return [];
+    return response.prices.map(item => ({
+      price_date: item.date || item.price_date || item.created_at,
+      close: item.close,
+      open: item.open,
+      high: item.high,
+      low: item.low,
+      volume: item.volume
+    }));
   };
 
-  const generateFallbackForecast = (prices) => {
-    if (!prices || prices.length === 0) return [];
-    const lastPrice = prices[prices.length - 1].close;
-    const predictions = [];
-    for (let i = 1; i <= 5; i++) {
-      const date = new Date();
-      date.setDate(date.getDate() + i);
-      predictions.push({
-        prediction_date: date.toISOString().split('T')[0],
-        predicted_close: Number((lastPrice + i * 1.2).toFixed(2))
-      });
-    }
-    return predictions;
+  const normalizeForecastData = (response) => {
+    if (!response || !Array.isArray(response.predictions)) return [];
+    return response.predictions.map(item => ({
+      prediction_date: item.date || item.prediction_date,
+      predicted_close: item.predicted_close,
+      confidence: item.confidence
+    }));
   };
 
   const loadStocks = async () => {
@@ -380,29 +355,41 @@ export default function App() {
   const loadTickerData = async (ticker) => {
     try {
       const [pricesRes, forecastRes, riskRes, sentimentRes] = await Promise.all([
-        api.getPrices(ticker).catch(() => ({ prices: [] })),
-        api.getForecast(ticker).catch(() => ({ predictions: [] })),
-        api.getRisk(ticker).catch(() => null),
-        api.getSentiment(ticker).catch(() => null)
+        api.getPrices(ticker),
+        api.getForecast(ticker),
+        api.getRisk(ticker),
+        api.getSentiment(ticker)
       ]);
 
-      const validPrices = (pricesRes && Array.isArray(pricesRes.prices) && pricesRes.prices.length > 0)
-        ? pricesRes.prices
-        : generateFallbackPrices(ticker);
+      const validPrices = normalizePriceData(pricesRes);
+      const validForecast = normalizeForecastData(forecastRes);
 
-      const validForecast = (forecastRes && Array.isArray(forecastRes.predictions) && forecastRes.predictions.length > 0)
-        ? forecastRes.predictions
-        : generateFallbackForecast(validPrices);
+      if (!validPrices.length) {
+        throw new Error(`No price history available for ${ticker}`);
+      }
 
       setPriceHistory(validPrices);
       setForecastData(validForecast);
-      setRiskMetrics(riskRes || { ticker, sharpe_ratio: 1.84, beta: 1.12, max_drawdown: -0.14, var_95: -0.022 });
-      setNewsSentiment(sentimentRes || { ticker, sentiment_score: 0.76, label: 'BULLISH', news_count: 24 });
-      
+      setRiskMetrics(riskRes || null);
+      setNewsSentiment(sentimentRes || null);
+
       const matched = stocks.find(s => s.ticker === ticker);
-      setSelectedStockData(matched || { ticker, name: ticker + " Corp", sector: "Technology", exchange: "NASDAQ", close: validPrices[validPrices.length - 1].close, change: 1.85 });
+      const lastPrice = validPrices[validPrices.length - 1];
+      setSelectedStockData(matched || {
+        ticker,
+        name: ticker + ' Corp',
+        sector: 'Technology',
+        exchange: 'NASDAQ',
+        close: lastPrice?.close ?? null,
+        change: null
+      });
     } catch (e) {
-      console.warn("Fallback ticker data used:", e);
+      console.error('Unable to load ticker data from backend:', e);
+      setPriceHistory([]);
+      setForecastData([]);
+      setRiskMetrics(null);
+      setNewsSentiment(null);
+      setSelectedStockData(null);
     }
   };
 

@@ -16,7 +16,7 @@ export const clearToken = () => {
   localStorage.removeItem("marketmind_username");
 };
 
-// Make fetch call with timeout and header injection, falls back to mocks if server is down
+// Make fetch call with timeout and header injection, surfacing backend errors clearly.
 async function apiFetch(endpoint, options = {}) {
   const token = getToken();
   const headers = {
@@ -48,8 +48,8 @@ async function apiFetch(endpoint, options = {}) {
     return await response.json();
   } catch (error) {
     clearTimeout(id);
-    console.warn(`API call failed for ${endpoint}: ${error.message}. Resolving local mock data fallback.`);
-    return getMockData(endpoint, options);
+    console.error(`API call failed for ${endpoint}: ${error.message}`);
+    throw error;
   }
 }
 
@@ -71,8 +71,8 @@ export const api = {
       }
       return await response.json();
     } catch (e) {
-      console.warn("Register API failed, resolving mock user account creation.");
-      return { status: "SUCCESS", message: "Mock user registered", username };
+      console.error("Register API failed.", e);
+      throw e;
     }
   },
 
@@ -97,10 +97,8 @@ export const api = {
       setToken(data.access_token, data.username);
       return data;
     } catch (e) {
-      console.warn("Login API failed, logging in as mock Guest trader.");
-      const mockToken = "mock_jwt_token_for_" + username;
-      setToken(mockToken, username);
-      return { access_token: mockToken, token_type: "bearer", username };
+      console.error("Login API failed.", e);
+      throw e;
     }
   },
 

@@ -7,6 +7,7 @@ from app.database import (
     FactPrediction, FactRiskMetrics, DimDate, DimSource
 )
 from app.cache import get_cached, set_cached
+from app.services.data_quality import normalize_price_payload, normalize_prediction_payload
 
 router = APIRouter(prefix="", tags=["financial"])
 
@@ -47,32 +48,26 @@ def get_prices(ticker: str, db: Session = Depends(get_db)):
     prices = db.query(FactMarketPrice).filter_by(company_id=company.company_id).order_by(FactMarketPrice.created_at.asc()).all()
 
     if not prices:
-        return {
-            "ticker": ticker_upper,
-            "source": "MOCK_FALLBACK",
-            "prices": [
-                {"date": "2026-07-13", "open": 180.0, "high": 182.5, "low": 179.0, "close": 181.2, "volume": 52000000},
-                {"date": "2026-07-14", "open": 181.5, "high": 183.0, "low": 180.8, "close": 182.1, "volume": 48000000},
-                {"date": "2026-07-15", "open": 182.0, "high": 185.2, "low": 181.9, "close": 184.8, "volume": 55000000},
-                {"date": "2026-07-16", "open": 184.5, "high": 186.0, "low": 183.5, "close": 185.0, "volume": 50000000},
-                {"date": "2026-07-17", "open": 185.2, "high": 187.4, "low": 184.6, "close": 186.8, "volume": 61000000}
-            ]
+        raise HTTPException(status_code=404, detail=f"No price history found for {ticker_upper}")
+
+    normalized_prices = normalize_price_payload([
+        {
+            "date": p.created_at.date().isoformat() if p.created_at else None,
+            "open": p.open,
+            "high": p.high,
+            "low": p.low,
+            "close": p.close,
+            "volume": p.volume
         }
+        for p in prices
+    ])
+    if not normalized_prices:
+        raise HTTPException(status_code=404, detail=f"No valid price history found for {ticker_upper}")
 
     response_data = {
         "ticker": ticker_upper,
         "source": "DATABASE",
-        "prices": [
-            {
-                "date": p.created_at.date().isoformat() if p.created_at else None,
-                "open": p.open,
-                "high": p.high,
-                "low": p.low,
-                "close": p.close,
-                "volume": p.volume
-            }
-            for p in prices
-        ]
+        "prices": normalized_prices
     }
     set_cached(cache_key, response_data, expire_seconds=30)
     return response_data
@@ -88,21 +83,7 @@ def get_sentiment(ticker: str, db: Session = Depends(get_db)):
     sentiment_items = db.query(FactNewsSentiment).filter_by(company_id=company.company_id).order_by(FactNewsSentiment.created_at.desc()).all()
 
     if not sentiment_items:
-        return {
-            "ticker": ticker_upper,
-            "overall_sentiment": 0.5,
-            "confidence": 0.7,
-            "source": "MOCK_FALLBACK",
-            "news_items": [
-                {
-                    "title": f"Sentiment analysis pending database load for {ticker_upper}",
-                    "url": "https://example.com",
-                    "sentiment_score": 0.5,
-                    "confidence_score": 0.7,
-                    "source": "System"
-                }
-            ]
-        }
+        raise HTTPException(status_code=404, detail=f"No news sentiment data available for {ticker_upper}")
 
     scores = [item.sentiment_score for item in sentiment_items]
     confidences = [item.confidence_score for item in sentiment_items]
@@ -141,16 +122,7 @@ def get_forecast(ticker: str, db: Session = Depends(get_db)):
     predictions = db.query(FactPrediction).filter_by(company_id=company.company_id).order_by(FactPrediction.created_at.desc()).all()
 
     if not predictions:
-        return {
-            "ticker": ticker_upper,
-            "model_version": "baseline_linear_v1",
-            "source": "MOCK_FALLBACK",
-            "predictions": [
-                {"date": "2026-07-20", "predicted_close": 188.5, "confidence": 0.85},
-                {"date": "2026-07-21", "predicted_close": 189.2, "confidence": 0.82},
-                {"date": "2026-07-22", "predicted_close": 190.1, "confidence": 0.79}
-            ]
-        }
+        raise HTTPException(status_code=404, detail=f"No forecast data available for {ticker_upper}")
 
     preds_list = []
     for p in predictions:
@@ -179,13 +151,7 @@ def get_risk(ticker: str, db: Session = Depends(get_db)):
     risk = db.query(FactRiskMetrics).filter_by(company_id=company.company_id).order_by(FactRiskMetrics.created_at.desc()).first()
 
     if not risk:
-        return {
-            "ticker": ticker_upper,
-            "beta": 1.15,
-            "sharpe_ratio": 1.82,
-            "value_at_risk": 0.024,
-            "source": "MOCK_FALLBACK"
-        }
+        raise HTTPException(status_code=404, detail=f"No risk metrics available for {ticker_upper}")
 
     return {
         "ticker": ticker_upper,
