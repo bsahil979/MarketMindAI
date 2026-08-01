@@ -14,8 +14,26 @@ from app.routes.financial_routes import router as financial_router
 from app.routes.copilot_routes import router as copilot_router
 from app.routes.agent_routes import router as agent_router
 from app.routes.system_routes import router as system_router
-from app.routes.rag_routes import router as rag_router, initialize_rag_system
-from app.routes.evaluation_routes import router as evaluation_router
+# Conditionally import RAG routes only if dependencies are available
+try:
+    from app.routes.rag_routes import router as rag_router, initialize_rag_system
+    RAG_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"RAG routes not available (missing dependencies): {e}")
+    RAG_AVAILABLE = False
+    rag_router = None
+    initialize_rag_system = None
+
+# Conditionally import evaluation routes only if dependencies are available
+try:
+    from app.routes.evaluation_routes import router as evaluation_router
+    EVALUATION_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"Evaluation routes not available (missing dependencies): {e}")
+    EVALUATION_AVAILABLE = False
+    evaluation_router = None
+
+# AI integration routes should always be available (they have fallback)
 from app.routes.ai_integration_routes import router as ai_integration_router
 
 app = FastAPI(
@@ -39,8 +57,11 @@ app.include_router(financial_router)
 app.include_router(copilot_router)
 app.include_router(agent_router)
 app.include_router(system_router)
-app.include_router(rag_router)
-app.include_router(evaluation_router)
+# Include routers conditionally based on availability
+if rag_router:
+    app.include_router(rag_router)
+if evaluation_router:
+    app.include_router(evaluation_router)
 app.include_router(ai_integration_router)
 
 async def periodic_auto_sync():
@@ -70,12 +91,15 @@ async def on_startup():
     import logging
     logger = logging.getLogger("marketmind")
     
-    # Skip RAG initialization in production if not configured
+    # Skip RAG initialization in production if not configured or not available
     if os.getenv("SKIP_RAG_INIT", "false").lower() == "true":
         logger.info("Skipping RAG system initialization (SKIP_RAG_INIT=true)")
+    elif not RAG_AVAILABLE:
+        logger.info("Skipping RAG system initialization (RAG dependencies not available)")
     else:
         try:
-            initialize_rag_system()
+            if initialize_rag_system:
+                initialize_rag_system()
         except Exception as e:
             logger.warning(f"RAG system initialization failed: {e}")
             logger.info("Application will continue without RAG system")
