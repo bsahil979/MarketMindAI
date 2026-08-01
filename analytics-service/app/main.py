@@ -14,6 +14,10 @@ from app.routes.financial_routes import router as financial_router
 from app.routes.copilot_routes import router as copilot_router
 from app.routes.agent_routes import router as agent_router
 from app.routes.system_routes import router as system_router
+
+import logging
+logger = logging.getLogger("marketmind")
+
 # Conditionally import RAG routes only if dependencies are available
 try:
     from app.routes.rag_routes import router as rag_router, initialize_rag_system
