@@ -49,13 +49,13 @@ class LLMInterface:
     def _get_default_model(self) -> str:
         """Get default model for each provider"""
         defaults = {
-            "ollama": "llama3.1",  # Good general purpose model
+            "ollama": "llama3:latest",  # Good general purpose model
             "openai": "gpt-4o-mini",  # Cost-effective
             "anthropic": "claude-3-haiku-20240307",  # Fast and cost-effective
             "groq": "llama3-70b-8192",  # Fast inference
             "gemini": "gemini-1.5-flash"  # Fast and cost-effective
         }
-        return defaults.get(self.provider, "llama3.1")
+        return defaults.get(self.provider, "llama3:latest")
     
     def _initialize_client(self):
         """Initialize the appropriate client based on provider"""

@@ -16,6 +16,7 @@ from app.routes.agent_routes import router as agent_router
 from app.routes.system_routes import router as system_router
 from app.routes.rag_routes import router as rag_router, initialize_rag_system
 from app.routes.evaluation_routes import router as evaluation_router
+from app.routes.ai_integration_routes import router as ai_integration_router
 
 app = FastAPI(
     title=settings.API_TITLE,
@@ -40,6 +41,7 @@ app.include_router(agent_router)
 app.include_router(system_router)
 app.include_router(rag_router)
 app.include_router(evaluation_router)
+app.include_router(ai_integration_router)
 
 async def periodic_auto_sync():
     while True:
