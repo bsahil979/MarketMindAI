@@ -3,11 +3,13 @@ import logging
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, DateTime, Date, BigInteger, ForeignKey, Text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+from app.config import settings
+
 logger = logging.getLogger("marketmind.database")
 logging.basicConfig(level=logging.INFO)
 
-DATABASE_URL_POSTGRES = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/marketmind")
-DATABASE_URL_SQLITE = "sqlite:///../marketmind.db" # relative to app folder
+DATABASE_URL_POSTGRES = settings.DATABASE_URL
+DATABASE_URL_SQLITE = f"sqlite:///{settings.SQLITE_PATH}" if settings.SQLITE_PATH else "sqlite:///../marketmind.db"
 
 # Connection trial
 engine = None

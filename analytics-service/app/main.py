@@ -6,6 +6,7 @@ import os
 import numpy as np
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database import init_db, SessionLocal, DimCompany, FactMarketPrice
 from app.etl.etl_pipeline import seed_dimensions
 from app.routes.auth_routes import router as auth_router
@@ -15,13 +16,13 @@ from app.routes.agent_routes import router as agent_router
 from app.routes.system_routes import router as system_router
 
 app = FastAPI(
-    title="MarketMind AI Analytics Service",
-    description="FastAPI service for market data analysis, forecasts, news sentiment, and risk metrics.",
-    version="1.0.0"
+    title=settings.API_TITLE,
+    description=settings.API_DESCRIPTION,
+    version=settings.API_VERSION,
 )
 
 # Enable CORS for the dashboard
-origins = os.getenv("ALLOWED_ORIGINS", "*").split(",")
+origins = settings.ALLOWED_ORIGINS or ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -38,7 +39,7 @@ app.include_router(system_router)
 
 async def periodic_auto_sync():
     while True:
-        await asyncio.sleep(300)  # Automatically sync every 5 minutes in background
+        await asyncio.sleep(settings.AUTO_SYNC_INTERVAL_SECONDS)
         try:
             db = SessionLocal()
             from app.etl.etl_pipeline import seed_real_market_prices
@@ -63,6 +64,16 @@ async def on_startup():
 @app.get("/")
 def read_root():
     return {"service": "analytics-service", "status": "UP"}
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "UP", "service": "analytics-service"}
+
+
+@app.get("/ready")
+def readiness_check():
+    return {"status": "READY", "service": "analytics-service"}
 
 
 def fetch_live_yahoo_price(ticker: str) -> float:
@@ -111,7 +122,7 @@ async def websocket_prices(websocket: WebSocket):
                 await websocket.send_text(json.dumps(price_updates))
             finally:
                 db.close()
-            await asyncio.sleep(3)
+            await asyncio.sleep(settings.WEBSOCKET_POLL_INTERVAL_SECONDS)
     except WebSocketDisconnect:
         pass
     except Exception as e:
