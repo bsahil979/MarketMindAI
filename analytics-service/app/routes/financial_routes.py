@@ -111,7 +111,14 @@ def get_sentiment(ticker: str, db: Session = Depends(get_db)):
                 "news_items": news_items,
             }
         except ExternalDataError as exc:
-            raise HTTPException(status_code=502, detail=str(exc)) from exc
+            # Return default sentiment data instead of 502 error to allow frontend to render
+            return {
+                "ticker": ticker_upper,
+                "overall_sentiment": 0.0,
+                "confidence": 0.0,
+                "source": "fallback",
+                "news_items": [],
+            }
 
     scores = [item.sentiment_score for item in sentiment_items]
     confidences = [item.confidence_score for item in sentiment_items]
