@@ -57,6 +57,13 @@ export default function App() {
     }
   ]);
 
+  // AI Service Status
+  const [aiServiceStatus, setAiServiceStatus] = useState({
+    ai_service_enabled: false,
+    ai_service_available: false,
+    ai_service_url: "http://localhost:8001"
+  });
+
   // Portfolio Advisor RAG Explorer State (Conversational SEC Chat)
   const [ragQueryInput, setRagQueryInput] = useState('');
   const [ragMessages, setRagMessages] = useState([
@@ -103,6 +110,53 @@ export default function App() {
   const [inspectorRetrievals, setInspectorRetrievals] = useState([]);
   const [inspectorLoading, setInspectorLoading] = useState(false);
   const [inspectorError, setInspectorError] = useState('');
+
+  const handleSendCopilotMessage = async (e) => {
+    e.preventDefault();
+    if (!copilotInput.trim()) return;
+
+    const userMsg = {
+      id: Date.now(),
+      sender: 'user',
+      text: copilotInput,
+      timestamp: new Date().toLocaleTimeString()
+    };
+
+    setCopilotMessages(prev => [...prev, userMsg]);
+    setCopilotInput('');
+
+    try {
+      // Try to use RAG query if AI service is available
+      if (aiServiceStatus.ai_service_available) {
+        const ragRes = await api.ragQuery(copilotInput, selectedTicker);
+        const aiMsg = {
+          id: Date.now() + 1,
+          sender: 'ai',
+          text: ragRes.answer,
+          timestamp: new Date().toLocaleTimeString()
+        };
+        setCopilotMessages(prev => [...prev, aiMsg]);
+      } else {
+        // Fallback to original copilot
+        const copilotRes = await api.copilotExplain(selectedTicker, copilotInput);
+        const aiMsg = {
+          id: Date.now() + 1,
+          sender: 'ai',
+          text: copilotRes.explanation,
+          timestamp: new Date().toLocaleTimeString()
+        };
+        setCopilotMessages(prev => [...prev, aiMsg]);
+      }
+    } catch (error) {
+      const errorMsg = {
+        id: Date.now() + 1,
+        sender: 'ai',
+        text: `Error: ${error.message}`,
+        timestamp: new Date().toLocaleTimeString()
+      };
+      setCopilotMessages(prev => [...prev, errorMsg]);
+    }
+  };
 
   const handleExecuteRagQuery = async (overrideQuery) => {
     const q = (overrideQuery || ragQueryInput || "").trim();
@@ -207,6 +261,15 @@ export default function App() {
     }
   };
 
+  const loadAIStatus = async () => {
+    try {
+      const status = await api.getAIStatus();
+      setAiServiceStatus(status);
+    } catch (e) {
+      console.error("Failed to load AI status:", e);
+    }
+  };
+
   // Check auth status on load
   useEffect(() => {
     const token = getToken();
@@ -220,6 +283,7 @@ export default function App() {
     loadAgentMetrics();
     handleRunComparison(compareTickers);
     handleRunPortfolioAllocation();
+    loadAIStatus();
   }, []);
 
   // WebSockets live prices listener hook
@@ -817,6 +881,36 @@ export default function App() {
           </div>
 
           <div style={{ display: 'flex', gap: '12px' }}>
+            {/* AI Service Status Indicator */}
+            <div 
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px',
+                padding: '8px 12px',
+                borderRadius: '8px',
+                background: aiServiceStatus.ai_service_available 
+                  ? 'rgba(16, 185, 129, 0.1)' 
+                  : 'rgba(148, 163, 184, 0.1)',
+                border: aiServiceStatus.ai_service_available 
+                  ? '1px solid rgba(16, 185, 129, 0.3)' 
+                  : '1px solid rgba(148, 163, 184, 0.3)',
+                fontSize: '12px',
+                color: aiServiceStatus.ai_service_available ? '#10b981' : '#94a3b8'
+              }}
+            >
+              <div 
+                style={{ 
+                  width: '8px', 
+                  height: '8px', 
+                  borderRadius: '50%', 
+                  background: aiServiceStatus.ai_service_available ? '#10b981' : '#94a3b8',
+                  animation: aiServiceStatus.ai_service_available ? 'pulse 2s infinite' : 'none'
+                }}
+              />
+              <span>AI Service {aiServiceStatus.ai_service_available ? 'Online' : 'Offline'}</span>
+            </div>
+
             <button 
               onClick={handleRunEtl} 
               disabled={etlRunning} 

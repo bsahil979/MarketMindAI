@@ -320,6 +320,51 @@ export const api = {
     } catch (e) {
       return { schedulerEnabled: true, processedPricesCount: 15, processedNewsCount: 8, source: "MOCK" };
     }
+  },
+
+  // AI Service Integration
+  getAIStatus: async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/ai/status`);
+      if (!response.ok) throw new Error("AI status check failed");
+      return await response.json();
+    } catch (e) {
+      return { ai_service_enabled: false, ai_service_available: false, ai_service_url: "http://localhost:8001" };
+    }
+  },
+
+  ragQuery: async (query, ticker = null, top_k = 5) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/ai/rag-query`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, ticker, top_k })
+      });
+      if (!response.ok) throw new Error("RAG query failed");
+      return await response.json();
+    } catch (e) {
+      console.warn("RAG query failed, using fallback:", e);
+      return {
+        query,
+        answer: "AI service unavailable. The RAG-powered question answering requires the AI microservice to be running. Please ensure the AI service is enabled.",
+        sources: []
+      };
+    }
+  },
+
+  aiForecast: async (company_id, ticker) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/ai/forecast`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ company_id, ticker })
+      });
+      if (!response.ok) throw new Error("AI forecast failed");
+      return await response.json();
+    } catch (e) {
+      console.warn("AI forecast failed, using fallback:", e);
+      return { status: "fallback", message: "Using local simulated models" };
+    }
   }
 };
 
