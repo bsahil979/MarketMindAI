@@ -19,6 +19,27 @@ services:
         value: "https://marketmindai.vercel.app,http://localhost:5173,http://localhost:5174"
       - key: JWT_SECRET
         generateValue: true
+      - key: ENABLE_AI_SERVICE
+        value: "false"
+      - key: SKIP_RAG_INIT
+        value: "true"
+      - key: ENABLE_AUTO_SYNC
+        value: "false"
+
+  - type: web
+    name: marketmind-ai-service
+    runtime: docker
+    dockerfilePath: ./analytics-service/ai-service/Dockerfile
+    dockerContext: ./analytics-service
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: LLM_PROVIDER
+        value: "ollama"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: marketmind-db
+          property: connectionString
 
 databases:
   - name: marketmind-db
