@@ -8,6 +8,7 @@ from app.database import (
 )
 from app.cache import get_cached, set_cached
 from app.services.data_quality import normalize_price_payload, normalize_prediction_payload
+from app.services.external_integrations import fetch_market_quote, fetch_news_items, ExternalDataError
 
 router = APIRouter(prefix="", tags=["financial"])
 
@@ -48,7 +49,24 @@ def get_prices(ticker: str, db: Session = Depends(get_db)):
     prices = db.query(FactMarketPrice).filter_by(company_id=company.company_id).order_by(FactMarketPrice.created_at.asc()).all()
 
     if not prices:
-        raise HTTPException(status_code=404, detail=f"No price history found for {ticker_upper}")
+        try:
+            quote = fetch_market_quote(ticker_upper)
+            return {
+                "ticker": ticker_upper,
+                "source": quote.get("source", "external"),
+                "prices": [
+                    {
+                        "date": None,
+                        "open": quote.get("price"),
+                        "high": quote.get("price"),
+                        "low": quote.get("price"),
+                        "close": quote.get("price"),
+                        "volume": None,
+                    }
+                ],
+            }
+        except ExternalDataError as exc:
+            raise HTTPException(status_code=502, detail=str(exc)) from exc
 
     normalized_prices = normalize_price_payload([
         {
@@ -83,7 +101,17 @@ def get_sentiment(ticker: str, db: Session = Depends(get_db)):
     sentiment_items = db.query(FactNewsSentiment).filter_by(company_id=company.company_id).order_by(FactNewsSentiment.created_at.desc()).all()
 
     if not sentiment_items:
-        raise HTTPException(status_code=404, detail=f"No news sentiment data available for {ticker_upper}")
+        try:
+            news_items = fetch_news_items(ticker_upper, limit=5)
+            return {
+                "ticker": ticker_upper,
+                "overall_sentiment": 0.0,
+                "confidence": 0.0,
+                "source": "external",
+                "news_items": news_items,
+            }
+        except ExternalDataError as exc:
+            raise HTTPException(status_code=502, detail=str(exc)) from exc
 
     scores = [item.sentiment_score for item in sentiment_items]
     confidences = [item.confidence_score for item in sentiment_items]

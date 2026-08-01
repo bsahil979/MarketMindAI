@@ -95,6 +95,9 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/marketmind
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - MARKET_PROVIDER=yfinance
+      - NEWS_PROVIDER=newsapi
+      - NEWS_API_KEY=${NEWS_API_KEY:-}
     restart: unless-stopped
 
   dashboard:

@@ -31,8 +31,15 @@ class CompareQuerySchema(BaseModel):
 @router.post("/api/v1/agent/query")
 def run_agent_query(payload: AgentQuerySchema):
     from app.agent.agent_engine import FinancialAgent
-    agent = FinancialAgent()
-    return agent.run_agent(payload.query, payload.ticker)
+    from app.routes.rag_routes import rag_retriever, llm_interface
+    
+    # Use enhanced agent with RAG if available
+    if rag_retriever and llm_interface:
+        agent = FinancialAgent(rag_retriever=rag_retriever, llm_interface=llm_interface)
+    else:
+        agent = FinancialAgent()
+    
+    return agent.run_agent(payload.query, payload.ticker, use_planner=True)
 
 
 @router.post("/api/v1/agent/compare")

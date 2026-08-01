@@ -14,6 +14,8 @@ from app.routes.financial_routes import router as financial_router
 from app.routes.copilot_routes import router as copilot_router
 from app.routes.agent_routes import router as agent_router
 from app.routes.system_routes import router as system_router
+from app.routes.rag_routes import router as rag_router, initialize_rag_system
+from app.routes.evaluation_routes import router as evaluation_router
 
 app = FastAPI(
     title=settings.API_TITLE,
@@ -36,6 +38,8 @@ app.include_router(financial_router)
 app.include_router(copilot_router)
 app.include_router(agent_router)
 app.include_router(system_router)
+app.include_router(rag_router)
+app.include_router(evaluation_router)
 
 async def periodic_auto_sync():
     while True:
@@ -59,6 +63,14 @@ async def on_startup():
         seed_dimensions(db)
     finally:
         db.close()
+    
+    # Initialize RAG system
+    try:
+        initialize_rag_system()
+    except Exception as e:
+        import logging
+        logging.getLogger("marketmind").warning(f"RAG system initialization failed: {e}")
+    
     asyncio.create_task(periodic_auto_sync())
 
 @app.get("/")

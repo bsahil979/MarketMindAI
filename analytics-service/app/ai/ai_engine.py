@@ -8,6 +8,7 @@ from sklearn.linear_model import LinearRegression
 from app.database import (
     DimCompany, DimDate, FactMarketPrice, FactPrediction, FactRiskMetrics, ModelRegistry
 )
+from app.ml import ModelEnsemble, XGBoostForecaster, ARIMAForecaster
 
 logger = logging.getLogger("marketmind.ai")
 
@@ -59,60 +60,116 @@ def calculate_forecasts(db: Session, company: DimCompany):
     
     dt = datetime.now()
     
-    # Check if we have enough historical data to fit models
+    # Check if we have enough historical data to fit real ML models
+    if len(prices) >= 30:  # Need at least 30 data points for real ML models
+        # Prepare data for ML models
+        price_data = pd.DataFrame([{
+            "date": p.created_at,
+            "close": p.close,
+            "volume": getattr(p, 'volume', 0)
+        } for p in prices])
+        
+        try:
+            # Initialize ensemble with real ML models
+            ensemble = ModelEnsemble(models=["xgboost", "arima"])  # Use XGBoost + ARIMA (Prophet often has dependency issues)
+            
+            # Train models
+            ensemble_metrics = ensemble.fit(price_data, forecast_horizon=3)
+            
+            logger.info(f"Ensemble training completed: {ensemble_metrics}")
+            
+            # Generate predictions
+            predictions_result = ensemble.predict(price_data, forecast_horizon=3)
+            
+            if "error" not in predictions_result:
+                # Log model performance
+                for model_name, metrics in ensemble_metrics["individual_metrics"].items():
+                    if "error" not in metrics:
+                        rmse = metrics.get("rmse", 0.0)
+                        mape = metrics.get("mae", 0.0) / (price_data["close"].mean() + 1e-6)  # Approximate MAPE
+                        r2 = 1.0 - (metrics.get("rmse", 0.0) ** 2) / (price_data["close"].std() ** 2 + 1e-6)
+                        r2 = max(0.1, min(0.99, r2))
+                        
+                        model_version = f"{model_name}_v1.0"
+                        status = "DEPLOYED" if model_name == ensemble.get_best_model() else "TRAINED"
+                        log_model_run(db, model_name.title(), model_version, rmse, mape, r2, status)
+                
+                # Save ensemble predictions to database
+                for pred in predictions_result["predictions"]:
+                    forecast_date = dt + timedelta(days=pred["day"])
+                    date_id = get_or_create_date_id(db, forecast_date)
+                    
+                    existing_pred = db.query(FactPrediction).filter_by(
+                        company_id=company.company_id, date_id=date_id
+                    ).first()
+                    
+                    model_version = f"ensemble_{ensemble.get_best_model()}_v1.0"
+                    
+                    if existing_pred:
+                        existing_pred.predicted_close = float(round(pred["predicted_close"], 4))
+                        existing_pred.confidence = float(round(pred["confidence"], 4))
+                        existing_pred.model_version = model_version
+                        existing_pred.created_at = dt
+                    else:
+                        db.add(FactPrediction(
+                            company_id=company.company_id,
+                            date_id=date_id,
+                            predicted_close=float(round(pred["predicted_close"], 4)),
+                            confidence=float(round(pred["confidence"], 4)),
+                            model_version=model_version,
+                            created_at=dt
+                        ))
+                
+                logger.info(f"Real ML predictions saved for {company.ticker}")
+            else:
+                logger.warning(f"Ensemble prediction failed: {predictions_result.get('error')}")
+                raise Exception("Ensemble prediction failed")
+                
+        except Exception as e:
+            logger.warning(f"Real ML models failed for {company.ticker}: {e}, falling back to Linear Regression")
+            # Fallback to Linear Regression if real ML fails
+            _fallback_linear_regression(prices, company, db, dt)
+    else:
+        # Fallback to Linear Regression for insufficient data
+        logger.warning(f"Insufficient history ({len(prices)} items) for real ML models on {company.ticker}. Using Linear Regression fallback.")
+        _fallback_linear_regression(prices, company, db, dt)
+    
+    db.commit()
+
+def _fallback_linear_regression(prices, company, db, dt):
+    """Fallback Linear Regression implementation for insufficient data or ML model failures"""
     if len(prices) >= 3:
         closes = np.array([p.close for p in prices])
         X = np.array(range(len(closes))).reshape(-1, 1)
         y = closes
         
-        # 1. Fit Linear Regression
+        # Fit Linear Regression
         lr_model = LinearRegression()
         lr_model.fit(X, y)
         y_pred_lr = lr_model.predict(X)
         
         rmse_lr = np.sqrt(np.mean((y - y_pred_lr)**2))
-        mape_lr = np.mean(np.abs((y - y_pred_lr) / y))
+        mape_lr = np.mean(np.abs((y - y_pred_lr) / (y + 1e-6)))
         r2_lr = float(np.clip(lr_model.score(X, y), 0.1, 0.99))
-        
-        # 2. Fit Simulated Prophet (Linear + Weekly Seasonality)
-        trend = y_pred_lr
-        seasonality = np.sin(X.flatten() * (2 * np.pi / 7.0)) * (0.015 * np.mean(y))
-        y_pred_prophet = trend + seasonality
-        
-        rmse_pr = np.sqrt(np.mean((y - y_pred_prophet)**2))
-        mape_pr = np.mean(np.abs((y - y_pred_prophet) / y))
-        r2_pr = float(np.clip(1.0 - (np.sum((y - y_pred_prophet)**2) / np.sum((y - np.mean(y))**2)), 0.1, 0.99))
-        
-        # 3. Fit Simulated LSTM (RNN auto-regressive window fits)
-        # Introduce a minor non-linear correction to simulate LSTM fit
-        y_pred_lstm = trend + (seasonality * 1.1) + np.sin(X.flatten() * (2 * np.pi / 30.0)) * (0.01 * np.mean(y))
-        
-        rmse_lstm = np.sqrt(np.mean((y - y_pred_lstm)**2))
-        mape_lstm = np.mean(np.abs((y - y_pred_lstm) / y))
-        r2_lstm = float(np.clip(1.0 - (np.sum((y - y_pred_lstm)**2) / np.sum((y - np.mean(y))**2)), 0.1, 0.99))
         
         # Log to registry
         log_model_run(db, "Linear Regression", "1.0.0", rmse_lr, mape_lr, r2_lr, "TRAINED")
-        log_model_run(db, "Prophet (Seasonal)", "1.1.2", rmse_pr, mape_pr, r2_pr, "TRAINED")
-        log_model_run(db, "LSTM Neural Net", "2.0.4", rmse_lstm, mape_lstm, r2_lstm, "DEPLOYED") # LSTM wins for non-linear mock
         
-        # Deploy predictions from the best model (LSTM / Prophet)
+        # Generate predictions
         future_indices = np.array(range(len(closes), len(closes) + 3)).reshape(-1, 1)
-        # LSTM predictions projection
-        lr_future = lr_model.predict(future_indices)
-        season_future = np.sin(future_indices.flatten() * (2 * np.pi / 7.0)) * (0.015 * np.mean(y))
-        long_season_future = np.sin(future_indices.flatten() * (2 * np.pi / 30.0)) * (0.01 * np.mean(y))
-        predictions = lr_future + (season_future * 1.1) + long_season_future
+        predictions = lr_model.predict(future_indices)
         
-        confidence = r2_lstm
-        model_version = "lstm_neural_v2"
+        confidence = r2_lr
+        model_version = "linear_regression_v1.0"
         
-        # Save predictions to database
+        # Save predictions
         for i, pred_val in enumerate(predictions):
             forecast_date = dt + timedelta(days=i+1)
             date_id = get_or_create_date_id(db, forecast_date)
             
-            existing_pred = db.query(FactPrediction).filter_by(company_id=company.company_id, date_id=date_id).first()
+            existing_pred = db.query(FactPrediction).filter_by(
+                company_id=company.company_id, date_id=date_id
+            ).first()
             if existing_pred:
                 existing_pred.predicted_close = float(round(pred_val, 4))
                 existing_pred.confidence = float(round(confidence, 4))
@@ -129,7 +186,6 @@ def calculate_forecasts(db: Session, company: DimCompany):
                 ))
     else:
         # Sparsity fallback
-        logger.warning(f"Insufficient history ({len(prices)} items) for regression model on {company.ticker}. Running statistical fallback simulator.")
         latest_price = prices[-1].close if prices else 150.0
         confidence = 0.65
         
@@ -138,7 +194,9 @@ def calculate_forecasts(db: Session, company: DimCompany):
             date_id = get_or_create_date_id(db, forecast_date)
             pred_val = latest_price * (1 + (i + 1) * 0.005) 
             
-            existing_pred = db.query(FactPrediction).filter_by(company_id=company.company_id, date_id=date_id).first()
+            existing_pred = db.query(FactPrediction).filter_by(
+                company_id=company.company_id, date_id=date_id
+            ).first()
             if existing_pred:
                 existing_pred.predicted_close = float(round(pred_val, 4))
                 existing_pred.confidence = confidence
@@ -153,7 +211,6 @@ def calculate_forecasts(db: Session, company: DimCompany):
                     model_version="baseline_simulator_v1",
                     created_at=dt
                 ))
-    db.commit()
 
 def calculate_risk_metrics(db: Session, company: DimCompany):
     logger.info(f"Calculating Risk Metrics for {company.ticker}...")

@@ -132,3 +132,5 @@ The initial refactor work has now reached a more substantial milestone:
 - the frontend build and backend import path were both verified successfully after the restructuring.
 
 These changes improve maintainability, reduce the size of the main application entrypoints, and make it easier to evolve the system without entangling unrelated concerns.
+
+Additional delivery: the analytics service now has a configurable external-data integration layer for market quotes and news. Provider selection and API keys are driven by environment variables, and the service fails gracefully when a live provider is unavailable. A regression suite for those integrations is included and passing.

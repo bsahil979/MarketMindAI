@@ -42,6 +42,7 @@ dashboard/.env*
 raw_storage/news/*.json
 raw_storage/prices/*.json
 raw_storage/processed/
+chroma_db/
 
 # IDE and OS
 .idea/
