@@ -529,41 +529,6 @@ export default function App() {
     }
   };
 
-  // Chat Submission for AI Copilot
-  const handleSendCopilotMessage = async (e) => {
-    if (e) e.preventDefault();
-    if (!copilotInput.trim()) return;
-
-    const queryText = copilotInput;
-    const userMsg = { id: Date.now(), sender: 'user', text: queryText, timestamp: new Date().toLocaleTimeString() };
-    setCopilotMessages(prev => [...prev, userMsg]);
-    setCopilotInput('');
-
-    // Detect ticker in message or fallback to selectedTicker
-    const cleanInput = queryText.toUpperCase();
-    let detectedTicker = selectedTicker;
-    const tickersList = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META"];
-    for (const t of tickersList) {
-      if (cleanInput.includes(t)) {
-        detectedTicker = t;
-        break;
-      }
-    }
-
-    try {
-      const res = await api.copilotExplain(detectedTicker, queryText);
-      const aiMsg = {
-        id: Date.now() + 1,
-        sender: 'ai',
-        text: res.explanation || `Analysis for ${detectedTicker}: Price is ${res.metrics?.price || '$180'}, sentiment is ${res.metrics?.sentiment || 'NEUTRAL'}, 3-day target close is ${res.metrics?.forecast_3d || '$185'}.`,
-        timestamp: new Date().toLocaleTimeString()
-      };
-      setCopilotMessages(prev => [...prev, aiMsg]);
-    } catch (err) {
-      setCopilotMessages(prev => [...prev, { id: Date.now() + 1, sender: 'ai', text: "Error connecting to AI Copilot: " + err.message, timestamp: new Date().toLocaleTimeString() }]);
-    }
-  };
-
   // Sparkline generator helper
   const renderSparkline = (pricesArray) => {
     if (!pricesArray || pricesArray.length < 2) return null;
