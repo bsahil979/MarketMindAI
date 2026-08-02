@@ -10,34 +10,6 @@ import OverviewDashboardView from './components/OverviewDashboardView';
 import PipelineHealthView from './components/PipelineHealthView';
 import SettingsView from './components/SettingsView';
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ color: 'white', padding: '20px', fontFamily: 'sans-serif', background: '#070a12', minHeight: '100vh' }}>
-          <h1>Something went wrong</h1>
-          <p>Error: {this.state.error?.message}</p>
-          <p>Please check the browser console for more details.</p>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentTab, setCurrentTab] = useState('dashboard'); // dashboard, details, news, portfolio, copilot, health, settings
@@ -61,7 +33,6 @@ export default function App() {
   const [newsSentiment, setNewsSentiment] = useState(null);
   const [stocksLoading, setStocksLoading] = useState(false);
   const [modelRegistry, setModelRegistry] = useState([]);
-  const [appReady, setAppReady] = useState(false);
 
   // Portfolio Watchlist
   const [watchlist, setWatchlist] = useState(['AAPL', 'MSFT']);
@@ -322,22 +293,15 @@ export default function App() {
         if (errors.length > 0) {
           console.warn('Some initial data loads failed:', errors);
         }
-        setAppReady(true);
       });
     } catch (e) {
       console.error("Error in initial data loading:", e);
-      setAppReady(true); // Set ready even on error to prevent blank screen
     }
   }, []);
 
   // WebSockets live prices listener hook
   useEffect(() => {
     if (!isAuthenticated) return;
-    
-    // Disable WebSocket for now due to CORS issues
-    // Will be re-enabled once backend CORS is fixed
-    console.log("WebSocket disabled due to CORS issues - using REST API for prices");
-    return;
     
     try {
       // Connect to FastAPI live price streams socket
@@ -354,19 +318,15 @@ export default function App() {
         }
       }
       
-      console.log("Attempting WebSocket connection to:", wsUrl);
-      
       const ws = new WebSocket(wsUrl);
       
       ws.onmessage = (event) => {
         try {
           const livePrices = JSON.parse(event.data);
-          console.log('WebSocket received live prices:', livePrices);
           setStocks(prevStocks => {
             return prevStocks.map(stock => {
               const match = livePrices.find(lp => lp.ticker === stock.ticker);
               if (match) {
-                console.log(`Updating ${stock.ticker} from ${stock.close} to ${match.price}`);
                 return {
                   ...stock,
                   close: match.price,
@@ -483,8 +443,6 @@ export default function App() {
                 }
               }
               
-              console.log(`Loaded price for ${stock.ticker}:`, { close, change, latestPrice: latestPrice?.date });
-              
               return {
                 ...stock,
                 close,
@@ -501,7 +459,6 @@ export default function App() {
           .filter(result => result.status === 'fulfilled')
           .map(result => result.value);
         
-        console.log('Setting stocks with prices:', successfulStocks);
         setStocks(successfulStocks);
         if (!selectedTicker && successfulStocks.length > 0) {
           setSelectedTicker(successfulStocks[0].ticker);
@@ -852,25 +809,8 @@ export default function App() {
   }
 
   // Main Authorized Application
-  if (!appReady) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#38bdf8', fontFamily: 'sans-serif', background: '#070a12' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ width: '40px', height: '40px', border: '3px solid rgba(56, 189, 248, 0.3)', borderTopColor: '#38bdf8', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 20px' }}></div>
-          <p>Loading MarketMind AI...</p>
-        </div>
-        <style>{`
-          @keyframes spin {
-            to { transform: rotate(360deg); }
-          }
-        `}</style>
-      </div>
-    );
-  }
-
   return (
-    <ErrorBoundary>
-      <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', minHeight: '100vh' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', minHeight: '100vh' }}>
       
       {/* Sidebar Navigation */}
       <aside className="glass-panel" style={{ borderRadius: '0', borderLeft: 'none', borderTop: 'none', borderBottom: 'none', display: 'flex', flexDirection: 'column', height: '100vh', position: 'sticky', top: '0', zIndex: 10 }}>
@@ -1603,6 +1543,5 @@ export default function App() {
       </main>
 
     </div>
-    </ErrorBoundary>
   );
 }

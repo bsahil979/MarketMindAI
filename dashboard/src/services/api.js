@@ -4,15 +4,6 @@
 // relative to the current origin.
 const API_BASE_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.__API_BASE_URL__) || "";
 
-// Debug: Log API URL configuration
-if (typeof window !== 'undefined') {
-  console.log('API Configuration:', {
-    VITE_API_URL: import.meta.env.VITE_API_URL,
-    window_API_URL: window.__API_BASE_URL__,
-    final_API_URL: API_BASE_URL
-  });
-}
-
 // Helper to check if token exists
 export const getToken = () => localStorage.getItem("marketmind_token");
 export const getUsername = () => localStorage.getItem("marketmind_username") || "Guest";
@@ -147,11 +138,7 @@ export const api = {
     try {
       return await apiFetch(`/forecast/${ticker}`);
     } catch (e) {
-      if (e.message.includes('Failed to fetch') || e.message.includes('CORS')) {
-        console.warn(`CORS or network error for forecast/${ticker}, using mock data`);
-      } else {
-        console.warn(`getForecast failed for ${ticker}, using local mock fallback:`, e.message);
-      }
+      console.warn(`getForecast failed for ${ticker}, using local mock fallback:`, e.message);
       return getMockData(`/forecast/${ticker}`);
     }
   },
@@ -160,11 +147,7 @@ export const api = {
     try {
       return await apiFetch(`/risk/${ticker}`);
     } catch (e) {
-      if (e.message.includes('Failed to fetch') || e.message.includes('CORS')) {
-        console.warn(`CORS or network error for risk/${ticker}, using mock data`);
-      } else {
-        console.warn(`getRisk failed for ${ticker}, using local mock fallback:`, e.message);
-      }
+      console.warn(`getRisk failed for ${ticker}, using local mock fallback:`, e.message);
       return getMockData(`/risk/${ticker}`);
     }
   },
