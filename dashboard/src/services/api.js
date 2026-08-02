@@ -39,7 +39,8 @@ async function apiFetch(endpoint, options = {}) {
   
   // Create a timeout controller to reject hung requests quickly
   const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), 2500); // 2.5 second timeout
+  // Increase timeout for slower deployed backends (2.5s was too aggressive)
+  const id = setTimeout(() => controller.abort(), 8000); // 8 second timeout
 
   try {
     const response = await fetch(url, {
@@ -121,7 +122,12 @@ export const api = {
   },
 
   getPrices: async (ticker) => {
-    return apiFetch(`/prices/${ticker}`);
+    try {
+      return await apiFetch(`/prices/${ticker}`);
+    } catch (e) {
+      console.warn(`getPrices failed for ${ticker}, using local mock fallback:`, e.message);
+      return getMockData(`/prices/${ticker}`);
+    }
   },
 
   getSentiment: async (ticker) => {
