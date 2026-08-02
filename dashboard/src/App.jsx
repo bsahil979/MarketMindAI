@@ -449,8 +449,45 @@ export default function App() {
     try {
       const data = await api.getStocks();
       if (Array.isArray(data) && data.length > 0) {
-        setStocks(data);
-        if (!selectedTicker) setSelectedTicker(data[0].ticker);
+        // Fetch current prices for each stock
+        const stocksWithPrices = await Promise.allSettled(
+          data.map(async (stock) => {
+            try {
+              const priceData = await api.getPrices(stock.ticker);
+              const prices = priceData.prices || [];
+              const latestPrice = prices.length > 0 ? prices[prices.length - 1] : null;
+              const previousPrice = prices.length > 1 ? prices[prices.length - 2] : null;
+              
+              let close = 0;
+              let change = 0;
+              
+              if (latestPrice) {
+                close = latestPrice.close;
+                if (previousPrice) {
+                  change = ((close - previousPrice.close) / previousPrice.close) * 100;
+                }
+              }
+              
+              return {
+                ...stock,
+                close,
+                change
+              };
+            } catch (e) {
+              console.warn(`Failed to load price for ${stock.ticker}:`, e);
+              return { ...stock, close: 0, change: 0 };
+            }
+          })
+        );
+        
+        const successfulStocks = stocksWithPrices
+          .filter(result => result.status === 'fulfilled')
+          .map(result => result.value);
+        
+        setStocks(successfulStocks);
+        if (!selectedTicker && successfulStocks.length > 0) {
+          setSelectedTicker(successfulStocks[0].ticker);
+        }
       } else {
         useFallbackStocks();
       }
