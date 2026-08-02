@@ -131,15 +131,30 @@ export const api = {
   },
 
   getSentiment: async (ticker) => {
-    return apiFetch(`/sentiment/${ticker}`);
+    try {
+      return await apiFetch(`/sentiment/${ticker}`);
+    } catch (e) {
+      console.warn(`getSentiment failed for ${ticker}, using local mock fallback:`, e.message);
+      return getMockData(`/sentiment/${ticker}`);
+    }
   },
 
   getForecast: async (ticker) => {
-    return apiFetch(`/forecast/${ticker}`);
+    try {
+      return await apiFetch(`/forecast/${ticker}`);
+    } catch (e) {
+      console.warn(`getForecast failed for ${ticker}, using local mock fallback:`, e.message);
+      return getMockData(`/forecast/${ticker}`);
+    }
   },
 
   getRisk: async (ticker) => {
-    return apiFetch(`/risk/${ticker}`);
+    try {
+      return await apiFetch(`/risk/${ticker}`);
+    } catch (e) {
+      console.warn(`getRisk failed for ${ticker}, using local mock fallback:`, e.message);
+      return getMockData(`/risk/${ticker}`);
+    }
   },
 
   getModelRegistry: async () => {
