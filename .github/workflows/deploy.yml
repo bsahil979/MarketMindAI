@@ -101,9 +101,13 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          echo "Deploying dashboard with latest Vercel CLI"
+          echo "Deploying dashboard to the configured Vercel project"
+          # Link this CI checkout to the project named by the GitHub secrets.
+          # This prevents the CLI from creating/deploying a different project.
+          mkdir -p .vercel
+          printf '{"orgId":"%s","projectId":"%s"}\n' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > .vercel/project.json
           # Deploy the pre-built static files copied to the repository root.
-          npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force
+          npx vercel@latest --prod -t "$VERCEL_TOKEN" --scope "$VERCEL_ORG_ID" --yes --force
 
       # ── Deploy Analytics API → Render ─────────────────
       - name: Trigger Render Deploy (Analytics API)

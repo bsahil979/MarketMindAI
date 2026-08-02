@@ -10,6 +10,34 @@ import OverviewDashboardView from './components/OverviewDashboardView';
 import PipelineHealthView from './components/PipelineHealthView';
 import SettingsView from './components/SettingsView';
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ color: 'white', padding: '20px', fontFamily: 'sans-serif', background: '#070a12', minHeight: '100vh' }}>
+          <h1>Something went wrong</h1>
+          <p>Error: {this.state.error?.message}</p>
+          <p>Please check the browser console for more details.</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentTab, setCurrentTab] = useState('dashboard'); // dashboard, details, news, portfolio, copilot, health, settings
@@ -744,7 +772,8 @@ export default function App() {
 
   // Main Authorized Application
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', minHeight: '100vh' }}>
+    <ErrorBoundary>
+      <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', minHeight: '100vh' }}>
       
       {/* Sidebar Navigation */}
       <aside className="glass-panel" style={{ borderRadius: '0', borderLeft: 'none', borderTop: 'none', borderBottom: 'none', display: 'flex', flexDirection: 'column', height: '100vh', position: 'sticky', top: '0', zIndex: 10 }}>
@@ -1477,5 +1506,6 @@ export default function App() {
       </main>
 
     </div>
+    </ErrorBoundary>
   );
 }
