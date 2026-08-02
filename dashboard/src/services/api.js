@@ -134,7 +134,11 @@ export const api = {
     try {
       return await apiFetch(`/sentiment/${ticker}`);
     } catch (e) {
-      console.warn(`getSentiment failed for ${ticker}, using local mock fallback:`, e.message);
+      if (e.message.includes('Failed to fetch') || e.message.includes('CORS')) {
+        console.warn(`CORS or network error for sentiment/${ticker}, using mock data`);
+      } else {
+        console.warn(`getSentiment failed for ${ticker}, using local mock fallback:`, e.message);
+      }
       return getMockData(`/sentiment/${ticker}`);
     }
   },
@@ -143,7 +147,11 @@ export const api = {
     try {
       return await apiFetch(`/forecast/${ticker}`);
     } catch (e) {
-      console.warn(`getForecast failed for ${ticker}, using local mock fallback:`, e.message);
+      if (e.message.includes('Failed to fetch') || e.message.includes('CORS')) {
+        console.warn(`CORS or network error for forecast/${ticker}, using mock data`);
+      } else {
+        console.warn(`getForecast failed for ${ticker}, using local mock fallback:`, e.message);
+      }
       return getMockData(`/forecast/${ticker}`);
     }
   },
@@ -152,7 +160,11 @@ export const api = {
     try {
       return await apiFetch(`/risk/${ticker}`);
     } catch (e) {
-      console.warn(`getRisk failed for ${ticker}, using local mock fallback:`, e.message);
+      if (e.message.includes('Failed to fetch') || e.message.includes('CORS')) {
+        console.warn(`CORS or network error for risk/${ticker}, using mock data`);
+      } else {
+        console.warn(`getRisk failed for ${ticker}, using local mock fallback:`, e.message);
+      }
       return getMockData(`/risk/${ticker}`);
     }
   },
