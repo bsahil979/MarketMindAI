@@ -334,6 +334,11 @@ export default function App() {
   useEffect(() => {
     if (!isAuthenticated) return;
     
+    // Disable WebSocket for now due to CORS issues
+    // Will be re-enabled once backend CORS is fixed
+    console.log("WebSocket disabled due to CORS issues - using REST API for prices");
+    return;
+    
     try {
       // Connect to FastAPI live price streams socket
       // Use API_BASE_URL for WebSocket connection (replace http/ws, https/wss)
@@ -341,7 +346,12 @@ export default function App() {
       let wsUrl = "ws://localhost:8000/ws/prices";
       
       if (apiBaseUrl) {
-        wsUrl = apiBaseUrl.replace(/^https?:\/\//, 'ws://').replace(/^http:\/\//, 'ws://').replace(/^https:\/\//, 'wss://') + "/ws/prices";
+        // Use wss:// for https:// URLs, ws:// for http:// URLs
+        if (apiBaseUrl.startsWith('https://')) {
+          wsUrl = apiBaseUrl.replace('https://', 'wss://') + "/ws/prices";
+        } else if (apiBaseUrl.startsWith('http://')) {
+          wsUrl = apiBaseUrl.replace('http://', 'ws://') + "/ws/prices";
+        }
       }
       
       console.log("Attempting WebSocket connection to:", wsUrl);
