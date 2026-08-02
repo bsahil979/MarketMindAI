@@ -81,7 +81,7 @@ jobs:
       - name: Build Dashboard locally
         run: |
           cd dashboard
-          npm ci
+          npm install
           npm run build
         env:
           # Vite replaces this value in the production bundle. Without it, the
