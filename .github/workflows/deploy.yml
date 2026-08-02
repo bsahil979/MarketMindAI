@@ -91,8 +91,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           echo "Deploying dashboard with latest Vercel CLI"
-          cd dashboard
-          # Deploy pre-built dist directory
+          # Run from repository root since Vercel project has dashboard as root directory
           npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force
 
       # ── Deploy Analytics API → Render ─────────────────
