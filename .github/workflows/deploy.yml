@@ -87,7 +87,8 @@ jobs:
           echo "Deploying dashboard with latest Vercel CLI (using local config)"
           # Run from the repository root and tell the CLI to use the dashboard
           # local config so we don't double-apply a project root setting.
-          npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --local-config dashboard/vercel.json
+          # Force a fresh build by skipping cache
+          npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --local-config dashboard/vercel.json --force
 
       # ── Deploy Analytics API → Render ─────────────────
       - name: Trigger Render Deploy (Analytics API)

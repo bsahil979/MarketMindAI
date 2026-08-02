@@ -10,7 +10,9 @@
     <div id="root"></div>
     <script>
       // Runtime API configuration for production deployments
+      // This fallback is used if VITE_API_URL is not set during build
       window.__API_BASE_URL__ = "https://marketmind-analytics-api.onrender.com";
+      console.log('Runtime API URL set to:', window.__API_BASE_URL__);
     </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
