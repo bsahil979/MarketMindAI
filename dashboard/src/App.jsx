@@ -61,6 +61,7 @@ export default function App() {
   const [newsSentiment, setNewsSentiment] = useState(null);
   const [stocksLoading, setStocksLoading] = useState(false);
   const [modelRegistry, setModelRegistry] = useState([]);
+  const [appReady, setAppReady] = useState(false);
 
   // Portfolio Watchlist
   const [watchlist, setWatchlist] = useState(['AAPL', 'MSFT']);
@@ -300,67 +301,92 @@ export default function App() {
 
   // Check auth status on load
   useEffect(() => {
-    const token = getToken();
-    if (token) {
-      setIsAuthenticated(true);
-      setUsername(getUsername());
+    try {
+      const token = getToken();
+      if (token) {
+        setIsAuthenticated(true);
+        setUsername(getUsername());
+      }
+      
+      // Load initial data with error handling
+      Promise.allSettled([
+        loadStocks(),
+        loadTelemetry(),
+        loadModelRegistry(),
+        loadAgentMetrics(),
+        handleRunComparison(compareTickers),
+        handleRunPortfolioAllocation(),
+        loadAIStatus()
+      ]).then(results => {
+        const errors = results.filter(r => r.status === 'rejected');
+        if (errors.length > 0) {
+          console.warn('Some initial data loads failed:', errors);
+        }
+        setAppReady(true);
+      });
+    } catch (e) {
+      console.error("Error in initial data loading:", e);
+      setAppReady(true); // Set ready even on error to prevent blank screen
     }
-    loadStocks();
-    loadTelemetry();
-    loadModelRegistry();
-    loadAgentMetrics();
-    handleRunComparison(compareTickers);
-    handleRunPortfolioAllocation();
-    loadAIStatus();
   }, []);
 
   // WebSockets live prices listener hook
   useEffect(() => {
     if (!isAuthenticated) return;
     
-    // Connect to FastAPI live price streams socket
-    // Use API_BASE_URL for WebSocket connection (replace http/ws, https/wss)
-    const apiBaseUrl = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.__API_BASE_URL__) || "";
-    let wsUrl = "ws://localhost:8000/ws/prices";
-    
-    if (apiBaseUrl) {
-      wsUrl = apiBaseUrl.replace(/^https?:\/\//, 'ws://').replace(/^http:\/\//, 'ws://').replace(/^https:\/\//, 'wss://') + "/ws/prices";
-    }
-    
-    const ws = new WebSocket(wsUrl);
-    
-    ws.onmessage = (event) => {
-      try {
-        const livePrices = JSON.parse(event.data);
-        setStocks(prevStocks => {
-          return prevStocks.map(stock => {
-            const match = livePrices.find(lp => lp.ticker === stock.ticker);
-            if (match) {
-              return {
-                ...stock,
-                close: match.price,
-                change: match.change
-              };
-            }
-            return stock;
-          });
-        });
-      } catch (e) {
-        console.error("Websocket parsing error: ", e);
+    try {
+      // Connect to FastAPI live price streams socket
+      // Use API_BASE_URL for WebSocket connection (replace http/ws, https/wss)
+      const apiBaseUrl = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.__API_BASE_URL__) || "";
+      let wsUrl = "ws://localhost:8000/ws/prices";
+      
+      if (apiBaseUrl) {
+        wsUrl = apiBaseUrl.replace(/^https?:\/\//, 'ws://').replace(/^http:\/\//, 'ws://').replace(/^https:\/\//, 'wss://') + "/ws/prices";
       }
-    };
+      
+      console.log("Attempting WebSocket connection to:", wsUrl);
+      
+      const ws = new WebSocket(wsUrl);
+      
+      ws.onmessage = (event) => {
+        try {
+          const livePrices = JSON.parse(event.data);
+          setStocks(prevStocks => {
+            return prevStocks.map(stock => {
+              const match = livePrices.find(lp => lp.ticker === stock.ticker);
+              if (match) {
+                return {
+                  ...stock,
+                  close: match.price,
+                  change: match.change
+                };
+              }
+              return stock;
+            });
+          });
+        } catch (e) {
+          console.error("Websocket parsing error: ", e);
+        }
+      };
 
-    ws.onerror = (e) => {
-      console.warn("WebSocket error, falling back to database REST calls: ", e);
-    };
+      ws.onerror = (e) => {
+        console.warn("WebSocket error, falling back to database REST calls: ", e);
+      };
 
-    ws.onclose = (e) => {
-      console.log("WebSocket connection closed");
-    };
+      ws.onclose = (e) => {
+        console.log("WebSocket connection closed");
+      };
 
-    return () => {
-      ws.close();
-    };
+      return () => {
+        try {
+          ws.close();
+        } catch (e) {
+          console.error("Error closing WebSocket:", e);
+        }
+      };
+    } catch (e) {
+      console.error("WebSocket initialization error:", e);
+    }
   }, [isAuthenticated]);
 
   // Reload ticker details when selection changes
@@ -771,6 +797,22 @@ export default function App() {
   }
 
   // Main Authorized Application
+  if (!appReady) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#38bdf8', fontFamily: 'sans-serif', background: '#070a12' }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: '40px', height: '40px', border: '3px solid rgba(56, 189, 248, 0.3)', borderTopColor: '#38bdf8', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 20px' }}></div>
+          <p>Loading MarketMind AI...</p>
+        </div>
+        <style>{`
+          @keyframes spin {
+            to { transform: rotate(360deg); }
+          }
+        `}</style>
+      </div>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', minHeight: '100vh' }}>
