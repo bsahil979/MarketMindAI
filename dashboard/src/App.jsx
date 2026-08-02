@@ -351,10 +351,12 @@ export default function App() {
       ws.onmessage = (event) => {
         try {
           const livePrices = JSON.parse(event.data);
+          console.log('WebSocket received live prices:', livePrices);
           setStocks(prevStocks => {
             return prevStocks.map(stock => {
               const match = livePrices.find(lp => lp.ticker === stock.ticker);
               if (match) {
+                console.log(`Updating ${stock.ticker} from ${stock.close} to ${match.price}`);
                 return {
                   ...stock,
                   close: match.price,
@@ -455,8 +457,11 @@ export default function App() {
             try {
               const priceData = await api.getPrices(stock.ticker);
               const prices = priceData.prices || [];
-              const latestPrice = prices.length > 0 ? prices[prices.length - 1] : null;
-              const previousPrice = prices.length > 1 ? prices[prices.length - 2] : null;
+              
+              // Sort prices by date to ensure we get the latest
+              const sortedPrices = prices.sort((a, b) => new Date(a.date) - new Date(b.date));
+              const latestPrice = sortedPrices.length > 0 ? sortedPrices[sortedPrices.length - 1] : null;
+              const previousPrice = sortedPrices.length > 1 ? sortedPrices[sortedPrices.length - 2] : null;
               
               let close = 0;
               let change = 0;
@@ -467,6 +472,8 @@ export default function App() {
                   change = ((close - previousPrice.close) / previousPrice.close) * 100;
                 }
               }
+              
+              console.log(`Loaded price for ${stock.ticker}:`, { close, change, latestPrice: latestPrice?.date });
               
               return {
                 ...stock,
@@ -484,6 +491,7 @@ export default function App() {
           .filter(result => result.status === 'fulfilled')
           .map(result => result.value);
         
+        console.log('Setting stocks with prices:', successfulStocks);
         setStocks(successfulStocks);
         if (!selectedTicker && successfulStocks.length > 0) {
           setSelectedTicker(successfulStocks[0].ticker);
