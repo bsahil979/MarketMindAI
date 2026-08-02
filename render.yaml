@@ -16,7 +16,7 @@ services:
       - key: REDIS_PORT
         value: "6379"
       - key: ALLOWED_ORIGINS
-        value: "https://marketmindai.vercel.app,http://localhost:5173,http://localhost:5174"
+        value: "https://market-mind-ai-q1kl.vercel.app,https://marketmindai.vercel.app,http://localhost:5173,http://localhost:5174,https://market-mind-ai-q1kl-d5pdk6nyj-sahils-projects-190569f9.vercel.app,https://market-mind-ai-q1kl-7thjg7boe-sahils-projects-190569f9.vercel.app,https://market-mind-ai-q1kl-furcu1nou-sahils-projects-190569f9.vercel.app"
       - key: JWT_SECRET
         generateValue: true
       - key: ENABLE_AI_SERVICE
