@@ -11,6 +11,12 @@ export default function StockDetailView({
   onSelectTicker,
   renderInteractiveChart,
 }) {
+  const latestPrice = priceHistory.length > 0 ? priceHistory[priceHistory.length - 1] : null;
+  const formatVolume = (volume) => {
+    const numericVolume = Number(volume);
+    return Number.isFinite(numericVolume) ? numericVolume.toLocaleString() : 'Unavailable';
+  };
+
   if (!selectedStockData) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px', textAlign: 'center' }}>
@@ -45,10 +51,10 @@ export default function StockDetailView({
             <h2 style={{ fontSize: '24px', fontWeight: '700' }}>{selectedStockData.name} ({selectedTicker})</h2>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', marginTop: '4px' }}>{selectedStockData.sector} • {selectedStockData.exchange}</p>
           </div>
-          {priceHistory.length > 0 && (
+          {latestPrice && (
             <div style={{ textAlign: 'right' }}>
               <h3 style={{ fontSize: '28px', fontWeight: '800', color: 'var(--accent-blue)' }}>
-                ${priceHistory[priceHistory.length - 1].close}
+                ${latestPrice.close}
               </h3>
               <p style={{ fontSize: '12px', color: 'var(--color-success)', fontWeight: '600' }}>+1.45% past day</p>
             </div>
@@ -68,19 +74,19 @@ export default function StockDetailView({
                 <>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: 'var(--color-text-muted)' }}>Open</span>
-                    <span style={{ fontWeight: '600' }}>${priceHistory[priceHistory.length - 1].open}</span>
+                    <span style={{ fontWeight: '600' }}>${latestPrice.open}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: 'var(--color-text-muted)' }}>High</span>
-                    <span style={{ fontWeight: '600' }}>${priceHistory[priceHistory.length - 1].high}</span>
+                    <span style={{ fontWeight: '600' }}>${latestPrice.high}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: 'var(--color-text-muted)' }}>Low</span>
-                    <span style={{ fontWeight: '600' }}>${priceHistory[priceHistory.length - 1].low}</span>
+                    <span style={{ fontWeight: '600' }}>${latestPrice.low}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
                     <span style={{ color: 'var(--color-text-muted)' }}>Volume</span>
-                    <span style={{ fontWeight: '600' }}>{priceHistory[priceHistory.length - 1].volume.toLocaleString()}</span>
+                    <span style={{ fontWeight: '600' }}>{formatVolume(latestPrice.volume)}</span>
                   </div>
                 </>
               ) : <p style={{ opacity: 0.5 }}>Run ETL to seed database records.</p>}

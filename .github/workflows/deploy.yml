@@ -81,8 +81,12 @@ jobs:
       - name: Build Dashboard locally
         run: |
           cd dashboard
-          npm install
+          npm ci
           npm run build
+        env:
+          # Vite replaces this value in the production bundle. Without it, the
+          # browser sends /stocks and /prices requests to Vercel, not Render.
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
           
       - name: Copy built files to root for Vercel deployment
         run: |
