@@ -62,7 +62,7 @@ jobs:
           # Make sure the dashboard build embeds the backend URL during Vite build.
           # Set this secret in the repo to your Render backend URL, e.g.
           # https://marketmind-analytics-api.onrender.com
-          VITE_API_URL: ${{ secrets.BACKEND_URL }}
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
   # ─────────────────────────────────────────────────────────
   # JOB 2: Deploy (only on push to main, after CI passes)

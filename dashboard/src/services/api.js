@@ -330,7 +330,7 @@ export const api = {
     const token = getToken();
     const headers = token ? { "Authorization": `Bearer ${token}` } : {};
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/ingest/scheduler/toggle?enable=${enable}`, {
+      const response = await fetch(`${API_BASE_URL}/api/v1/ingest/scheduler/toggle?enable=${enable}`, {
         method: "POST",
         headers,
       });
@@ -344,7 +344,7 @@ export const api = {
 
   getSchedulerStatus: async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/ingest/status`);
+      const response = await fetch(`${API_BASE_URL}/api/v1/ingest/status`);
       if (!response.ok) throw new Error("Status check failed");
       return await response.json();
     } catch (e) {
@@ -359,7 +359,8 @@ export const api = {
       if (!response.ok) throw new Error("AI status check failed");
       return await response.json();
     } catch (e) {
-      return { ai_service_enabled: false, ai_service_available: false, ai_service_url: "http://localhost:8001" };
+      const aiServiceUrl = API_BASE_URL ? `${API_BASE_URL.replace(/^https?:\/\//, 'http://')}:8001` : "http://localhost:8001";
+      return { ai_service_enabled: false, ai_service_available: false, ai_service_url: aiServiceUrl };
     }
   },
 

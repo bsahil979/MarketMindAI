@@ -4,6 +4,10 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  define: {
+    // Ensure API URL is available at build time
+    'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || '')
+  },
   server: {
     // Proxy API calls during local development to the backend server
     proxy: {

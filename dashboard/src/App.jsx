@@ -61,7 +61,7 @@ export default function App() {
   const [aiServiceStatus, setAiServiceStatus] = useState({
     ai_service_enabled: false,
     ai_service_available: false,
-    ai_service_url: "http://localhost:8001"
+    ai_service_url: ""
   });
 
   // Portfolio Advisor RAG Explorer State (Conversational SEC Chat)
@@ -291,7 +291,15 @@ export default function App() {
     if (!isAuthenticated) return;
     
     // Connect to FastAPI live price streams socket
-    const ws = new WebSocket("ws://localhost:8000/ws/prices");
+    // Use API_BASE_URL for WebSocket connection (replace http/ws, https/wss)
+    const apiBaseUrl = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.__API_BASE_URL__) || "";
+    let wsUrl = "ws://localhost:8000/ws/prices";
+    
+    if (apiBaseUrl) {
+      wsUrl = apiBaseUrl.replace(/^https?:\/\//, 'ws://').replace(/^http:\/\//, 'ws://').replace(/^https:\/\//, 'wss://') + "/ws/prices";
+    }
+    
+    const ws = new WebSocket(wsUrl);
     
     ws.onmessage = (event) => {
       try {
@@ -316,6 +324,10 @@ export default function App() {
 
     ws.onerror = (e) => {
       console.warn("WebSocket error, falling back to database REST calls: ", e);
+    };
+
+    ws.onclose = (e) => {
+      console.log("WebSocket connection closed");
     };
 
     return () => {
