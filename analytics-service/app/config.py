@@ -22,7 +22,19 @@ class Settings:
         self.API_VERSION: str = os.getenv("API_VERSION", "1.0.0")
         self.DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/marketmind")
         self.SQLITE_PATH: str = os.getenv("SQLITE_PATH", str(BASE_DIR / "marketmind.db"))
-        self.ALLOWED_ORIGINS: List[str] = _get_env_list("ALLOWED_ORIGINS", "*")
+        
+        # Explicitly allow common origins for development and production
+        default_origins = [
+            "http://localhost:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:5173",
+            "http://127.0.0.1:3000",
+            "https://market-mind-ai-q1kl.vercel.app",
+            "https://marketmindai.vercel.app",
+            "*"
+        ]
+        self.ALLOWED_ORIGINS: List[str] = _get_env_list("ALLOWED_ORIGINS", ",".join(default_origins))
+        
         self.AUTO_SYNC_INTERVAL_SECONDS: int = int(os.getenv("AUTO_SYNC_INTERVAL_SECONDS", "300"))
         self.WEBSOCKET_POLL_INTERVAL_SECONDS: int = int(os.getenv("WEBSOCKET_POLL_INTERVAL_SECONDS", "3"))
         self.API_HOST: str = os.getenv("HOST", "0.0.0.0")
