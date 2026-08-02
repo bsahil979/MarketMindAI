@@ -85,7 +85,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           echo "Deploying dashboard with latest Vercel CLI"
-          cd dashboard
+          # Run from repository root (Vercel project is configured for dashboard directory)
           # Force a fresh build by skipping cache
           npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force
 
