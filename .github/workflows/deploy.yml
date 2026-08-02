@@ -78,6 +78,12 @@ jobs:
         uses: actions/checkout@v4
 
       # ── Deploy Dashboard → Vercel ──────────────────────
+      - name: Build Dashboard locally
+        run: |
+          cd dashboard
+          npm install
+          npm run build
+          
       - name: Deploy Dashboard to Vercel (using latest CLI)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -85,8 +91,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           echo "Deploying dashboard with latest Vercel CLI"
-          # Run from repository root (Vercel project is configured for dashboard directory)
-          # Force a fresh build by skipping cache
+          cd dashboard
+          # Deploy pre-built dist directory
           npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force
 
       # ── Deploy Analytics API → Render ─────────────────
