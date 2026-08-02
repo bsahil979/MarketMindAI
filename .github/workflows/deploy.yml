@@ -84,6 +84,11 @@ jobs:
           npm install
           npm run build
           
+      - name: Copy built files to root for Vercel deployment
+        run: |
+          # Copy dist contents to root since Vercel project expects root deployment
+          cp -r dashboard/dist/* .
+          
       - name: Deploy Dashboard to Vercel (using latest CLI)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -91,7 +96,7 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           echo "Deploying dashboard with latest Vercel CLI"
-          # Run from repository root since Vercel project has dashboard as root directory
+          # Deploy from root with pre-built files
           npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force
 
       # ── Deploy Analytics API → Render ─────────────────
