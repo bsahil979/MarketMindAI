@@ -86,6 +86,8 @@ jobs:
           
       - name: Copy built files to root for Vercel deployment
         run: |
+          # Remove existing index.html to avoid conflicts
+          rm -f index.html
           # Copy dist contents to root since Vercel project expects root deployment
           cp -r dashboard/dist/* .
           
