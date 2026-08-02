@@ -98,8 +98,8 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           echo "Deploying dashboard with latest Vercel CLI"
-          # Deploy from root with pre-built files
-          npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force
+          # Deploy from root with pre-built files, skip Vercel build
+          npx vercel@latest --prod -t "$VERCEL_TOKEN" --yes --force --no-build
 
       # ── Deploy Analytics API → Render ─────────────────
       - name: Trigger Render Deploy (Analytics API)
